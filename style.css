@@ -1,0 +1,393 @@
+*{
+
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+
+}
+
+/* root classes  */
+:root {
+
+    --color1 : rgb(81,159,255);
+    --color2 : rgb(234,115,39);
+    --color3 : rgb(250, 250, 250);
+    --sides-margin : 90px;
+
+}
+
+
+/* utility classes  */
+.flex {
+
+    display: flex;
+
+}
+
+.sideMargin {
+
+    margin-inline: 90px;
+}
+
+
+
+
+
+/* styling for header  */
+.Nav {
+
+    padding-inline: var(--sides-margin);
+    padding-block:22px 12px;
+    width: 100%;
+    background-color: var(--color1);
+    position: relative;
+
+}
+
+.topNav {
+
+    justify-content: space-between;
+    align-items: center;
+}
+
+.searchBar {
+
+    width: 580px;
+    height: 43px;
+    background-color: white;
+    border-radius: 5px;
+}
+
+.searchInput {
+
+    flex-grow: 1;
+    padding-left: 20px;
+    outline: none;
+    border: none;
+    border-left: 1px solid rgba(54, 54, 54, 0.315);
+    margin-left: 10px;
+
+}
+
+.searchIcon {
+
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+select {
+
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    padding-inline: 5px;
+    border: none;
+    outline: none;
+    /* border-right: 1px solid rgba(0, 0, 0, 0.315); */
+}
+
+.searchIcon {
+
+    background: var(--color2);
+    width: 40px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.navRight {
+
+    gap: 50px;
+}
+
+.userText {
+
+    color: white;
+    font-weight: bold;
+    font-size: 0.8rem;
+    padding-left: 10px;
+
+}
+
+.userText span:nth-child(1) {
+
+    display: inline-block;
+    padding-bottom: 3px;
+    color: var(--color3);
+    
+}
+
+.userText span:hover {
+
+    color: var(--color2);
+    cursor: pointer;
+
+}
+
+.bottomNav {
+
+    
+    width: 100%;
+    padding-top: 30px;
+}
+
+.categoryBar {
+
+    background-color: var(--color2);
+    color: white;
+    font-weight: bold;
+    padding: 11px 60px 11px 20px;
+    position: absolute;
+    bottom: 0px;
+    left: var(--sides-margin);
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    font-size: 0.9rem;
+
+}
+
+.bottomNav ul {
+
+    gap: 35px;
+    padding-left: 300px;
+
+}
+
+.bottomNav ul li {
+
+    font-size: 0.85rem;
+    color: white;
+    list-style: none;
+    font-weight: bold;
+    transition: 0.2s ease;
+}
+
+.bottomNav ul li:hover {
+
+    cursor: pointer;
+    color: rgba(0, 0, 0, 0.76);
+}
+
+
+
+
+/* styling for hero section  */
+.hero {
+
+    background-image: url(assets/asset\ 7.jpeg);
+    width: 100%;
+    height: 410px;
+    background-size: cover;
+}
+
+
+
+
+/* styling for iconsBar section  */
+.iconsBar {
+
+    border: 1px solid gainsboro;
+    border-radius: 5px;
+    margin-inline: var(--sides-margin);
+    margin-block: 50px;
+    justify-content: space-between;
+    padding: 30px 20px 20px 20px;
+
+}
+
+.IconsBarBox {
+    gap: 20px;
+}
+
+.IconsBarBoxIconText h3 {
+
+    font-size: 1.15rem;
+    
+}
+
+.IconsBarBoxIconText p {
+
+    font-size: 0.95rem;
+    color: grey;
+    padding-top: 4px;
+}
+
+
+/* styling for adsBarTop is here  */
+.adsBarTop {
+
+    margin-inline: var(--sides-margin);
+    /* width: 100%; */
+    height: 210px;
+    background-image: url(./assets/asset\ 11.jpeg);
+    /* background-size: cover; */
+    background-repeat: no-repeat;
+    margin-block: 70px;
+
+}
+
+/* styling for productsSection is here  */
+.productsSection {
+
+    margin-inline: var(--sides-margin);
+
+}
+
+
+.productsSectionHeading h2 {
+
+    text-align: center;
+    font-size: 2rem;
+    position: relative;
+}
+
+.productsSectionHeading h2::before {
+
+    content: '';
+    width: 60px;
+    background-color: var(--color2);
+    height: 2px;
+    position: absolute;
+    top: 45%;
+    left: 31%;
+}
+
+.productsSectionHeading h2::after {
+
+    content: '';
+    width: 60px;
+    background-color: var(--color2);
+    height: 2px;
+    position: absolute;
+    top: 45%;
+    right: 31%;
+}
+
+.productsBoxes {
+
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-top: 20px;
+
+}
+
+.productBox {
+
+    width: 17%;
+    border-bottom: 1px solid gainsboro;
+    padding-block: 10px 30px;
+    margin-bottom: 20px;
+
+}
+
+.productBox img {
+
+    width: 100%;
+}
+
+.productBox p {
+
+    color: #303030;
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+.productBoxPrice {
+
+    color: var(--color2) !important;
+    padding-block: 5px;
+
+}
+
+
+
+
+
+/* styling for categoryBoxesBar is here  */
+.categoryBoxesBar {
+
+    margin-inline: var(--sides-margin);
+    margin-block: 70px;
+
+}
+
+.categoryBoxesBarHeader h1 {
+
+    text-align: center;
+    font-size: 2rem;
+    position: relative;
+}
+
+.categoryBoxesBarHeader h1::before {
+
+    content: '';
+    width: 60px;
+    background-color: var(--color2);
+    height: 2px;
+    position: absolute;
+    top: 45%;
+    left: 29%;
+}
+
+.categoryBoxesBarHeader h1::after {
+
+    content: '';
+    width: 60px;
+    background-color: var(--color2);
+    height: 2px;
+    position: absolute;
+    top: 45%;
+    right: 29%;
+}
+
+.categoryBoxes {
+
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding-top: 30px;
+
+}
+
+
+
+.categoryBox {
+
+    width: 23%;
+    /* height: 400px; */
+    border: 1px solid gray;
+    padding: 2px;
+    transition: 0.2s ease;
+
+}
+
+.categoryBox img {
+
+    width: 100%;
+}
+
+.categoryBox  h3 {
+
+    text-align: center;
+    padding-block: 15px;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.categoryBox:hover {
+
+    background-color: var(--color2);
+
+}
+
+.categoryBox:hover.categoryBox h3 {
+
+    color: white;
+
+}
+
+
+
+
