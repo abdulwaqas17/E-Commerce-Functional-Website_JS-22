@@ -391,3 +391,141 @@ select {
 
 
 
+/* styling for footer is here  */
+footer {
+
+    padding-inline: var(--sides-margin);
+    background-color: rgb(56,113,171);
+    color: white;
+    padding-top: 40px;
+    /* height: 500px; */
+
+}
+
+.footerBoxes {
+
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(220, 243, 245, 0.589);
+    padding-bottom: 40px;
+}
+
+.footerBox h3 {
+
+    padding-bottom: 10px;
+
+}
+
+.footerBox li {
+
+    list-style: none;
+    padding-block: 10px;
+    font-size: 0.9rem;
+}
+
+.footerBox li span {
+
+    color: var(--color2);
+
+}
+
+.footerBox h4 {
+
+    padding-block: 17px;
+    font-size: 1.2rem;
+}
+
+.socialIconsBar {
+
+    gap: 5px;
+
+}
+
+.socialIcon {
+
+    width: 45px;
+    height: 45px;
+    background: rgba(133, 185, 209, 0.548);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    border-radius: 50%;
+
+}
+
+.faceBookImg {
+
+    width: 270px;
+    height: 170px;
+    transition: 0.2s ease;
+
+}
+
+.faceBookImg:hover {
+
+    box-shadow: 0px 0px 8px 2px rgba(24, 24, 24, 0.486);
+
+}
+
+.faceBookImg img {
+
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+
+}
+
+.footerContactBoxes {
+
+    justify-content: space-between;
+    padding-block: 40px 30px;
+
+}
+
+.footerContactBox {
+
+    gap: 20px;
+}
+
+.footerContactBox p {
+
+    font-size: 0.9rem;
+    padding-bottom: 5px;
+
+}
+
+.headline {
+
+    justify-content: space-between;
+    padding-inline: var(--sides-margin);
+    background-color: #2c5d8a;
+    color: white;
+    padding-block: 20px;
+}
+
+.headline span {
+
+    color: var(--color2);
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* --------- STYLING FOR CART PAGE ------------ */
+.cart-hero {
+
+    text-align: center;
+    background-image: url(./assets/cart-hero.jpg);
+    padding-block: 25px;
+    font-size: 0.85rem;
+
+}
