@@ -1,494 +1,3 @@
-// onlneStore for all company data
-var OnlineStore = {
-
-    storeName : 'Metro',
-    storeLocation : 'Karachi, Pakistan',
-
-    // product categoreis list 
-    categoreis : ['Laptops', 'Smart Phones', 'Accessories'],
-
-    // all products of the store in the array of obj
-    products : [
-        
-        // product information obj 1
-        {
-            id : 1001,
-            pImage : './assets/asset 16.jpeg',
-            pName : 'Swine voluptate reiciendis votibus',
-            pCategory : 'Laptops',
-            pPrice : 30000,
-            pStock : 45,
-
-            // product additional details 
-            pDetails : {
-
-                pBrand : 'hp',
-                pModel : '2024',
-                pColor : 'gray',
-                pSize : 'Small'
-
-            }
-
-        },
-        
-        // product information obj 2
-        {
-            id : 1002,
-            pImage : './assets/asset 20.jpeg',
-            pName : 'Swine voluptate reiciendis votibus',
-            pCategory : 'Laptops',
-            pPrice : 15000,
-            pStock : 20,
-
-            // product additional details 
-            pDetails : {
-
-                pBrand : 'lenovo',
-                pModel : '2023',
-                pColor : 'black',
-                pSize : 'Large'
-
-            }
-
-        },
-
-        // product information obj 3
-        {
-            id : 1003,
-            pImage : './assets/asset 21.jpeg',
-            pName : 'Officia including shoes beautiful samde',
-            pCategory : 'Headphones',
-            pPrice : 3500,
-            pStock : 90,
-
-            // product additional details 
-            pDetails : {
-
-                pBrand : 'apple',
-                pModel : '2022',
-                pColor : 'red',
-                pSize : 'Medium'
-
-
-            }
-
-        },
-
-        // product information obj 4
-        {
-            id : 1004,
-            pImage : './assets/asset 22.jpeg',
-            pName : 'Rutrum onvopxe sapiente delectus',
-            pCategory : 'Accessories',
-            pPrice : 1500,
-            pStock : 110,
-
-            // product additional details 
-            pDetails : {
-
-                pBrand : 'apple',
-                pModel : '2020',
-                pColor : 'white',
-                pSize : 'X Large'
-
-
-            }
-
-        },
-
-        // product information obj 5
-        {
-            id : 1005,
-            pImage : './assets/asset 23.jpeg',
-            pName : 'Simdora Maneu koer Metersa Infre Aze loke',
-            pCategory : 'Accessories',
-            pPrice : 1700,
-            pStock : 110,
-
-            // product additional details 
-            pDetails : {
-
-                pBrand : 'apple',
-                pModel : '2020',
-                pColor : 'white',
-                pSize : 'Medium'
-
-
-            }
-
-        },
-        
-        // product information obj 1
-        {
-            id : 1001,
-            pImage : './assets/asset 16.jpeg',
-            pName : 'Swine voluptate reiciendis votibus',
-            pCategory : 'Laptops',
-            pPrice : 30000,
-            pStock : 45,
-
-            // product additional details 
-            pDetails : {
-
-                pBrand : 'hp',
-                pModel : '2024',
-                pColor : 'gray',
-                pSize : 'Small'
-
-            }
-
-        },
-        
-        // product information obj 2
-        {
-            id : 1002,
-            pImage : './assets/asset 20.jpeg',
-            pName : 'Swine voluptate reiciendis votibus',
-            pCategory : 'Laptops',
-            pPrice : 15000,
-            pStock : 20,
-
-            // product additional details 
-            pDetails : {
-
-                pBrand : 'lenovo',
-                pModel : '2023',
-                pColor : 'black',
-                pSize : 'Large'
-
-            }
-
-        },
-
-        // product information obj 3
-        {
-            id : 1003,
-            pImage : './assets/asset 21.jpeg',
-            pName : 'Officia including shoes beautiful samde',
-            pCategory : 'Headphones',
-            pPrice : 3500,
-            pStock : 90,
-
-            // product additional details 
-            pDetails : {
-
-                pBrand : 'apple',
-                pModel : '2022',
-                pColor : 'red',
-                pSize : 'Medium'
-
-
-            }
-
-        },
-
-        // product information obj 4
-        {
-            id : 1004,
-            pImage : './assets/asset 22.jpeg',
-            pName : 'Rutrum onvopxe sapiente delectus',
-            pCategory : 'Accessories',
-            pPrice : 1500,
-            pStock : 110,
-
-            // product additional details 
-            pDetails : {
-
-                pBrand : 'apple',
-                pModel : '2020',
-                pColor : 'white',
-                pSize : 'X Large'
-
-
-            }
-
-        },
-
-        // product information obj 5
-        {
-            id : 1005,
-            pImage : './assets/asset 23.jpeg',
-            pName : 'Simdora Maneu koer Metersa Infre Aze loke',
-            pCategory : 'Accessories',
-            pPrice : 1700,
-            pStock : 110,
-
-            // product additional details 
-            pDetails : {
-
-                pBrand : 'apple',
-                pModel : '2020',
-                pColor : 'white',
-                pSize : 'Medium'
-
-
-            }
-
-        },
-        
-        // product information obj 1
-        {
-            id : 1001,
-            pImage : './assets/asset 16.jpeg',
-            pName : 'Swine voluptate reiciendis votibus',
-            pCategory : 'Laptops',
-            pPrice : 30000,
-            pStock : 45,
-
-            // product additional details 
-            pDetails : {
-
-                pBrand : 'hp',
-                pModel : '2024',
-                pColor : 'gray',
-                pSize : 'Small'
-
-            }
-
-        },
-        
-        // product information obj 2
-        {
-            id : 1002,
-            pImage : './assets/asset 20.jpeg',
-            pName : 'Swine voluptate reiciendis votibus',
-            pCategory : 'Laptops',
-            pPrice : 15000,
-            pStock : 20,
-
-            // product additional details 
-            pDetails : {
-
-                pBrand : 'lenovo',
-                pModel : '2023',
-                pColor : 'black',
-                pSize : 'Large'
-
-            }
-
-        },
-
-        // product information obj 3
-        {
-            id : 1003,
-            pImage : './assets/asset 21.jpeg',
-            pName : 'Officia including shoes beautiful samde',
-            pCategory : 'Headphones',
-            pPrice : 3500,
-            pStock : 90,
-
-            // product additional details 
-            pDetails : {
-
-                pBrand : 'apple',
-                pModel : '2022',
-                pColor : 'red',
-                pSize : 'Medium'
-
-
-            }
-
-        },
-
-        // product information obj 4
-        {
-            id : 1004,
-            pImage : './assets/asset 22.jpeg',
-            pName : 'Rutrum onvopxe sapiente delectus',
-            pCategory : 'Accessories',
-            pPrice : 1500,
-            pStock : 110,
-
-            // product additional details 
-            pDetails : {
-
-                pBrand : 'apple',
-                pModel : '2020',
-                pColor : 'white',
-                pSize : 'X Large'
-
-
-            }
-
-        },
-
-        // product information obj 5
-        {
-            id : 1005,
-            pImage : './assets/asset 23.jpeg',
-            pName : 'Simdora Maneu koer Metersa Infre Aze loke',
-            pCategory : 'Accessories',
-            pPrice : 1700,
-            pStock : 110,
-
-            // product additional details 
-            pDetails : {
-
-                pBrand : 'apple',
-                pModel : '2020',
-                pColor : 'white',
-                pSize : 'Medium'
-
-
-            }
-
-        },
-        
-        // product information obj 1
-        {
-            id : 1001,
-            pImage : './assets/asset 16.jpeg',
-            pName : 'Swine voluptate reiciendis votibus',
-            pCategory : 'Laptops',
-            pPrice : 30000,
-            pStock : 45,
-
-            // product additional details 
-            pDetails : {
-
-                pBrand : 'hp',
-                pModel : '2024',
-                pColor : 'gray',
-                pSize : 'Small'
-
-            }
-
-        },
-        
-        // product information obj 2
-        {
-            id : 1002,
-            pImage : './assets/asset 20.jpeg',
-            pName : 'Swine voluptate reiciendis votibus',
-            pCategory : 'Laptops',
-            pPrice : 15000,
-            pStock : 20,
-
-            // product additional details 
-            pDetails : {
-
-                pBrand : 'lenovo',
-                pModel : '2023',
-                pColor : 'black',
-                pSize : 'Large'
-
-            }
-
-        },
-
-        // product information obj 3
-        {
-            id : 1003,
-            pImage : './assets/asset 21.jpeg',
-            pName : 'Officia including shoes beautiful samde',
-            pCategory : 'Headphones',
-            pPrice : 3500,
-            pStock : 90,
-
-            // product additional details 
-            pDetails : {
-
-                pBrand : 'apple',
-                pModel : '2022',
-                pColor : 'red',
-                pSize : 'Medium'
-
-
-            }
-
-        },
-
-        // product information obj 4
-        {
-            id : 1004,
-            pImage : './assets/asset 22.jpeg',
-            pName : 'Rutrum onvopxe sapiente delectus',
-            pCategory : 'Accessories',
-            pPrice : 1500,
-            pStock : 110,
-
-            // product additional details 
-            pDetails : {
-
-                pBrand : 'apple',
-                pModel : '2020',
-                pColor : 'white',
-                pSize : 'X Large'
-
-
-            }
-
-        },
-
-        // product information obj 5
-        {
-            id : 1005,
-            pImage : './assets/asset 23.jpeg',
-            pName : 'Simdora Maneu koer Metersa Infre Aze loke',
-            pCategory : 'Accessories',
-            pPrice : 1700,
-            pStock : 110,
-
-            // product additional details 
-            pDetails : {
-
-                pBrand : 'apple',
-                pModel : '2020',
-                pColor : 'white',
-                pSize : 'Medium'
-
-
-            }
-
-        },
-
-    ]
-}
-
-
-var productShowSection = document.querySelector('.productsBoxes');
-
-for(var i = 0; i < OnlineStore.products.length; i++) {
-
-    productShowSection.innerHTML += 
-
-        `
-        <div class="productBox">
-
-                    <div class="productBoxTop">
-
-                        <img src="${OnlineStore.products[i].pImage}" alt="product">
-
-                    </div>
-
-                    <div class="productBoxBottom">
-
-                        <p>${OnlineStore.products[i].pName}</p>
-                        <p class="productBoxPrice">${OnlineStore.products[i].pPrice}</p>
-                        <p>a a a a a</p>
-
-                    </div>
-
-         </div>
-
-        `
-    
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 var users = JSON.parse(window.localStorage.getItem('USERS')) || [];
 console.log(users);
@@ -635,8 +144,22 @@ function loginMatchData() {
             
         ) {
 
-           isUser = 'match'; 
-           window.localStorage.setItem('lastLoginUserEmail',userLoginEmail);
+           isUser = 'match';  
+           var currUserData = parseUsers[i];    
+           console.log(currUserData);  
+           var currUserDataStr = JSON.stringify(currUserData);
+           window.localStorage.setItem('currUserData',currUserDataStr);
+        //    var lastLoginUserName = parseUsers[i].userName;
+
+        //    console.log(lastLoginUserName);
+           
+        //    var currUserName = document.getElementById('currUserName');
+
+        //    console.log(currUserName);
+
+        //    currUserName.innerHTML = lastLoginUserName;
+
+        //    console.log(lastLoginUserName);
            alert('Login Successfully, Go to Homepage');
            window.location.href = './index.html';
            break;
@@ -660,3 +183,399 @@ function loginMatchData() {
 
        
 }
+
+var currUser = JSON.parse(window.localStorage.getItem('currUserData'));
+console.log(currUser);
+
+var currUserName = document.getElementById("currUserName");
+console.log(currUserName.tagName);
+
+currUserName.innerHTML = currUser.userName;
+
+
+
+
+
+
+// onlneStore for all company data
+var OnlineStore = {
+
+    storeName : 'Metro',
+    storeLocation : 'Karachi, Pakistan',
+
+    // product categoreis list 
+    categoreis : ['Laptops', 'Smart Phones', 'Accessories'],
+
+    // all products of the store in the array of obj
+    products : [
+        
+        // product information obj 1
+        {
+            pID : 1001,
+            pImage : './assets/asset 16.jpeg',
+            pName : 'Swine voluptate reiciendis votibus',
+            pCategory : 'Laptops',
+            pPrice : 30000,
+            pStock : 45,
+
+            // product additional details 
+            pDetails : {
+
+                pBrand : 'hp',
+                pModel : '2024',
+                pColor : 'gray',
+                pSize : 'Small'
+
+            }
+
+        },
+        
+        // product information obj 2
+        {
+            pID : 1002,
+            pImage : './assets/asset 20.jpeg',
+            pName : 'Swine voluptate reiciendis votibus',
+            pCategory : 'Laptops',
+            pPrice : 15000,
+            pStock : 20,
+
+            // product additional details 
+            pDetails : {
+
+                pBrand : 'lenovo',
+                pModel : '2023',
+                pColor : 'black',
+                pSize : 'Large'
+
+            }
+
+        },
+
+        // product information obj 3
+        {
+            pID : 1003,
+            pImage : './assets/asset 21.jpeg',
+            pName : 'Officia including shoes beautiful samde',
+            pCategory : 'Headphones',
+            pPrice : 3500,
+            pStock : 90,
+
+            // product additional details 
+            pDetails : {
+
+                pBrand : 'apple',
+                pModel : '2022',
+                pColor : 'red',
+                pSize : 'Medium'
+
+
+            }
+
+        },
+
+        // product information obj 4
+        {
+            pID : 1004,
+            pImage : './assets/asset 22.jpeg',
+            pName : 'Rutrum onvopxe sapiente delectus',
+            pCategory : 'Accessories',
+            pPrice : 1500,
+            pStock : 110,
+
+            // product additional details 
+            pDetails : {
+
+                pBrand : 'apple',
+                pModel : '2020',
+                pColor : 'white',
+                pSize : 'X Large'
+
+
+            }
+
+        },
+
+        // product information obj 5
+        {
+            pID : 1005,
+            pImage : './assets/asset 23.jpeg',
+            pName : 'Simdora Maneu koer Metersa Infre Aze loke',
+            pCategory : 'Accessories',
+            pPrice : 1700,
+            pStock : 110,
+
+            // product additional details 
+            pDetails : {
+
+                pBrand : 'apple',
+                pModel : '2020',
+                pColor : 'white',
+                pSize : 'Medium'
+
+
+            }
+
+        },
+        
+        // product information obj 1
+        {
+            pID : 1001,
+            pImage : './assets/asset 16.jpeg',
+            pName : 'Swine voluptate reiciendis votibus',
+            pCategory : 'Laptops',
+            pPrice : 30000,
+            pStock : 45,
+
+            // product additional details 
+            pDetails : {
+
+                pBrand : 'hp',
+                pModel : '2024',
+                pColor : 'gray',
+                pSize : 'Small'
+
+            }
+
+        },
+        
+        // product information obj 2
+        {
+            pID : 1002,
+            pImage : './assets/asset 20.jpeg',
+            pName : 'Swine voluptate reiciendis votibus',
+            pCategory : 'Laptops',
+            pPrice : 15000,
+            pStock : 20,
+
+            // product additional details 
+            pDetails : {
+
+                pBrand : 'lenovo',
+                pModel : '2023',
+                pColor : 'black',
+                pSize : 'Large'
+
+            }
+
+        },
+
+        // product information obj 3
+        {
+            pID : 1003,
+            pImage : './assets/asset 21.jpeg',
+            pName : 'Officia including shoes beautiful samde',
+            pCategory : 'Headphones',
+            pPrice : 3500,
+            pStock : 90,
+
+            // product additional details 
+            pDetails : {
+
+                pBrand : 'apple',
+                pModel : '2022',
+                pColor : 'red',
+                pSize : 'Medium'
+
+
+            }
+
+        },
+
+        // product information obj 4
+        {
+            pID : 1004,
+            pImage : './assets/asset 22.jpeg',
+            pName : 'Rutrum onvopxe sapiente delectus',
+            pCategory : 'Accessories',
+            pPrice : 1500,
+            pStock : 110,
+
+            // product additional details 
+            pDetails : {
+
+                pBrand : 'apple',
+                pModel : '2020',
+                pColor : 'white',
+                pSize : 'X Large'
+
+
+            }
+
+        },
+
+        // product information obj 5
+        {
+            pID : 1005,
+            pImage : './assets/asset 23.jpeg',
+            pName : 'Simdora Maneu koer Metersa Infre Aze loke',
+            pCategory : 'Accessories',
+            pPrice : 1700,
+            pStock : 110,
+
+            // product additional details 
+            pDetails : {
+
+                pBrand : 'apple',
+                pModel : '2020',
+                pColor : 'white',
+                pSize : 'Medium'
+
+
+            }
+
+        },
+        
+        // product information obj 1
+        {
+            pID : 1001,
+            pImage : './assets/asset 16.jpeg',
+            pName : 'Swine voluptate reiciendis votibus',
+            pCategory : 'Laptops',
+            pPrice : 30000,
+            pStock : 45,
+
+            // product additional details 
+            pDetails : {
+
+                pBrand : 'hp',
+                pModel : '2024',
+                pColor : 'gray',
+                pSize : 'Small'
+
+            }
+
+        },
+        
+        // product information obj 2
+        {
+            pID : 1002,
+            pImage : './assets/asset 20.jpeg',
+            pName : 'Swine voluptate reiciendis votibus',
+            pCategory : 'Laptops',
+            pPrice : 15000,
+            pStock : 20,
+
+            // product additional details 
+            pDetails : {
+
+                pBrand : 'lenovo',
+                pModel : '2023',
+                pColor : 'black',
+                pSize : 'Large'
+
+            }
+
+        },
+
+        // product information obj 3
+        {
+            pID : 1003,
+            pImage : './assets/asset 21.jpeg',
+            pName : 'Officia including shoes beautiful samde',
+            pCategory : 'Headphones',
+            pPrice : 3500,
+            pStock : 90,
+
+            // product additional details 
+            pDetails : {
+
+                pBrand : 'apple',
+                pModel : '2022',
+                pColor : 'red',
+                pSize : 'Medium'
+
+
+            }
+
+        },
+
+        // product information obj 4
+        {
+            pID : 1004,
+            pImage : './assets/asset 22.jpeg',
+            pName : 'Rutrum onvopxe sapiente delectus',
+            pCategory : 'Accessories',
+            pPrice : 1500,
+            pStock : 110,
+
+            // product additional details 
+            pDetails : {
+
+                pBrand : 'apple',
+                pModel : '2020',
+                pColor : 'white',
+                pSize : 'X Large'
+
+
+            }
+
+        },
+
+        // product information obj 5
+        {
+            pID : 1005,
+            pImage : './assets/asset 23.jpeg',
+            pName : 'Simdora Maneu koer Metersa Infre Aze loke',
+            pCategory : 'Accessories',
+            pPrice : 1700,
+            pStock : 110,
+
+            // product additional details 
+            pDetails : {
+
+                pBrand : 'apple',
+                pModel : '2020',
+                pColor : 'white',
+                pSize : 'Medium'
+
+
+            }
+
+        },
+        
+
+    ]
+}
+
+
+var productShowSection = document.querySelector('.productsBoxes');
+console.log(productShowSection.tagName);
+
+for(var i = 0; i < OnlineStore.products.length; i++) {
+
+    productShowSection.innerHTML += 
+
+        `
+        <div class="productBox">
+
+                    <div class="productBoxTop">
+
+                        <img src="${OnlineStore.products[i].pImage}" alt="product">
+                        <div class="addToCart" id="${OnlineStore.products[i].pID}" onclick="addCart(this)">Add to  <i class="fa-solid fa-cart-arrow-down"></i></div>
+
+                    </div>
+
+                    <div class="productBoxBottom">
+
+                        <p>${OnlineStore.products[i].pName}</p>
+                        <p class="productBoxPrice">${OnlineStore.products[i].pPrice}</p>
+                        <p><i class="fa-solid fa-star"></i> <i class="fa-solid fa-star"></i> <i class="fa-solid fa-star"></i> <i class="fa-solid fa-star"></i> <i class="fa-solid fa-star"></i></p>
+
+                    </div>
+
+         </div>
+
+        `
+    
+}
+
+function addCart(e) {
+
+    console.log(e);
+    var cartID = e.getAttribute('id');
+    alert(`Product ID ${cartID} has added in your cart.`)
+    console.log(cartID);
+
+}
+
+console.log('product show krwany ka kam hogia');
