@@ -13,6 +13,7 @@ function signupDataStore() {
         userPhone : document.getElementById('userPhone').value,
         userPassword : document.getElementById('userPassword').value,
         userCity : document.getElementById('userCity').value,
+        usersAddToCarts : [],
     
     }
 
@@ -183,15 +184,6 @@ function loginMatchData() {
 
        
 }
-
-var currUser = JSON.parse(window.localStorage.getItem('currUserData'));
-console.log(currUser);
-
-var currUserName = document.getElementById("currUserName");
-console.log(currUserName.tagName);
-
-currUserName.innerHTML = currUser.userName;
-
 
 
 
@@ -534,8 +526,15 @@ var OnlineStore = {
         },
         
 
-    ]
+    ],
+
+    usersDetail : JSON.parse(window.localStorage.getItem('USERS')),
+
+    ordersDetail : [],
+
 }
+
+console.log(OnlineStore.usersDetail);
 
 
 var productShowSection = document.querySelector('.productsBoxes');
@@ -569,13 +568,76 @@ for(var i = 0; i < OnlineStore.products.length; i++) {
     
 }
 
+
+
+
+// function for addToCart the products 
+
 function addCart(e) {
 
+    if (currUser) {
+
+        
     console.log(e);
     var cartID = e.getAttribute('id');
     alert(`Product ID ${cartID} has added in your cart.`)
     console.log(cartID);
+    console.log(users);
+    console.log(currUser);
+
+    for (var i = 0; i < users.length; i++) {
+
+        if(currUser.userEmail == users[i].userEmail) {
+
+            var getCurrUser = users[i];
+            console.log(getCurrUser);
+            getCurrUser.usersAddToCarts.push(cartID);
+
+            console.log(OnlineStore.ordersDetail);
+
+            OnlineStore.ordersDetail.push({
+                productID : cartID,
+                pusrchaseBy : users[i].userEmail,
+            });
+
+            console.log(OnlineStore.ordersDetail);
+
+            console.log(users);
+
+            var strCartsUsers = JSON.stringify(users);
+        
+            window.localStorage.setItem('USERS',strCartsUsers);
+
+        }
+    }
+
+    } else {
+
+        alert('Kindly Sign Up First');
+        window.location.href = './signUp.html';
+
+
+    }
+
 
 }
 
+
+console.log(OnlineStore.usersDetail);
+// console.log(OnlineStore.ordersDetail);
+
+// phelay products is lien show nhe ho rhi thin, Q K hum ne Ye kam upper kia tha aur phie erroe A rha tha aur us se nichay ka code chal nhe rha tha 
+// Jab bhi globlay koi kam kisi aik specific page k lien kro wao to End m krwao Ta k code m Ager error aye to last m aye, Aur upper ka sara code chal gye
+var currUser = JSON.parse(window.localStorage.getItem('currUserData'));
+console.log(currUser);
+
+var currUserName = document.getElementById("currUserName");
+console.log(currUserName.tagName);
+
+currUserName.innerHTML = currUser.userName;
+
+
+console.log(OnlineStore.ordersDetail);
+
 console.log('product show krwany ka kam hogia');
+
