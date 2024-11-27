@@ -495,6 +495,12 @@ if (document.querySelector('.shoppingCartBoxes')) { // ager (shoppingCartBoxes) 
   // get currUser form local storage for getting id of productsPurchase through currUser.usersAddToCarts
   var currUser = JSON.parse(window.localStorage.getItem("currUserData"));
 
+  var cartQuantity = 1;
+
+  var cartsTotalPrice = 0;
+
+  // for get quatity of product 
+
   // for find user ne kitnay products khariday aur kia kia kharida 
   for (var i = 0; i < currUser.usersAddToCarts.length; i++) {
 
@@ -506,6 +512,19 @@ if (document.querySelector('.shoppingCartBoxes')) { // ager (shoppingCartBoxes) 
 
       if( cartIDInNumForm === OnlineStore.products[j].pID) {
 
+        var cartTotalPrice = cartQuantity*OnlineStore.products[j].pPrice;
+        console.log(cartTotalPrice);
+
+        cartsTotalPrice = cartsTotalPrice + cartTotalPrice;
+        console.log(cartsTotalPrice);
+
+        document.getElementById('totalItemsPrice').innerHTML = cartsTotalPrice;
+
+        var ship = parseInt(7);
+        document.getElementById('shippingTax').innerHTML = parseInt(ship);
+
+        console.log(document.getElementById('shippingTax').innerHTML);
+        console.log(typeof(parseInt(document.getElementById('shippingTax').innerHTML)));
         shoppingCartBoxes.innerHTML += `
 
         <div class="shoppingCartBox flex">
@@ -538,7 +557,7 @@ if (document.querySelector('.shoppingCartBoxes')) { // ager (shoppingCartBoxes) 
                                 <div class="shoppingCartBoxQunatity flex">
         
                                     <div class="shoppingCartBoxQunatityNum">
-                                        1
+                                        ${cartQuantity}
                                     </div>
         
                                     <div class="shoppingCartBoxQunatityArrow">
@@ -550,11 +569,11 @@ if (document.querySelector('.shoppingCartBoxes')) { // ager (shoppingCartBoxes) 
         
                               
                                 <p class="shoppingCartBoxPrice">
-                                    $62.38
+                                    ${cartTotalPrice}
                                 </p>
         
                                 <div class="shoppingCartBoxDelete">
-                                    D
+                                    <i class="fa-solid fa-trash-can" ></i>
                                 </div>
         </div>`;
 

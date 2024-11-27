@@ -871,6 +871,13 @@ footer {
 
 }
 
+.shoppingCartBoxDelete i:hover {
+
+    color: var(--color2);
+    cursor: pointer;
+    
+}
+
 .cartsbill p{
 
     padding-block: 10px;
