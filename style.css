@@ -450,7 +450,7 @@ select {
 .addToCart {
 
     width: 90px;
-    height: 30px;
+    height: 34px;
     background-color: white;
     color: var(--color2);
     display: flex;
@@ -488,7 +488,7 @@ select {
 .productBox:hover .addToCart {
 
     opacity: 1;
-    top: 31%;
+    top: 30%;
 }
 
 
