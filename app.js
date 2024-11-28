@@ -470,26 +470,20 @@ if (document.querySelector(".productsBoxes")) {
         `;
   }
 } else {
-
-  console.log('home page not found');
+  console.log("home page not found");
 }
 
-
-
-
-
-console.log('carts k phelay ka console');
-
+console.log("carts k phelay ka console");
 
 //  ------  FOR SHOWING ADDTOCART IN CART PAGE ----------
-if (document.querySelector('.shoppingCartBoxes')) { // ager (shoppingCartBoxes) milay ga tab hi ye block chaly ga
+if (document.querySelector(".shoppingCartBoxes")) {
+  // ager (shoppingCartBoxes) milay ga tab hi ye block chaly ga
 
-  console.log('ye carts k page pr chaly ga Boss');
-
+  console.log("ye carts k page pr chaly ga Boss");
 
   // FOR SHOWING ADDTOCART IN CART PAGE
 
-  // get shoppingCartBoxes for showing carts in it 
+  // get shoppingCartBoxes for showing carts in it
   var shoppingCartBoxes = document.querySelector(".shoppingCartBoxes");
 
   // get currUser form local storage for getting id of productsPurchase through currUser.usersAddToCarts
@@ -499,32 +493,31 @@ if (document.querySelector('.shoppingCartBoxes')) { // ager (shoppingCartBoxes) 
 
   var cartsTotalPrice = 0;
 
-  // for get quatity of product 
+  // for get quatity of product
 
-  // for find user ne kitnay products khariday aur kia kia kharida 
+  // for find user ne kitnay products khariday aur kia kia kharida
   for (var i = 0; i < currUser.usersAddToCarts.length; i++) {
-
     var cartIDInNumForm = parseInt(currUser.usersAddToCarts[i]);
     console.log(cartIDInNumForm);
 
-    // (cartIDInNumForm) se OnlineStore.products.pID ko match kr wa rhay hn 
+    // (cartIDInNumForm) se OnlineStore.products.pID ko match kr wa rhay hn
     for (var j = 0; j < OnlineStore.products.length; j++) {
-
-      if( cartIDInNumForm === OnlineStore.products[j].pID) {
-
-        var cartTotalPrice = cartQuantity*OnlineStore.products[j].pPrice;
+      if (cartIDInNumForm === OnlineStore.products[j].pID) {
+        var cartTotalPrice = cartQuantity * OnlineStore.products[j].pPrice;
         console.log(cartTotalPrice);
 
         cartsTotalPrice = cartsTotalPrice + cartTotalPrice;
         console.log(cartsTotalPrice);
 
-        document.getElementById('totalItemsPrice').innerHTML = cartsTotalPrice;
+        document.getElementById("totalItemsPrice").innerHTML = cartsTotalPrice;
 
         var ship = parseInt(7);
-        document.getElementById('shippingTax').innerHTML = parseInt(ship);
+        document.getElementById("shippingTax").innerHTML = parseInt(ship);
 
-        console.log(document.getElementById('shippingTax').innerHTML);
-        console.log(typeof(parseInt(document.getElementById('shippingTax').innerHTML)));
+        console.log(document.getElementById("shippingTax").innerHTML);
+        console.log(
+          typeof parseInt(document.getElementById("shippingTax").innerHTML)
+        );
         shoppingCartBoxes.innerHTML += `
 
         <div class="shoppingCartBox flex">
@@ -576,19 +569,13 @@ if (document.querySelector('.shoppingCartBoxes')) { // ager (shoppingCartBoxes) 
                                     <i class="fa-solid fa-trash-can" ></i>
                                 </div>
         </div>`;
-
       }
     }
   }
-
-
-
-
 } else {
-  console.log('not found page');
+  console.log("not found page");
 }
-console.log('carts k bad ka console');
-
+console.log("carts k bad ka console");
 
 // ----------  function for addToCart the products ------------
 function addCart(e) {
@@ -606,37 +593,101 @@ function addCart(e) {
         var getCurrUser = users[i];
         console.log(getCurrUser);
 
-        // push the id of products in currUser usersAddToCarts (all users array k users m, last login k obj m nhe, Q K lastLogin wala khud, allUser array se bun rha h)
-        getCurrUser.usersAddToCarts.push(cartID);
-
-        console.log(users);
-        // re store user in local storage (USERS) for get usersAddToCarts
-        var strCartsUsers = JSON.stringify(users);
-        window.localStorage.setItem("USERS", strCartsUsers);
-
-        // also in the currUser obj m bhi push krwa dete hn
-        currUser.usersAddToCarts.push(cartID);
-        var strCurrUser = JSON.stringify(currUser);
-        window.localStorage.setItem("currUserData", strCurrUser);
-
-        console.log(OnlineStore.ordersDetail);
-
-        // create obj for orders detail, which have, product id and user email
-        var ordersObj = {
+        // push the id and Quantity as a form of obj of products in currUser usersAddToCarts (all users array k users m, last login k obj m nhe, Q K lastLogin wala khud, allUser array se bun rha h)
+        var cardIDandQuantity = {
           productID: cartID,
-          pusrchaseBy: currUser.userEmail,
+          cartsQuantity: 1,
         };
 
-        // store OnlineStore.ordersDetail in a variable
-        var arrayOfOrdersObj = OnlineStore.ordersDetail;
-        arrayOfOrdersObj.push(ordersObj);
+        console.log("before if");
 
-        var strArrayOfOrdersObj = JSON.stringify(arrayOfOrdersObj);
+        if (getCurrUser.usersAddToCarts[0]) {
+          getCurrUser.usersAddToCarts.forEach();
 
-        // store Orders in the localStorage
-        window.localStorage.setItem("ORDERS", strArrayOfOrdersObj);
+          if (item.productID == cartID) {
+            item.cartsQuantity += 1;
+            var strCartsUsers = JSON.stringify(users);
+            window.localStorage.setItem("USERS", strCartsUsers);
+          } else {
+            getCurrUser.usersAddToCarts.push(cardIDandQuantity);
 
-        // console.log(OnlineStore.ordersDetail);
+            console.log(users);
+            // re store user in local storage (USERS) for get usersAddToCarts
+            var strCartsUsers = JSON.stringify(users);
+            window.localStorage.setItem("USERS", strCartsUsers);
+          }
+
+          //   for(var k = 0; k < getCurrUser.usersAddToCarts.length; k++ ) {
+
+          //     getCurrUser.usersAddToCarts.forEach( (item) => {
+
+          //       if (getCurrUser.usersAddToCarts[k].productID == item.productID) {
+
+          //       var matchProductID = getCurrUser.usersAddToCarts[k];
+          //       matchProductID.cartsQuantity += 1;
+
+          //       console.log(matchProductID);
+          //       console.log(k,getCurrUser.usersAddToCarts);
+
+          //       console.log('afer add');
+
+          //           // re store user in local storage (USERS) for get usersAddToCarts
+          //           var strCartsUsers = JSON.stringify(users);
+          //           window.localStorage.setItem("USERS", strCartsUsers);
+
+          //       } else {
+
+          //                 // also in the currUser obj m bhi push krwa dete hn
+          // currUser.usersAddToCarts.push(cartID);
+          // var strCurrUser = JSON.stringify(currUser);
+          // window.localStorage.setItem("currUserData", strCurrUser);
+
+          //       }
+          //     });
+
+          //   }
+          // } else {
+
+          // console.log('inside  esle');
+
+          // getCurrUser.usersAddToCarts.push(cardIDandQuantity);
+
+          // console.log(users);
+          // // re store user in local storage (USERS) for get usersAddToCarts
+          // var strCartsUsers = JSON.stringify(users);
+          // window.localStorage.setItem("USERS", strCartsUsers);
+
+          // }
+
+          console.log("alse of if");
+
+          // also in the currUser obj m bhi push krwa dete hn
+          currUser.usersAddToCarts.push(cartID);
+          var strCurrUser = JSON.stringify(currUser);
+          window.localStorage.setItem("currUserData", strCurrUser);
+
+          console.log(OnlineStore.ordersDetail);
+
+          // create obj for orders detail, which have, product id and user email
+          var ordersObj = {
+            productID: cartID,
+            cartsQuantity: 1,
+            pusrchaseBy: currUser.userEmail,
+          };
+
+          // store OnlineStore.ordersDetail in a variable
+          var arrayOfOrdersObj = OnlineStore.ordersDetail;
+          arrayOfOrdersObj.push(ordersObj);
+
+          var strArrayOfOrdersObj = JSON.stringify(arrayOfOrdersObj);
+
+          // store Orders in the localStorage
+          window.localStorage.setItem("ORDERS", strArrayOfOrdersObj);
+
+          // console.log(OnlineStore.ordersDetail);
+        }
+
+        break;
       }
     }
   } else {
@@ -646,7 +697,6 @@ function addCart(e) {
 }
 // console.log(OnlineStore.usersDetail);
 // console.log(OnlineStore.ordersDetail);
-
 
 // ------ GOLBALY WORK FOR 2 FILES (HOME,CART )------
 
@@ -665,8 +715,6 @@ currUserName.innerHTML = currUser.userName;
 
 console.log("product show krwany ka kam hogia");
 
-
-
 // ASSIGNMENT TODO LIST
 /*
 
@@ -681,9 +729,6 @@ console.log("product show krwany ka kam hogia");
 ==> SHOW CARTS IN CART PAGE ---- (TODO)
 
 */
-
-
-
 
 // ISSUES
 /*
