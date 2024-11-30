@@ -1,6 +1,11 @@
 var users = JSON.parse(window.localStorage.getItem("USERS")) || [];
 console.log(users);
 
+// for storing add to carts products
+var addToCartArray =
+  JSON.parse(window.localStorage.getItem("addToCartArray")) || [];
+console.log(addToCartArray);
+
 function signupDataStore() {
   // obj for users data
   let usersData = {
@@ -473,51 +478,60 @@ if (document.querySelector(".productsBoxes")) {
   console.log("home page not found");
 }
 
+
+
+
+
+
+
+
 console.log("carts k phelay ka console");
 
 //  ------  FOR SHOWING ADDTOCART IN CART PAGE ----------
 if (document.querySelector(".shoppingCartBoxes")) {
-  // ager (shoppingCartBoxes) milay ga tab hi ye block chaly ga
+  // ager (shoppingCartBoxes) milay ga tab hi ye block chaly ga, kisi aur page per ye chaly Ga hi nhe
 
   console.log("ye carts k page pr chaly ga Boss");
 
   // FOR SHOWING ADDTOCART IN CART PAGE
 
-  // get shoppingCartBoxes for showing carts in it
-  var shoppingCartBoxes = document.querySelector(".shoppingCartBoxes");
-
   // get currUser form local storage for getting id of productsPurchase through currUser.usersAddToCarts
-  var currUser = JSON.parse(window.localStorage.getItem("currUserData"));
+  // var currUser = JSON.parse(window.localStorage.getItem("currUserData"));
 
-  var cartQuantity = 1;
+  // var cartQuantity = 1;
 
+  // cartsTotalPrice is 0, in intail 
   var cartsTotalPrice = 0;
+
+  // totalItems assign 0, in initial 
+  var totalItems = 0;
 
   // for get quatity of product
 
   // for find user ne kitnay products khariday aur kia kia kharida
-  for (var i = 0; i < currUser.usersAddToCarts.length; i++) {
-    var cartIDInNumForm = parseInt(currUser.usersAddToCarts[i]);
+  for (var i = 0; i < addToCartArray.length; i++) {
+    var cartIDInNumForm = parseInt(addToCartArray[i].productID);
     console.log(cartIDInNumForm);
+
+    // ---- [i] wala aik bar chaly Ga, phir [j] wala complete chaly ga, then same process again for 2nd value
 
     // (cartIDInNumForm) se OnlineStore.products.pID ko match kr wa rhay hn
     for (var j = 0; j < OnlineStore.products.length; j++) {
       if (cartIDInNumForm === OnlineStore.products[j].pID) {
-        var cartTotalPrice = cartQuantity * OnlineStore.products[j].pPrice;
+
+        // yhn pr desire object ki hi quantity aur price aye gi 
+        var cartTotalPrice =  addToCartArray[i].cartsQuantity * OnlineStore.products[j].pPrice;
         console.log(cartTotalPrice);
 
-        cartsTotalPrice = cartsTotalPrice + cartTotalPrice;
+        // for Total Price of all carts 
+        cartsTotalPrice = cartsTotalPrice + cartTotalPrice; // a = 0 + 5; in 2nd time, a = 5 + 10 = 15
         console.log(cartsTotalPrice);
 
-        document.getElementById("totalItemsPrice").innerHTML = cartsTotalPrice;
+        // for total number of carts items 
+        totalItems += addToCartArray[i].cartsQuantity; // 0 + 1 = 1, 1 += 3 = 4, 4 + 5 = 9
 
-        var ship = parseInt(7);
-        document.getElementById("shippingTax").innerHTML = parseInt(ship);
-
-        console.log(document.getElementById("shippingTax").innerHTML);
-        console.log(
-          typeof parseInt(document.getElementById("shippingTax").innerHTML)
-        );
+       // get shoppingCartBoxes for showing carts in it
+       var shoppingCartBoxes = document.querySelector(".shoppingCartBoxes");
         shoppingCartBoxes.innerHTML += `
 
         <div class="shoppingCartBox flex">
@@ -550,7 +564,7 @@ if (document.querySelector(".shoppingCartBoxes")) {
                                 <div class="shoppingCartBoxQunatity flex">
         
                                     <div class="shoppingCartBoxQunatityNum">
-                                        ${cartQuantity}
+                                        ${addToCartArray[i].cartsQuantity}
                                     </div>
         
                                     <div class="shoppingCartBoxQunatityArrow">
@@ -569,13 +583,74 @@ if (document.querySelector(".shoppingCartBoxes")) {
                                     <i class="fa-solid fa-trash-can" ></i>
                                 </div>
         </div>`;
+
+        var checkOutBoxes = document.querySelector('.checkOutBoxes');
+        checkOutBoxes.innerHTML = `
+        
+        <div class="cartsbill">
+
+                    <!-- itemPrices is here  -->
+                    <div class="itemPrices">
+    
+                        <div class="numOfItems flex">
+    
+                            <p >${totalItems} items</p>
+                            <p id="totalItemsPrice">${cartsTotalPrice}</p>
+    
+                        </div>
+    
+                        <div class="shippingDetails flex">
+    
+                            <p>Shipping</p>
+                            <p id="shippingTax">7</p>
+    
+                        </div>
+    
+                    </div>
+    
+                    <!-- totalAmount is here  -->
+                    <div class="totalAmount">
+    
+                        <div class="taxadd flex">
+    
+                            <p>Tax</p>
+                            <p>4.80</p>
+    
+                        </div>
+    
+                        <div class="total flex">
+    
+                            <p>Total</p>
+                            <p>${cartsTotalPrice + 7 + 4.80}</p>
+    
+                        </div>
+    
+    
+                    </div>
+    
+                    <!-- checkOut is here  -->
+                    <div class="checkOut">
+    
+                        <button class="payNow">CHECK OUT</button>
+    
+                    </div>
+    
+                </div>`
+
+                break;
+
       }
     }
+
   }
 } else {
   console.log("not found page");
 }
+
 console.log("carts k bad ka console");
+
+// // for storing add to carts products
+// var addToCartArray = JSON.parse(window.localStorage.getItem("addToCartArray")) || [];
 
 // ----------  function for addToCart the products ------------
 function addCart(e) {
@@ -587,109 +662,286 @@ function addCart(e) {
     console.log(users);
     console.log(currUser);
 
-    for (var i = 0; i < users.length; i++) {
-      if (currUser.userEmail == users[i].userEmail) {
-        // because we want change in the All users Array, not a Last Login that's why we get user in this way
-        var getCurrUser = users[i];
-        console.log(getCurrUser);
+    // for get currUser data from users
+    // for (var i = 0; i < users.length; i++) {
+    //   if (currUser.userEmail == users[i].userEmail) {
+    //     // because we want change in the All users Array, not a Last Login that's why we get user in this way
+    //     var getCurrUser = users[i];
+    //     console.log(getCurrUser);
+    //     break;
+    //   }
+    // }
+    // getCurrUser of users (sign up wala )
+    // console.log(getCurrUser);
 
-        // push the id and Quantity as a form of obj of products in currUser usersAddToCarts (all users array k users m, last login k obj m nhe, Q K lastLogin wala khud, allUser array se bun rha h)
-        var cardIDandQuantity = {
-          productID: cartID,
-          cartsQuantity: 1,
-        };
+    // this is currUser (lastLoginUser) , login wala
+    // console.log(currUser);
 
-        console.log("before if");
+    // store OnlineStore.ordersDetail in a variable (onlineStore k orders ka array)
+    // var arrayOfOrdersObj = OnlineStore.ordersDetail;
+    // console.log(arrayOfOrdersObj);
 
-        if (getCurrUser.usersAddToCarts[0]) {
-          getCurrUser.usersAddToCarts.forEach();
+    // for signup and login walay k lien
+    // var cardIDandQuantity = {
+    //   productID: cartID,
+    //   cartsQuantity: 1,
+    // };
 
-          if (item.productID == cartID) {
-            item.cartsQuantity += 1;
-            var strCartsUsers = JSON.stringify(users);
-            window.localStorage.setItem("USERS", strCartsUsers);
-          } else {
-            getCurrUser.usersAddToCarts.push(cardIDandQuantity);
+    // for storing this obj in addToCartArray
+    var cardIDQuantityAndCurrUserEmail = {
+      productID: cartID,
+      cartsQuantity: 1,
+      pusrchaseBy: currUser.userEmail,
+    };
 
-            console.log(users);
-            // re store user in local storage (USERS) for get usersAddToCarts
-            var strCartsUsers = JSON.stringify(users);
-            window.localStorage.setItem("USERS", strCartsUsers);
-          }
+    if (addToCartArray.length > 0) {
+      for (var i = 0; i < addToCartArray.length; i++) {
+        var isExit = "No";
 
-          //   for(var k = 0; k < getCurrUser.usersAddToCarts.length; k++ ) {
-
-          //     getCurrUser.usersAddToCarts.forEach( (item) => {
-
-          //       if (getCurrUser.usersAddToCarts[k].productID == item.productID) {
-
-          //       var matchProductID = getCurrUser.usersAddToCarts[k];
-          //       matchProductID.cartsQuantity += 1;
-
-          //       console.log(matchProductID);
-          //       console.log(k,getCurrUser.usersAddToCarts);
-
-          //       console.log('afer add');
-
-          //           // re store user in local storage (USERS) for get usersAddToCarts
-          //           var strCartsUsers = JSON.stringify(users);
-          //           window.localStorage.setItem("USERS", strCartsUsers);
-
-          //       } else {
-
-          //                 // also in the currUser obj m bhi push krwa dete hn
-          // currUser.usersAddToCarts.push(cartID);
-          // var strCurrUser = JSON.stringify(currUser);
-          // window.localStorage.setItem("currUserData", strCurrUser);
-
-          //       }
-          //     });
-
-          //   }
-          // } else {
-
-          // console.log('inside  esle');
-
-          // getCurrUser.usersAddToCarts.push(cardIDandQuantity);
-
-          // console.log(users);
-          // // re store user in local storage (USERS) for get usersAddToCarts
-          // var strCartsUsers = JSON.stringify(users);
-          // window.localStorage.setItem("USERS", strCartsUsers);
-
-          // }
-
-          console.log("alse of if");
-
-          // also in the currUser obj m bhi push krwa dete hn
-          currUser.usersAddToCarts.push(cartID);
-          var strCurrUser = JSON.stringify(currUser);
-          window.localStorage.setItem("currUserData", strCurrUser);
-
-          console.log(OnlineStore.ordersDetail);
-
-          // create obj for orders detail, which have, product id and user email
-          var ordersObj = {
-            productID: cartID,
-            cartsQuantity: 1,
-            pusrchaseBy: currUser.userEmail,
-          };
-
-          // store OnlineStore.ordersDetail in a variable
-          var arrayOfOrdersObj = OnlineStore.ordersDetail;
-          arrayOfOrdersObj.push(ordersObj);
-
-          var strArrayOfOrdersObj = JSON.stringify(arrayOfOrdersObj);
-
-          // store Orders in the localStorage
-          window.localStorage.setItem("ORDERS", strArrayOfOrdersObj);
-
-          // console.log(OnlineStore.ordersDetail);
+        if (addToCartArray[i].productID == cartID) {
+          addToCartArray[i].cartsQuantity++;
+          window.localStorage.setItem(
+            "addToCartArray",
+            JSON.stringify(addToCartArray)
+          );
+          isExit = "Yes";
+          break;
         }
-
-        break;
       }
+
+      if (isExit == "No") {
+        addToCartArray.push(cardIDQuantityAndCurrUserEmail);
+        window.localStorage.setItem(
+          "addToCartArray",
+          JSON.stringify(addToCartArray)
+        );
+      }
+    } else {
+      addToCartArray.push(cardIDQuantityAndCurrUserEmail);
+      window.localStorage.setItem(
+        "addToCartArray",
+        JSON.stringify(addToCartArray)
+      );
     }
+
+    console.log(addToCartArray);
+
+    // for signup wala
+    // getCurrUser.usersAddToCarts.push(cardIDandQuantity);
+    // var strCartsUsers = JSON.stringify(users);
+    // window.localStorage.setItem("USERS", strCartsUsers);
+
+    // // for login wala
+    // currUser.usersAddToCarts.push(cardIDandQuantity);
+    // var strCartsUsersForLogin = JSON.stringify(currUser);
+    // window.localStorage.setItem("currUserData", strCartsUsersForLogin);
+
+    // // store OnlineStore.ordersDetail in a variable
+    // var arrayOfOrdersObj = OnlineStore.ordersDetail;
+    // arrayOfOrdersObj.push(cardIDQuantityAndCurrUserEmail);
+
+    // var strArrayOfOrdersObj = JSON.stringify(arrayOfOrdersObj);
+    // // store Orders in the localStorage
+    // window.localStorage.setItem("ORDERS", strArrayOfOrdersObj);
+
+    // console.log(OnlineStore.ordersDetail);
+
+    console.log("before conditions");
+
+    // ----- signup wala user
+    // if (getCurrUser.usersAddToCarts[0]) {
+    //   var isIDMatch = "NO";
+
+    //   getCurrUser.usersAddToCarts.forEach(forCheckCartID);
+    //   // currUser.usersAddToCarts.forEach(forCheckCartID);
+
+    //   function forCheckCartID(objOfIndex) {
+    //     //  isIDMatch = 'NO';
+
+    //     console.log(isIDMatch);
+
+    //     if (objOfIndex.productID == cartID) {
+    //       objOfIndex.cartsQuantity += 1;
+
+    //       console.log(objOfIndex);
+
+    //       var strCartsUsers = JSON.stringify(users);
+    //       window.localStorage.setItem("USERS", strCartsUsers);
+    //       isIDMatch = "Yes";
+    //       console.log(isIDMatch);
+
+    //       return;
+    //     } else {
+    //       isIDMatch = "NO";
+    //     }
+    //   }
+
+    //   // console.log(forCheckCartID());
+
+    //   if (isIDMatch == "NO") {
+    //     getCurrUser.usersAddToCarts.push(cardIDandQuantity);
+    //     var strCartsUsers = JSON.stringify(users);
+    //     window.localStorage.setItem("USERS", strCartsUsers);
+    //     console.log(isIDMatch);
+    //   }
+    // } else {
+    //   getCurrUser.usersAddToCarts.push(cardIDandQuantity);
+    //   var strCartsUsers = JSON.stringify(users);
+    //   window.localStorage.setItem("USERS", strCartsUsers);
+    // }
+
+    // // ----- login wala user
+    // if (currUser.usersAddToCarts[0]) {
+    //   var isIDMatchForLogin = "NO";
+
+    //   currUser.usersAddToCarts.forEach(forCheckCartIDOfLogin);
+    //   // currUser.usersAddToCarts.forEach(forCheckCartID);
+
+    //   function forCheckCartIDOfLogin(objOfInd) {
+    //     //  isIDMatch = 'NO';
+
+    //     console.log(isIDMatchForLogin);
+
+    //     if (objOfInd.productID == cartID) {
+
+    //       objOfInd.cartsQuantity += 1;
+
+    //       console.log(objOfInd);
+
+    //       var strCartsUsersForLogin = JSON.stringify(currUser);
+    //       window.localStorage.setItem("currUserData", strCartsUsersForLogin);
+    //       isIDMatchForLogin = "Yes";
+    //       console.log(isIDMatchForLogin);
+
+    //       return;
+    //     } else {
+    //       isIDMatchForLogin = "NO";
+    //     }
+    //   }
+
+    //   // console.log(forCheckCartID());
+
+    //   if (isIDMatchForLogin == "NO") {
+    //     currUser.usersAddToCarts.push(cardIDandQuantity);
+    //     var strCartsUsersForLogin = JSON.stringify(currUser);
+    //     window.localStorage.setItem("currUserData", strCartsUsersForLogin);
+
+    //     console.log(isIDMatchForLogin);
+    //   }
+    // } else {
+    //   currUser.usersAddToCarts.push(cardIDandQuantity);
+    //   var strCartsUsersForLogin = JSON.stringify(currUser);
+    //   window.localStorage.setItem("currUserData", strCartsUsersForLogin);
+    // }
+
+    // for (var i = 0; i < users.length; i++) {
+    //   if (currUser.userEmail == users[i].userEmail) {
+    //     // because we want change in the All users Array, not a Last Login that's why we get user in this way
+    //     var getCurrUser = users[i];
+    //     console.log(getCurrUser);
+
+    //     // push the id and Quantity as a form of obj of products in currUser usersAddToCarts (all users array k users m, last login k obj m nhe, Q K lastLogin wala khud, allUser array se bun rha h)
+    //     var cardIDandQuantity = {
+    //       productID: cartID,
+    //       cartsQuantity: 1,
+    //     };
+
+    //     var cardIDandQuantity = {
+    //       productID: cartID,
+    //       cartsQuantity: 1,
+    //     };
+
+    //     console.log("before if");
+
+    //     if (getCurrUser.usersAddToCarts[0]) {
+    //       getCurrUser.usersAddToCarts.forEach();
+
+    //       if (item.productID == cartID) {
+    //         item.cartsQuantity += 1;
+    //         var strCartsUsers = JSON.stringify(users);
+    //         window.localStorage.setItem("USERS", strCartsUsers);
+    //       } else {
+    //         getCurrUser.usersAddToCarts.push(cardIDandQuantity);
+
+    //         console.log(users);
+    //         // re store user in local storage (USERS) for get usersAddToCarts
+    //         var strCartsUsers = JSON.stringify(users);
+    //         window.localStorage.setItem("USERS", strCartsUsers);
+    //       }
+
+    //       //   for(var k = 0; k < getCurrUser.usersAddToCarts.length; k++ ) {
+
+    //       //     getCurrUser.usersAddToCarts.forEach( (item) => {
+
+    //       //       if (getCurrUser.usersAddToCarts[k].productID == item.productID) {
+
+    //       //       var matchProductID = getCurrUser.usersAddToCarts[k];
+    //       //       matchProductID.cartsQuantity += 1;
+
+    //       //       console.log(matchProductID);
+    //       //       console.log(k,getCurrUser.usersAddToCarts);
+
+    //       //       console.log('afer add');
+
+    //       //           // re store user in local storage (USERS) for get usersAddToCarts
+    //       //           var strCartsUsers = JSON.stringify(users);
+    //       //           window.localStorage.setItem("USERS", strCartsUsers);
+
+    //       //       } else {
+
+    //       //                 // also in the currUser obj m bhi push krwa dete hn
+    //       // currUser.usersAddToCarts.push(cartID);
+    //       // var strCurrUser = JSON.stringify(currUser);
+    //       // window.localStorage.setItem("currUserData", strCurrUser);
+
+    //       //       }
+    //       //     });
+
+    //       //   }
+    //       // } else {
+
+    //       // console.log('inside  esle');
+
+    //       // getCurrUser.usersAddToCarts.push(cardIDandQuantity);
+
+    //       // console.log(users);
+    //       // // re store user in local storage (USERS) for get usersAddToCarts
+    //       // var strCartsUsers = JSON.stringify(users);
+    //       // window.localStorage.setItem("USERS", strCartsUsers);
+
+    //       // }
+
+    //       console.log("alse of if");
+
+    //       // also in the currUser obj m bhi push krwa dete hn
+    //       currUser.usersAddToCarts.push(cartID);
+    //       var strCurrUser = JSON.stringify(currUser);
+    //       window.localStorage.setItem("currUserData", strCurrUser);
+
+    //       console.log(OnlineStore.ordersDetail);
+
+    //       // create obj for orders detail, which have, product id and user email
+    //       var ordersObj = {
+    //         productID: cartID,
+    //         cartsQuantity: 1,
+    //         pusrchaseBy: currUser.userEmail,
+    //       };
+
+    //       // store OnlineStore.ordersDetail in a variable
+    //       var arrayOfOrdersObj = OnlineStore.ordersDetail;
+    //       arrayOfOrdersObj.push(ordersObj);
+
+    //       var strArrayOfOrdersObj = JSON.stringify(arrayOfOrdersObj);
+
+    //       // store Orders in the localStorage
+    //       window.localStorage.setItem("ORDERS", strArrayOfOrdersObj);
+
+    //       // console.log(OnlineStore.ordersDetail);
+    //     }
+
+    //     break;
+    //   }
+    // }
   } else {
     alert("Kindly Sign Up First");
     window.location.href = "./signUp.html";
@@ -713,7 +965,8 @@ currUserName.innerHTML = currUser.userName;
 // console.log(OnlineStore.usersDetail);
 // console.log(OnlineStore.ordersDetail);
 
-console.log("product show krwany ka kam hogia");
+// console.log("product show krwany ka kam hogia");
+console.log(addToCartArray);
 
 // ASSIGNMENT TODO LIST
 /*
@@ -737,5 +990,24 @@ console.log("product show krwany ka kam hogia");
 ANS : MY TEMPORARY SOLUTION IS, AGER HER FILE K LIEN KAM KRWANA H TO UPPER LIKHO AGER, KISI SPECIFC FILE K LIEN KAM KRWANA H TO WO LAST LIKHO, BUT IS SE BHI KAM NHE HOGA. BECAUSE AGER SIGNUP KA PHELAY LIKHA H AUR LOGIN KA BAD M, TO JAB LGOGIN PAGE PR HON GY TO WO MILAY GA HI NHE, Q K PHELAY TO SIGN UP KA LIKHA H, TO WHN ERROR A GYE GA, AUR CODE AGAY CHALY GA HI NHE,
 
 2ND CORRECT SOLUTION IS, AP KO JIS FILE K LIEN JO KAM KRWANA H, US KO IF KI CONDITION M CHECK KRLO WO MIL BHI RHA H YA NHE, PHIR US IF KI CONDITION M KAM KRWA, FOR PREVENT FORM ERROR
+
+*/
+
+/*Work Todo 
+
+
+1) Todo            
+2) Calculator
+3) 14 % OFF Task
+4) OPPS
+5) Objects
+6) Array Methods
+7) E Commerce
+
+
+
+
+
+
 
 */
