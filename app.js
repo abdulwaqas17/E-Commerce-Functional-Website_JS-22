@@ -1,4 +1,13 @@
-var users = JSON.parse(window.localStorage.getItem("USERS")) || [];
+var users = JSON.parse(window.localStorage.getItem("USERS")) || [
+  {
+    userName: "Admin",
+    userEmail: "admin@gmail.com",
+    userPhone: "03123456",
+    userPassword: 123,
+    userCity: "Karachi",
+    usersAddToCarts: [],
+  },
+];
 console.log(users);
 
 // for storing add to carts products
@@ -51,7 +60,7 @@ function signupDataStore() {
           console.log(userIs);
         } else {
           alert("this email already exits, use another email");
-          userIs = "old";
+          userIs = "already Exit";
           console.log(userIs);
           break;
         }
@@ -81,6 +90,8 @@ function signupDataStore() {
       console.log(usersStr);
       // store user array (string form) in local storage
       window.localStorage.setItem("USERS", usersStr);
+
+      alert("Sign Up Successfully");
       // to render login page
       window.location.href = "./login.html";
     }
@@ -112,46 +123,51 @@ function loginMatchData() {
   // if local Storage m kuch nhe, means ap ne signup hi nhe kia
   if (!parseUsers) {
     alert("You are not Sign up!");
-    // back to sign up pageXOffset, sign up FIRST
+    // back to sign up page, sign up FIRST
     window.location.href = "./signUp.html";
   } else {
-    // condition to check if data match, then go to homegape, other wise You write wrong data in login
-    for (var i = 0; i < parseUsers.length; i++) {
-      // declare isUser for prevent Multiple times answer
-      var isUser;
+    if (userLoginEmail == "admin@gmail.com" && userLoginPassword == 123) {
+      alert("Login Successfully, Go to Dashboard");
+      window.location.href = "./dashboard.html";
+    } else {
+      // condition to check if data match, then go to homegape, other wise You write wrong data in login
+      for (var i = 0; i < parseUsers.length; i++) {
+        // declare isUser for prevent Multiple times answer
+        var isUser;
 
-      // if userLoginData match with any userData so assign 'match' in isUser
-      if (
-        userLoginEmail == parseUsers[i].userEmail &&
-        userLoginPassword == parseUsers[i].userPassword
-      ) {
-        isUser = "match";
-        var currUserData = parseUsers[i];
-        console.log(currUserData);
-        var currUserDataStr = JSON.stringify(currUserData);
-        window.localStorage.setItem("currUserData", currUserDataStr);
-        //    var lastLoginUserName = parseUsers[i].userName;
+        // if userLoginData match with any userData so assign 'match' in isUser
+        if (
+          userLoginEmail == parseUsers[i].userEmail &&
+          userLoginPassword == parseUsers[i].userPassword
+        ) {
+          isUser = "match";
+          var currUserData = parseUsers[i];
+          console.log(currUserData);
+          var currUserDataStr = JSON.stringify(currUserData);
+          window.localStorage.setItem("currUserData", currUserDataStr);
+          //    var lastLoginUserName = parseUsers[i].userName;
 
-        //    console.log(lastLoginUserName);
+          //    console.log(lastLoginUserName);
 
-        //    var currUserName = document.getElementById('currUserName');
+          //    var currUserName = document.getElementById('currUserName');
 
-        //    console.log(currUserName);
+          //    console.log(currUserName);
 
-        //    currUserName.innerHTML = lastLoginUserName;
+          //    currUserName.innerHTML = lastLoginUserName;
 
-        //    console.log(lastLoginUserName);
-        alert("Login Successfully, Go to Homepage");
-        window.location.href = "./index.html";
-        break;
-      } else {
-        isUser = "not match";
-        // alert('Incorrect Name , Email or Password');
+          //    console.log(lastLoginUserName);
+          alert("Login Successfully, Go to Homepage");
+          window.location.href = "./index.html";
+          break;
+        } else {
+          isUser = "not match";
+          // alert('Incorrect Name , Email or Password');
+        }
       }
-    }
 
-    if (isUser == "not match") {
-      alert("Incorrect Name , Email or Password");
+      if (isUser == "not match") {
+        alert("Incorrect Name , Email or Password");
+      }
     }
   }
 }
@@ -441,15 +457,14 @@ var OnlineStore = {
 
   ordersDetail: JSON.parse(window.localStorage.getItem("ORDERS")) || [],
 };
-
-console.log(OnlineStore.usersDetail);
+// console.log(OnlineStore.usersDetail);
 
 // ---------  FOR SHOWING PRODUCTS IN HOME PAGE  -----------
 if (document.querySelector(".productsBoxes")) {
-  console.log("ye home pr hi chaly gi bs,");
+  // console.log("ye home pr hi chaly gi bs,");
 
   var productShowSection = document.querySelector(".productsBoxes");
-  console.log(productShowSection.tagName);
+  // console.log(productShowSection.tagName);
 
   for (var i = 0; i < OnlineStore.products.length; i++) {
     productShowSection.innerHTML += `
@@ -478,12 +493,8 @@ if (document.querySelector(".productsBoxes")) {
   console.log("home page not found");
 }
 
-
-
-
 //  ------  FOR SHOWING ADDTOCART IN CART PAGE ----------
 if (document.querySelector(".shoppingCartBoxes")) {
-
   // ager (shoppingCartBoxes) milay ga tab hi ye block chaly ga, kisi aur page per ye chaly Ga hi nhe
 
   console.log("ye carts k page pr chaly ga Boss");
@@ -495,42 +506,40 @@ if (document.querySelector(".shoppingCartBoxes")) {
 
   // var cartQuantity = 1;
 
-  // cartsTotalPrice is 0, in intail 
+  // cartsTotalPrice is 0, in intail
   var cartsTotalPrice = 0;
 
-  // totalItems assign 0, in initial 
+  // totalItems assign 0, in initial
   var totalItems = 0;
 
   // for get quatity of product
-
-
 
   // (SHOPPING CARTS) for find user ne kitnay products khariday aur kia kia kharida
   for (var i = 0; i < addToCartArray.length; i++) {
     var cartIDInNumForm = parseInt(addToCartArray[i].productID);
     console.log(cartIDInNumForm);
 
-    document.getElementById('isCarts').style.display = 'none';
+    document.getElementById("isCarts").style.display = "none";
 
     // ---- [i] wala aik bar chaly Ga, phir [j] wala complete chaly ga, then same process again for 2nd value
 
     // (cartIDInNumForm) se OnlineStore.products.pID ko match kr wa rhay hn
     for (var j = 0; j < OnlineStore.products.length; j++) {
       if (cartIDInNumForm === OnlineStore.products[j].pID) {
-
         // yhn pr desire object ki hi quantity aur price aye gi Sab k lien Respectively
-        var cartTotalPrice =  addToCartArray[i].cartsQuantity * OnlineStore.products[j].pPrice;
+        var cartTotalPrice =
+          addToCartArray[i].cartsQuantity * OnlineStore.products[j].pPrice;
         console.log(cartTotalPrice);
 
-        // for Total Price of all carts 
+        // for Total Price of all carts
         cartsTotalPrice = cartsTotalPrice + cartTotalPrice; // a = 0 + 5; in 2nd time, a = 5 + 10 = 15
         console.log(cartsTotalPrice);
 
-        // for total number of carts items 
+        // for total number of carts items
         totalItems += addToCartArray[i].cartsQuantity; // 0 + 1 = 1, 1 += 3 = 4, 4 + 5 = 9
 
-       // get shoppingCartBoxes for showing carts in it
-       var shoppingCartBoxes = document.querySelector(".shoppingCartBoxes");
+        // get shoppingCartBoxes for showing carts in it
+        var shoppingCartBoxes = document.querySelector(".shoppingCartBoxes");
         shoppingCartBoxes.innerHTML += `
 
         <div class="shoppingCartBox flex">
@@ -583,7 +592,7 @@ if (document.querySelector(".shoppingCartBoxes")) {
                                 </div>
         </div>`;
 
-        var checkOutBoxes = document.querySelector('.checkOutBoxes');
+        var checkOutBoxes = document.querySelector(".checkOutBoxes");
         checkOutBoxes.innerHTML = `
         
         <div class="cartsbill">
@@ -620,7 +629,7 @@ if (document.querySelector(".shoppingCartBoxes")) {
                         <div class="total flex">
     
                             <p>Total</p>
-                            <p>${cartsTotalPrice + 7 + 4.80}</p>
+                            <p>${cartsTotalPrice + 7 + 4.8}</p>
     
                         </div>
     
@@ -634,138 +643,15 @@ if (document.querySelector(".shoppingCartBoxes")) {
     
                     </div>
     
-                </div>`
+                </div>`;
 
-                break;
-
+        break;
       }
     }
-
   }
 } else {
   console.log("not found page");
 }
-
-
-// ------ FUNCTION FOR DELETE THE CART -------
-function delThis(del) {
-
-  console.log(del);
-  // get id of desire cart form desire button For delete the cart
-  var delCartID = del.getAttribute("id");
-  console.log(delCartID);
-
-  // get the desire Index number of addToCartArray For delete this index 
-  var delCartIDNum = delCartID.slice(4);
-  console.log(delCartIDNum);
-
-  // delete the desire index of addToCartArray, in order to remove desire cart 
-  addToCartArray.splice(delCartIDNum,1);
-
-  // and also set in the local Storage 
-  window.localStorage.setItem(
-    "addToCartArray",
-    JSON.stringify(addToCartArray)
-  );
-
-  location.reload(); // page refresh
-
-}
-
-
-// ------ FUNCTION FOR (++) IN THE CART QUANTITY -------
-function IncThis(Inc) {
-
-  console.log(Inc);
-
-  // get id of desire cart form desire button For ++
-  var IncCartID = Inc.getAttribute("id"); // Inc-2
-  console.log(IncCartID);
-
-  // get the desire Index number of addToCartArray For delete this index 
-  var IncCartIDNum = IncCartID.slice(4); // for extracting 2 Form (Inc-2), 2 is our desire cart index
-  console.log(IncCartIDNum);
-
-
-  // ++ in the carts quantity of desire cart
-  addToCartArray[IncCartIDNum].cartsQuantity++;
-
-  // and also set in the local Storage 
-  window.localStorage.setItem(
-    "addToCartArray",
-    JSON.stringify(addToCartArray)
-  );
-
-  location.reload(); // page refresh
-
-}
-
-
-// ------ FUNCTION FOR (--) IN THE CART QUANTITY -------
-function DecThis(Dec) {
-
-  console.log(Dec);
-
-  // get id of desire cart form desire button For ++
-  var DecCartID = Dec.getAttribute("id"); // Inc-2
-  console.log(DecCartID);
-
-  // get the desire Index number of addToCartArray For delete this index 
-  var DecCartIDNum = DecCartID.slice(4); // for extracting 2 Form (Inc-2), 2 is our desire cart index
-  console.log(DecCartIDNum);
-
-
-  if (addToCartArray[DecCartIDNum].cartsQuantity > 1) {
-    
-  // -- in the carts quantity of desire cart
-  addToCartArray[DecCartIDNum].cartsQuantity--;
-
-  // and also set in the local Storage 
-  window.localStorage.setItem(
-    "addToCartArray",
-    JSON.stringify(addToCartArray)
-  );
-
-  location.reload(); // page refresh
-
-  } else {
-    alert("if you don't need this cart, You Can Remove It!")
-  }
-
-}
-
-
-// ------ FUNCTION FOR CHECK OUT / BUY THE CARTS (ORDER DONE) -------
-function checkOut() {
-    
-  OnlineStore.ordersDetail.push(addToCartArray);
-  
-  // and also set in the local Storage 
-  window.localStorage.setItem(
-    "ORDERS",
-    JSON.stringify(OnlineStore.ordersDetail)
-  );
-
-  addToCartArray.length = 0;
-  
-    // and also set in the local Storage 
-    window.localStorage.setItem(
-      "addToCartArray",
-      JSON.stringify(addToCartArray)
-    );
-
-    alert('Your Order Done Successfully');
-
-    location.reload(); // then refereash the page
-
-
-}
-
-
-// ------ FUNCTION FOR -- IN THE CART QUANTITY -------
-// function IncThis(Inc) {
-
-// }
 
 // ----------  function for addToCart the products ------------
 function addCart(e) {
@@ -806,9 +692,11 @@ function addCart(e) {
     var cardIDQuantityAndCurrUserEmail = {
       productID: cartID,
       cartsQuantity: 1,
-      pusrchaseBy: currUser.userEmail,
+      buyerEmail: currUser.userEmail,
+      buyerName: currUser.userName,
     };
 
+    // for check if the product already add to cartID, so we just ++ its quantity
     if (addToCartArray.length > 0) {
       for (var i = 0; i < addToCartArray.length; i++) {
         var isExit = "No";
@@ -1062,6 +950,104 @@ function addCart(e) {
     window.location.href = "./signUp.html";
   }
 }
+
+// ------ FUNCTION FOR DELETE THE CART -------
+function delThis(del) {
+  console.log(del);
+  // get id of desire cart form desire button For delete the cart
+  var delCartID = del.getAttribute("id");
+  console.log(delCartID);
+
+  // get the desire Index number of addToCartArray For delete this index
+  var delCartIDNum = delCartID.slice(4);
+  console.log(delCartIDNum);
+
+  // delete the desire index of addToCartArray, in order to remove desire cart
+  addToCartArray.splice(delCartIDNum, 1);
+
+  // and also set in the local Storage
+  window.localStorage.setItem("addToCartArray", JSON.stringify(addToCartArray));
+
+  location.reload(); // page refresh
+}
+
+// ------ FUNCTION FOR (++) IN THE CART QUANTITY -------
+function IncThis(Inc) {
+  console.log(Inc);
+
+  // get id of desire cart form desire button For ++
+  var IncCartID = Inc.getAttribute("id"); // Inc-2
+  console.log(IncCartID);
+
+  // get the desire Index number of addToCartArray For delete this index
+  var IncCartIDNum = IncCartID.slice(4); // for extracting 2 Form (Inc-2), 2 is our desire cart index
+  console.log(IncCartIDNum);
+
+  // ++ in the carts quantity of desire cart
+  addToCartArray[IncCartIDNum].cartsQuantity++;
+
+  // and also set in the local Storage
+  window.localStorage.setItem("addToCartArray", JSON.stringify(addToCartArray));
+
+  location.reload(); // page refresh
+}
+
+// ------ FUNCTION FOR (--) IN THE CART QUANTITY -------
+function DecThis(Dec) {
+  console.log(Dec);
+
+  // get id of desire cart form desire button For ++
+  var DecCartID = Dec.getAttribute("id"); // Inc-2
+  console.log(DecCartID);
+
+  // get the desire Index number of addToCartArray For delete this index
+  var DecCartIDNum = DecCartID.slice(4); // for extracting 2 Form (Inc-2), 2 is our desire cart index
+  console.log(DecCartIDNum);
+
+  if (addToCartArray[DecCartIDNum].cartsQuantity > 1) {
+    // -- in the carts quantity of desire cart
+    addToCartArray[DecCartIDNum].cartsQuantity--;
+
+    // and also set in the local Storage
+    window.localStorage.setItem(
+      "addToCartArray",
+      JSON.stringify(addToCartArray)
+    );
+
+    location.reload(); // page refresh
+  } else {
+    alert("if you don't need this cart, You Can Remove It!");
+  }
+}
+
+// ------ FUNCTION FOR CHECK OUT / BUY THE CARTS (ORDER DONE) -------
+function checkOut() {
+  addToCartArray.push({
+    totalItems: totalItems,
+    totalPrice: cartsTotalPrice + 7 + 4.8,
+  });
+
+  // and also set in the local Storage
+  window.localStorage.setItem("addToCartArray", JSON.stringify(addToCartArray));
+
+  OnlineStore.ordersDetail.push(addToCartArray);
+
+  // and also set in the local Storage
+  window.localStorage.setItem(
+    "ORDERS",
+    JSON.stringify(OnlineStore.ordersDetail)
+  );
+
+  addToCartArray.length = 0;
+
+  // and also set in the local Storage
+  window.localStorage.setItem("addToCartArray", JSON.stringify(addToCartArray));
+
+  alert("Your Order Done Successfully");
+
+  location.reload(); // then refereash the page
+}
+
 // console.log(OnlineStore.usersDetail);
 // console.log(OnlineStore.ordersDetail);
 
@@ -1069,19 +1055,149 @@ function addCart(e) {
 
 // phelay products is lien show nhe ho rhi thin, Q K hum ne Ye kam upper kia tha aur phie erroe A rha tha aur us se nichay ka code chal nhe rha tha
 // Jab bhi globlay koi kam kisi aik specific page k lien kro wao to End m krwao Ta k code m Ager error aye to last m aye, Aur upper ka sara code chal gye
-var currUser = JSON.parse(window.localStorage.getItem("currUserData"));
-console.log(currUser);
+if (document.getElementById("currUserName")) {
+  var currUser = JSON.parse(window.localStorage.getItem("currUserData"));
+  console.log(currUser);
 
-var currUserName = document.getElementById("currUserName");
-console.log(currUserName.tagName);
+  var currUserName = document.getElementById("currUserName");
+  console.log(currUserName.tagName);
 
-currUserName.innerHTML = currUser.userName;
+  currUserName.innerHTML = currUser.userName;
+}
 
 // console.log(OnlineStore.usersDetail);
 // console.log(OnlineStore.ordersDetail);
 
 // console.log("product show krwany ka kam hogia");
 console.log(addToCartArray);
+
+// ----------------- FOR DASHBOARD -----------------------
+
+// for showUsers()
+function showUsers() {
+  var showUsers = document.querySelector(".content-area");
+
+  showUsers.innerHTML = `
+  
+  
+    <h2>Selected Link Heading</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>User Number</th>
+                <th>User Name</th>
+                <th>User City</th>
+                <th>User Email</th>
+                <th>User Phone</th>
+            </tr>
+        </thead>
+        <tbody class='trForShowUsers'>
+   
+        </tbody>
+    </table>`;
+
+  var showUsersTr = document.querySelector(".trForShowUsers");
+
+  for (var i = 0; i < users.length; i++) {
+    showUsersTr.innerHTML += `
+      
+  <tr>
+      <td>${i + 1}</td>
+      <td>${users[i].userName}</td>
+      <td>${users[i].userCity}</td>
+      <td>${users[i].userEmail}</td>
+      <td>${users[i].userPhone}</td>
+  </tr>`;
+  }
+}
+
+// for showOrders()
+function showOrders() {
+  var showUsers = document.querySelector(".content-area");
+
+  showUsers.innerHTML = `
+
+              <h2>Orders</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Order Number</th>
+                            <th>Customer Name</th>
+                            <th>Customer Email</th>
+                            <th>Items</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    <tbody class="odersTr">
+                     
+                    </tbody>
+                </table>
+  
+  
+   `;
+
+  var odersTr = document.querySelector(".odersTr");
+
+  for (var i = 0; i < OnlineStore.ordersDetail.length; i++) {
+    odersTr.innerHTML += `
+      
+  <tr>
+      <td># ${i + 1}</td>
+      <td>${OnlineStore.ordersDetail[i][0].buyerName}</td>
+      <td>${OnlineStore.ordersDetail[i][0].buyerEmail}</td>
+      <td>${
+        OnlineStore.ordersDetail[i][OnlineStore.ordersDetail[i].length - 1]
+          .totalItems
+      }</td>
+      <td>${
+        OnlineStore.ordersDetail[i][OnlineStore.ordersDetail[i].length - 1]
+          .totalPrice
+      }</td>
+  </tr>`;
+  }
+}
+
+// for showDashboard()
+function showDashboard() {
+  var showDashboard = document.querySelector(".content-area");
+
+  showDashboard.innerHTML = `
+  
+  <div class="dashboard-activities">
+  <h2>Dashboard Activities</h2>
+  <div class="activity-cards">
+      <div class="activity-card">
+          <i class="fa fa-shopping-cart"></i>
+          <h3>New Orders</h3>
+          <p>10 new orders received today</p>
+      </div>
+      <div class="activity-card">
+          <i class="fa fa-user-plus"></i>
+          <h3>New Users</h3>
+          <p>5 new users registered today</p>
+      </div>
+      <div class="activity-card">
+          <i class="fa fa-dollar-sign"></i>
+          <h3>Total Sales</h3>
+          <p>$1000 sales generated today</p>
+      </div>
+      <div class="activity-card">
+          <i class="fa fa-product-hunt"></i>
+          <h3>New Products</h3>
+          <p>10 new products added today</p>
+      </div>
+  </div>
+  <div class="activity-graph">
+      <h3>Sales Graph</h3>
+      <!-- <img src="./assets/graph.png" alt=""> -->
+      <div id="sales-graph">
+          <img src="./assets/graph.png" alt="">
+      </div>
+  </div>
+</div>
+
+  `;
+}
 
 // ASSIGNMENT TODO LIST
 /*

@@ -927,3 +927,273 @@ footer {
     cursor: pointer;
 
 }
+
+
+
+
+
+
+
+
+
+
+/* ------------ STYLING FOR DASHBOARD --------------  */
+.dashboard-container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100vh;
+}
+
+.left-sidebar {
+    width: 250px;
+    height: 100vh;
+    background-color: rgb(81, 159, 255);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    left: 0px;
+    top: 0px;
+}
+
+.company-name {
+   
+    margin-bottom: 20px;
+}
+
+.sidebar-links ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar-links li {
+    /* margin-bottom: 10px; */
+    padding: 10px 5px;
+    font-size: 1.1rem;
+    border-radius: 5px;
+}
+
+.sidebar-links li:hover {
+
+    background-color: var(--color2);
+}
+
+.sidebar-links a {
+    text-decoration: none;
+    color: #fff;
+}
+
+.right-content {
+    flex: 1;
+    /* padding: 20px; */
+    display: flex;
+    flex-direction: column;
+    margin-left: 250px;
+    /* padding-bottom: 200px; */
+    height: auto;
+}
+
+.top-bar {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 570px;
+    align-items: center;
+    padding: 10px;
+    background-color: rgb(234, 115, 39);
+    color: #fff;
+    /* border-radius: 10px; */
+    /* margin-bottom: 300px; */
+    position: fixed;
+    top: 0px;
+    /* margin-left: 240px; */
+    width: 100%;
+}
+
+.search-bar input {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    width: 200px;
+}
+
+.search-bar button {
+    background-color: transparent;
+    border: none;
+    font-size: 27px;
+    cursor: pointer;
+    padding-right: 10px;
+    padding-left: 20px;
+}
+
+.user-profile{
+
+    align-items: center;
+}
+.user-profile-img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+    background-color: white;
+}
+
+.content-area {
+    padding: 20px;
+    padding-bottom: 30px;
+    padding-top: 100px;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background-color: rgb(81, 159, 255);
+    color: #fff;
+}
+
+.footer {
+    background-color: rgb(5, 63, 134);
+    color: #fff;
+    padding: 10px;
+    /* text-align: center; */
+    position: fixed;
+    bottom: 0px;
+    /* right: 0px; */
+    width: 100%;
+    /* margin-left: 250px; */
+    margin-top: 10px;
+}
+
+.footer p {
+    /* text-align: center; */
+    padding-left: 400px;
+    /* width: 100%; */
+    z-index: 10;
+}
+
+
+
+.dashboard-activities {
+    padding: 40px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.dashboard-activities h2 {
+
+    padding-block:0px 20px;
+    font-size: 2rem;
+}
+
+.activity-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.activity-card {
+    background-color: #fff;
+    padding: 20px;
+    border: 1px solid #ddd;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 10px;
+    width: calc(25% - 20px);
+}
+
+.activity-card i {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.activity-card h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.activity-graph {
+    margin-top: 20px;
+}
+
+.activity-graph h3 {
+
+    padding-block:50px 15px ;
+    font-size: 1.7rem;
+}
+
+#sales-graph {
+    width: 100%;
+    /* height: 200px; */
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#sales-graph img {
+    width: 100%;
+}
+
+/* Responsive Design */
+
+@media only screen and (max-width: 768px) {
+    .dashboard-container {
+        flex-direction: column;
+    }
+    .left-sidebar {
+        width: 100%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        z-index: 1;
+    }
+    .right-content {
+        margin-top: 250px;
+    }
+    .top-bar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .search-bar input {
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .dashboard-container {
+        flex-direction: column;
+    }
+    .left-sidebar {
+        width: 100%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        z-index: 1;
+    }
+    .right-content {
+        margin-top: 250px;
+    }
+    .top-bar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .search-bar input {
+        width: 100%;
+    }
+    .user-profile img {
+        width: 30px;
+        height: 30px;
+    }
+}
