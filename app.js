@@ -481,14 +481,9 @@ if (document.querySelector(".productsBoxes")) {
 
 
 
-
-
-
-
-console.log("carts k phelay ka console");
-
 //  ------  FOR SHOWING ADDTOCART IN CART PAGE ----------
 if (document.querySelector(".shoppingCartBoxes")) {
+
   // ager (shoppingCartBoxes) milay ga tab hi ye block chaly ga, kisi aur page per ye chaly Ga hi nhe
 
   console.log("ye carts k page pr chaly ga Boss");
@@ -508,10 +503,14 @@ if (document.querySelector(".shoppingCartBoxes")) {
 
   // for get quatity of product
 
-  // for find user ne kitnay products khariday aur kia kia kharida
+
+
+  // (SHOPPING CARTS) for find user ne kitnay products khariday aur kia kia kharida
   for (var i = 0; i < addToCartArray.length; i++) {
     var cartIDInNumForm = parseInt(addToCartArray[i].productID);
     console.log(cartIDInNumForm);
+
+    document.getElementById('isCarts').style.display = 'none';
 
     // ---- [i] wala aik bar chaly Ga, phir [j] wala complete chaly ga, then same process again for 2nd value
 
@@ -519,7 +518,7 @@ if (document.querySelector(".shoppingCartBoxes")) {
     for (var j = 0; j < OnlineStore.products.length; j++) {
       if (cartIDInNumForm === OnlineStore.products[j].pID) {
 
-        // yhn pr desire object ki hi quantity aur price aye gi 
+        // yhn pr desire object ki hi quantity aur price aye gi Sab k lien Respectively
         var cartTotalPrice =  addToCartArray[i].cartsQuantity * OnlineStore.products[j].pPrice;
         console.log(cartTotalPrice);
 
@@ -568,8 +567,8 @@ if (document.querySelector(".shoppingCartBoxes")) {
                                     </div>
         
                                     <div class="shoppingCartBoxQunatityArrow">
-                                        <div class="Increase">+1</div>
-                                        <div class="Decrease">-1</div>
+                                        <div class="Increase" id="Inc-${i}" onclick="IncThis(this)">+1</div>
+                                        <div class="Decrease" id="Dec-${i}" onclick="DecThis(this)">-1</div>
                                     </div>
         
                                 </div>
@@ -580,7 +579,7 @@ if (document.querySelector(".shoppingCartBoxes")) {
                                 </p>
         
                                 <div class="shoppingCartBoxDelete">
-                                    <i class="fa-solid fa-trash-can" ></i>
+                                    <i class="fa-solid fa-trash-can" id="del-${i}" onclick="delThis(this)"></i>
                                 </div>
         </div>`;
 
@@ -631,7 +630,7 @@ if (document.querySelector(".shoppingCartBoxes")) {
                     <!-- checkOut is here  -->
                     <div class="checkOut">
     
-                        <button class="payNow">CHECK OUT</button>
+                        <button class="payNow" onclick="checkOut()">CHECK OUT</button>
     
                     </div>
     
@@ -647,10 +646,126 @@ if (document.querySelector(".shoppingCartBoxes")) {
   console.log("not found page");
 }
 
-console.log("carts k bad ka console");
 
-// // for storing add to carts products
-// var addToCartArray = JSON.parse(window.localStorage.getItem("addToCartArray")) || [];
+// ------ FUNCTION FOR DELETE THE CART -------
+function delThis(del) {
+
+  console.log(del);
+  // get id of desire cart form desire button For delete the cart
+  var delCartID = del.getAttribute("id");
+  console.log(delCartID);
+
+  // get the desire Index number of addToCartArray For delete this index 
+  var delCartIDNum = delCartID.slice(4);
+  console.log(delCartIDNum);
+
+  // delete the desire index of addToCartArray, in order to remove desire cart 
+  addToCartArray.splice(delCartIDNum,1);
+
+  // and also set in the local Storage 
+  window.localStorage.setItem(
+    "addToCartArray",
+    JSON.stringify(addToCartArray)
+  );
+
+  location.reload(); // page refresh
+
+}
+
+
+// ------ FUNCTION FOR (++) IN THE CART QUANTITY -------
+function IncThis(Inc) {
+
+  console.log(Inc);
+
+  // get id of desire cart form desire button For ++
+  var IncCartID = Inc.getAttribute("id"); // Inc-2
+  console.log(IncCartID);
+
+  // get the desire Index number of addToCartArray For delete this index 
+  var IncCartIDNum = IncCartID.slice(4); // for extracting 2 Form (Inc-2), 2 is our desire cart index
+  console.log(IncCartIDNum);
+
+
+  // ++ in the carts quantity of desire cart
+  addToCartArray[IncCartIDNum].cartsQuantity++;
+
+  // and also set in the local Storage 
+  window.localStorage.setItem(
+    "addToCartArray",
+    JSON.stringify(addToCartArray)
+  );
+
+  location.reload(); // page refresh
+
+}
+
+
+// ------ FUNCTION FOR (--) IN THE CART QUANTITY -------
+function DecThis(Dec) {
+
+  console.log(Dec);
+
+  // get id of desire cart form desire button For ++
+  var DecCartID = Dec.getAttribute("id"); // Inc-2
+  console.log(DecCartID);
+
+  // get the desire Index number of addToCartArray For delete this index 
+  var DecCartIDNum = DecCartID.slice(4); // for extracting 2 Form (Inc-2), 2 is our desire cart index
+  console.log(DecCartIDNum);
+
+
+  if (addToCartArray[DecCartIDNum].cartsQuantity > 1) {
+    
+  // -- in the carts quantity of desire cart
+  addToCartArray[DecCartIDNum].cartsQuantity--;
+
+  // and also set in the local Storage 
+  window.localStorage.setItem(
+    "addToCartArray",
+    JSON.stringify(addToCartArray)
+  );
+
+  location.reload(); // page refresh
+
+  } else {
+    alert("if you don't need this cart, You Can Remove It!")
+  }
+
+}
+
+
+// ------ FUNCTION FOR CHECK OUT / BUY THE CARTS (ORDER DONE) -------
+function checkOut() {
+    
+  OnlineStore.ordersDetail.push(addToCartArray);
+  
+  // and also set in the local Storage 
+  window.localStorage.setItem(
+    "ORDERS",
+    JSON.stringify(OnlineStore.ordersDetail)
+  );
+
+  addToCartArray.length = 0;
+  
+    // and also set in the local Storage 
+    window.localStorage.setItem(
+      "addToCartArray",
+      JSON.stringify(addToCartArray)
+    );
+
+    alert('Your Order Done Successfully');
+
+    location.reload(); // then refereash the page
+
+
+}
+
+
+// ------ FUNCTION FOR -- IN THE CART QUANTITY -------
+// function IncThis(Inc) {
+
+// }
 
 // ----------  function for addToCart the products ------------
 function addCart(e) {

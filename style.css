@@ -772,6 +772,14 @@ footer {
     
 }
 
+#isCarts {
+
+    text-align: center;
+    padding-block: 114px;
+    word-spacing: 4px;
+    color: rgb(83, 83, 83);
+}
+
 .shoppingCarts h2 {
 
     padding-block: 10px;
@@ -916,5 +924,6 @@ footer {
     font-size: 1rem;
     color: white;
     font-weight: bold;
+    cursor: pointer;
 
 }
