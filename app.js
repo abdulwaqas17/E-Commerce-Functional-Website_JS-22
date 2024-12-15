@@ -8,6 +8,8 @@ var users = JSON.parse(window.localStorage.getItem("USERS")) || [
     usersAddToCarts: [],
   },
 ];
+
+window.localStorage.setItem('USERS',JSON.stringify(users));
 console.log(users);
 
 // for storing add to carts products
@@ -178,10 +180,10 @@ var OnlineStore = {
   storeLocation: "Karachi, Pakistan",
 
   // product categoreis list
-  categoreis: ["Laptops", "Smart Phones", "Accessories"],
+  categoreis:  ["Laptops", "Smart Phones", "Accessories"],
 
   // all products of the store in the array of obj
-  products: [
+  products: JSON.parse(window.localStorage.getItem("PRODUCTS")) ||  [
     // product information obj 1
     {
       pID: 1001,
@@ -459,6 +461,11 @@ var OnlineStore = {
 };
 // console.log(OnlineStore.usersDetail);
 
+window.localStorage.setItem('PRODUCTS',JSON.stringify(OnlineStore.products));
+
+
+
+
 // ---------  FOR SHOWING PRODUCTS IN HOME PAGE  -----------
 if (document.querySelector(".productsBoxes")) {
   // console.log("ye home pr hi chaly gi bs,");
@@ -492,6 +499,8 @@ if (document.querySelector(".productsBoxes")) {
 } else {
   console.log("home page not found");
 }
+
+
 
 //  ------  FOR SHOWING ADDTOCART IN CART PAGE ----------
 if (document.querySelector(".shoppingCartBoxes")) {
@@ -652,6 +661,9 @@ if (document.querySelector(".shoppingCartBoxes")) {
 } else {
   console.log("not found page");
 }
+
+
+
 
 // ----------  function for addToCart the products ------------
 function addCart(e) {
@@ -951,7 +963,10 @@ function addCart(e) {
   }
 }
 
-// ------ FUNCTION FOR DELETE THE CART -------
+
+
+
+ // ------ FUNCTION FOR DELETE THE CART -------
 function delThis(del) {
   console.log(del);
   // get id of desire cart form desire button For delete the cart
@@ -1062,7 +1077,10 @@ if (document.getElementById("currUserName")) {
   var currUserName = document.getElementById("currUserName");
   console.log(currUserName.tagName);
 
-  currUserName.innerHTML = currUser.userName;
+  if (currUser){
+    currUserName.innerHTML = currUser.userName;
+  }
+  // currUserName.innerHTML = currUser.userName;
 }
 
 // console.log(OnlineStore.usersDetail);
@@ -1072,6 +1090,54 @@ if (document.getElementById("currUserName")) {
 console.log(addToCartArray);
 
 // ----------------- FOR DASHBOARD -----------------------
+
+
+
+// for showDashboard()
+function showDashboard() {
+  var showDashboard = document.querySelector(".content-area");
+
+  showDashboard.innerHTML = `
+  
+  <div class="dashboard-activities">
+  <h2>Dashboard Activities</h2>
+  <div class="activity-cards">
+      <div class="activity-card">
+          <i class="fa fa-shopping-cart"></i>
+          <h3>New Orders</h3>
+          <p>10 new orders received today</p>
+      </div>
+      <div class="activity-card">
+          <i class="fa fa-user-plus"></i>
+          <h3>New Users</h3>
+          <p>5 new users registered today</p>
+      </div>
+      <div class="activity-card">
+          <i class="fa fa-dollar-sign"></i>
+          <h3>Total Sales</h3>
+          <p>$1000 sales generated today</p>
+      </div>
+      <div class="activity-card">
+          <i class="fa fa-product-hunt"></i>
+          <h3>New Products</h3>
+          <p>10 new products added today</p>
+      </div>
+  </div>
+  <div class="activity-graph">
+      <h3>Sales Graph</h3>
+      <!-- <img src="./assets/graph.png" alt=""> -->
+      <div id="sales-graph">
+          <img src="./assets/graph.png" alt="">
+      </div>
+  </div>
+</div>
+
+  `;
+}
+
+
+
+
 
 // for showUsers()
 function showUsers() {
@@ -1110,6 +1176,8 @@ function showUsers() {
   </tr>`;
   }
 }
+
+
 
 // for showOrders()
 function showOrders() {
@@ -1157,47 +1225,181 @@ function showOrders() {
   }
 }
 
-// for showDashboard()
-function showDashboard() {
-  var showDashboard = document.querySelector(".content-area");
 
-  showDashboard.innerHTML = `
+
+// for showOrders()
+function showProducts() {
+  var showUsers = document.querySelector(".content-area");
+
+  showUsers.innerHTML = `
+
+              <h2>Products</h2>
+                <table>
+                    <thead>
+                        <tr>
+
+                            <th>Product</th>
+                            <th>Category</th>
+                            <th>Stock</th>
+                            <th>Price</th>
+                            
+                        </tr>
+                    </thead>
+                    <tbody class="productsTr">
+
+
+                     
+                    </tbody>
+                </table>
   
-  <div class="dashboard-activities">
-  <h2>Dashboard Activities</h2>
-  <div class="activity-cards">
-      <div class="activity-card">
-          <i class="fa fa-shopping-cart"></i>
-          <h3>New Orders</h3>
-          <p>10 new orders received today</p>
-      </div>
-      <div class="activity-card">
-          <i class="fa fa-user-plus"></i>
-          <h3>New Users</h3>
-          <p>5 new users registered today</p>
-      </div>
-      <div class="activity-card">
-          <i class="fa fa-dollar-sign"></i>
-          <h3>Total Sales</h3>
-          <p>$1000 sales generated today</p>
-      </div>
-      <div class="activity-card">
-          <i class="fa fa-product-hunt"></i>
-          <h3>New Products</h3>
-          <p>10 new products added today</p>
-      </div>
-  </div>
-  <div class="activity-graph">
-      <h3>Sales Graph</h3>
-      <!-- <img src="./assets/graph.png" alt=""> -->
-      <div id="sales-graph">
-          <img src="./assets/graph.png" alt="">
-      </div>
-  </div>
-</div>
+  
+   `;
 
-  `;
+  var productsTr = document.querySelector(".productsTr");
+
+  for (var i = 0; i < OnlineStore.products.length; i++) {
+    productsTr.innerHTML += `
+      
+  <tr>
+      <td><img src="${OnlineStore.products[i].pImage}" alt="product img"><span>${OnlineStore.products[i].pName}</span></td>
+      <td>${OnlineStore.products[i].pCategory}</td>
+      <td>${OnlineStore.products[i].pStock}</td>
+      <td>${OnlineStore.products[i].pPrice} <span onclick="editProduct(this)" id = "edit-${i}" >edit</span></td>
+      
+  </tr>`;
+
+  }
 }
+
+
+
+
+
+// for edit product box 
+function editProduct(edit) {
+  console.log(edit);
+  var editButtonID = edit.getAttribute("id");
+  var idOFProduct = editButtonID.slice(5);
+  console.log(idOFProduct);
+
+  var editProductBox  = document.querySelector('.editProductBox');
+  var shadow = document.querySelector('.shadow');
+
+  editProductBox.innerHTML = `
+  <div class="product-image">
+  <img src="${OnlineStore.products[idOFProduct].pImage}" alt="Product Image">
+</div>
+<div class="product-details">
+  <form>
+    <label for="product-name">Product Name:</label>
+    <input type="text" id="pname" name="product-name" value="${OnlineStore.products[idOFProduct].pName}">
+
+    <label for="description">Description:</label>
+    <textarea id="description" name="description" rows="3">This is a sample product description.</textarea>
+
+    <label for="price">Price:</label>
+    <input type="number" id="pprice" name="price" value="${OnlineStore.products[idOFProduct].pPrice}" step="0.01">
+
+    <label for="stock">Stock:</label>
+    <input type="number" id="pstock" name="stock" value="${OnlineStore.products[idOFProduct].pStock}">
+
+    <button onclick="saveChanges(this)" id= "save-${idOFProduct}">Save</button>
+  </form>
+  <span class ="cancle" onclick="cancel()">X</span>
+</div>`;
+
+  
+  editProductBox.classList.add('show');
+  shadow.classList.add('show');
+
+
+}
+
+
+
+// for save changes 
+function saveChanges(save) {
+
+  var saveID = save.getAttribute("id");
+  var saveIDNum = saveID.slice(5);
+  
+  var editProductBox  = document.querySelector('.editProductBox');
+  var shadow = document.querySelector('.shadow');
+ 
+  var pstock = document.getElementById('pstock').value;
+  var pprice = document.getElementById('pprice').value;
+  var pname = document.getElementById('pname').value;
+
+  OnlineStore.products[saveIDNum].pName = pname;
+  OnlineStore.products[saveIDNum].pPrice = pprice;
+  OnlineStore.products[saveIDNum].pStock = pstock;
+
+  window.localStorage.setItem('PRODUCTS',JSON.stringify(OnlineStore.products));
+
+  editProductBox.classList.remove('show');
+  shadow.classList.remove('show');
+
+  console.log(saveIDNum);
+}
+
+
+
+// for cancel the product box 
+function cancel() {
+
+  var shadow = document.querySelector('.shadow');
+  var editProductBox  = document.querySelector('.editProductBox');
+  editProductBox.classList.remove('show');
+  shadow.classList.remove('show');
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// ---------- for slider ----------------
+var counter = 1;
+setInterval(function(){
+  document.getElementById('r' + counter).checked = true;
+  counter++;
+
+  if(counter > 3) {
+    counter = 1;
+  }
+},5000)
+
+// console.log(OnlineStore.products);
+// var editProductBox = document.querySelector('.editProductBox');
+// editProductBox.innerHTML = `
+
+// <div class="editProductBoxImg">
+// <img src="" alt="">
+// </div>
+// <div class="editProductBoxContent">
+// <input type="text" value="">
+// <input type="text" value="">
+// <input type="text" value="">
+// <input type="text" value="">
+// </div>
+
+// `;
+
+
+
+
 
 // ASSIGNMENT TODO LIST
 /*

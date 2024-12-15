@@ -332,15 +332,77 @@ select {
 
 
 /* styling for hero section  */
-.hero {
+.sildersDiv {
 
-    background-image: url(assets/asset\ 7.jpeg);
+    /* background-image: url(assets/asset\ 7.jpeg); */
     width: 100%;
-    height: 410px;
-    background-size: cover;
+    height: 440px;
+    overflow: hidden;
+    position: relative;
+    /* background-size: cover; */
 }
 
+.slides {
+    width: 300%;
+    height: 100%;
+    display: flex;
+}
 
+.slide {
+
+    width: 33.3333%;
+    transition: 0.6s;
+
+}
+
+.slide img {
+
+    width: 100%;
+    height: 100%;
+
+}
+
+.navigationBar {
+
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    /* transform: translateX(-50%); */
+    display: flex;
+    gap: 20px;
+}
+
+#r1:checked ~ .s1{
+    margin-left: 0;
+}
+
+#r2:checked ~ .s1{
+    margin-left: -33.333%;
+}
+
+#r3:checked ~ .s1{
+    margin-left: -66.66666%;
+}
+
+.cir {
+
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: rgb(243, 22, 22);
+    /* display: block; */
+    cursor: pointer;
+    
+}
+
+.cir:checked {
+    background-color: var(--color2);
+}
+
+input[name='r'] {
+    position: absolute;
+    visibility: hidden;
+}
 
 
 /* styling for iconsBar section  */
@@ -711,6 +773,7 @@ footer {
     background-color: #2c5d8a;
     color: white;
     padding-block: 20px;
+
 }
 
 .headline span {
@@ -811,6 +874,11 @@ footer {
 
     width: 100px;
 
+}
+
+.shoppingCartBoxText {
+
+    width: 250px;
 }
 
 .shoppingCartBoxText p {
@@ -1010,6 +1078,7 @@ footer {
     top: 0px;
     /* margin-left: 240px; */
     width: 100%;
+    z-index: 5;
 }
 
 .search-bar input {
@@ -1046,6 +1115,11 @@ footer {
     padding-top: 100px;
 }
 
+.content-area h2 {
+    padding-bottom: 20px;
+    font-size: 2.3rem;
+    color: rgb(34, 34, 34);
+}
 table {
     border-collapse: collapse;
     width: 100%;
@@ -1060,6 +1134,117 @@ th, td {
 th {
     background-color: rgb(81, 159, 255);
     color: #fff;
+}
+
+.productsTr img {
+    width: 50px;
+    margin-right: 20px;
+}
+
+.productsTr tr td:nth-child(1) {
+    display: flex;
+    align-items: center;
+}
+
+.productsTr tr td:last-child {
+    position: relative;
+    width: 135px;
+}
+
+.productsTr tr td:last-child span {
+    color: var(--color1);
+    width: 30px;
+    position: absolute;
+    right: 5px;
+    top: 28px;
+    cursor: pointer;
+    /* padding-right: 50px; */
+}
+
+
+
+.editProductBox {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 16px;
+    max-width: 600px;
+    width: 100%;
+    /* margin: 100px auto; */
+    position: fixed;
+    top: 50px;
+    left: 30%;
+    z-index: 100;
+    /* justify-content: center;
+    align-items: center; */
+  }
+  
+
+  .product-image img {
+    width: 150px;
+    height: 150px;
+    border-radius: 8px;
+    object-fit: cover;
+    border: 1px solid rgb(114, 114, 114);
+   
+  }
+  
+  .product-details {
+    flex-grow: 1;
+    margin-left: 16px;
+  }
+  
+  .product-details form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .product-details label {
+    margin: 8px 0 4px;
+    font-weight: bold;
+  }
+  
+  .product-details input,
+  .product-details textarea {
+    padding: 8px;
+    margin-bottom: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .product-details button {
+    background-color: #007BFF;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .product-details button:hover {
+    background-color: #0056b3;
+  }
+
+  .cancle {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    cursor: pointer;
+  }
+
+  
+.none {
+    display: none;
+}
+
+.show {
+    display: block;
 }
 
 .footer {
@@ -1082,6 +1267,17 @@ th {
     z-index: 10;
 }
 
+.shadow {
+
+    height: 100vh;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.219);
+    z-index: 10;
+
+}
 
 
 .dashboard-activities {

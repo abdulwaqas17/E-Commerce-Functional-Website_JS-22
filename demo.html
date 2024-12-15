@@ -4,8 +4,124 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            align-items: center;
+        }
+
+        .product-box {
+  display: flex;
+  flex-direction: row;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 16px;
+  max-width: 600px;
+  width: 100%;
+}
+
+.product-image img {
+  width: 150px;
+  height: 150px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.product-details {
+  flex-grow: 1;
+  margin-left: 16px;
+}
+
+.product-details form {
+  display: flex;
+  flex-direction: column;
+}
+
+.product-details label {
+  margin: 8px 0 4px;
+  font-weight: bold;
+}
+
+.product-details input,
+.product-details textarea {
+  padding: 8px;
+  margin-bottom: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.product-details button {
+  background-color: #007BFF;
+  color: #fff;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.product-details button:hover {
+  background-color: #0056b3;
+}
+
+
+    </style>
 </head>
 <body>
+
+    <div class="product-box">
+        <div class="product-image">
+          <img src="https://via.placeholder.com/150" alt="Product Image">
+        </div>
+        <div class="product-details">
+          <form>
+            <label for="product-name">Product Name:</label>
+            <input type="text" id="product-name" name="product-name" value="Sample Product">
+    
+            <label for="description">Description:</label>
+            <textarea id="description" name="description" rows="3">This is a sample product description.</textarea>
+    
+            <label for="price">Price:</label>
+            <input type="number" id="price" name="price" value="50.00" step="0.01">
+    
+            <label for="stock">Stock:</label>
+            <input type="number" id="stock" name="stock" value="100">
+    
+            <button type="submit">Save</button>
+          </form>
+        </div>
+    </div>
+
+    
+    <!-- <div class="editProductBox none">
+
+        <div class="editProductBoxImg">
+            <h2>Product Picture</h2>
+            <img src="./assets/asset 21.jpeg" alt="">
+        </div>
+        <div class="editProductBoxContent">
+            <h2>Product Details</h2>
+           
+            <input type="text" value="Swine voluptate reiciendis votibus">
+            
+            <label>Category :
+            <input type="text" value="Laptop">
+            </label>
+            <label>Price :
+            <input type="text" value="34999">
+            </label>
+            <label>Stock :
+            <input type="text" value="780">
+            </label>
+       
+        </div> -->
+        
+    </div>
+
 
     <h1>Demo for Enhance Concept!</h1>
     
@@ -560,7 +676,7 @@
                             
     </div>
 
-    <script>
+    <!-- <script>
 
        var x = [];
 
@@ -603,7 +719,7 @@
 
         // thora concept clear hwa K code k se run hota h, aur doud bhi clear hwa h
 
-    </script>
+    </script> -->
 
 
 </body>
