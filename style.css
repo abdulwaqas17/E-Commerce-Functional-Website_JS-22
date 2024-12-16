@@ -348,31 +348,56 @@ select {
     display: flex;
 }
 
-.slide {
+/* .slide {
 
     width: 33.3333%;
     transition: 0.6s;
 
+} */
+
+/* Common styles */
+.slide {
+    /* Each slide should take up the full width */
+    /* height: 100%; */
+    position: absolute;/* Position slides on top of each other */
+    opacity: 0; /* Start invisible */
+    z-index: 0; /* Place slides behind */
+    transition:opacity 0.6s ease-in-out; /* Smooth fade-in/out */
 }
+
 
 .slide img {
 
     width: 100%;
     height: 100%;
+     /* Start invisible */
+    /* Smooth fade-in/out */
 
 }
 
-.navigationBar {
 
-    position: absolute;
-    bottom: 20px;
-    left: 50%;
-    /* transform: translateX(-50%); */
-    display: flex;
-    gap: 20px;
+
+
+/* Show the active slide */
+#r1:checked ~ .s1 {
+    opacity: 1;
+    z-index: 1; /* Bring the active slide to the front */
 }
 
-#r1:checked ~ .s1{
+#r2:checked ~ .s2  {
+    opacity: 1;
+    z-index: 1;
+}
+
+#r3:checked ~ .s3 {
+    opacity: 1;
+    z-index: 1;
+}
+
+
+
+
+/* #r1:checked ~ .s1{
     margin-left: 0;
 }
 
@@ -382,22 +407,50 @@ select {
 
 #r3:checked ~ .s1{
     margin-left: -66.66666%;
+} */
+
+
+.navigationManual {
+
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    /* transform: translateX(-50%); */
+    display: flex;
+    gap: 20px;
+    z-index: 10;
 }
+
 
 .cir {
 
     width: 15px;
     height: 15px;
     border-radius: 50%;
-    background: rgb(243, 22, 22);
+    background: rgb(255, 255, 255);
     /* display: block; */
     cursor: pointer;
     
 }
 
-.cir:checked {
+/* .cir:checked {
+    background-color: var(--color2);
+} */
+
+
+
+#r1:checked ~ .navigationManual .cir1{
     background-color: var(--color2);
 }
+
+#r2:checked ~ .navigationManual .cir2{
+    background-color: var(--color2);
+}
+
+#r3:checked ~ .navigationManual .cir3{
+    background-color: var(--color2);
+}
+
 
 input[name='r'] {
     position: absolute;
@@ -1151,15 +1204,23 @@ th {
     width: 135px;
 }
 
-.productsTr tr td:last-child span {
+.productsTr tr td:last-child .editCard {
     color: var(--color1);
-    width: 30px;
-    position: absolute;
-    right: 5px;
-    top: 28px;
     cursor: pointer;
-    /* padding-right: 50px; */
+    padding-right: 40px;
+  
 }
+
+.productsTr tr td:last-child .delCard {
+    color: red;
+    cursor: pointer;
+  
+}
+
+/* .productsTr tr td:last-child {
+   
+
+} */
 
 
 

@@ -1242,6 +1242,7 @@ function showProducts() {
                             <th>Category</th>
                             <th>Stock</th>
                             <th>Price</th>
+                            <th>Actions</th>
                             
                         </tr>
                     </thead>
@@ -1265,6 +1266,10 @@ function showProducts() {
       <td>${OnlineStore.products[i].pCategory}</td>
       <td>${OnlineStore.products[i].pStock}</td>
       <td>${OnlineStore.products[i].pPrice} <span onclick="editProduct(this)" id = "edit-${i}" >edit</span></td>
+      <td>
+      <span onclick="editProduct(this)" class='editCard' id = "edit-${i}" >edit</span> 
+      <span onclick="delProduct(this)" class='delCard'  id = "delCard-${i}" >Del</span>
+      </td>
       
   </tr>`;
 
@@ -1272,6 +1277,21 @@ function showProducts() {
 }
 
 
+
+// for edit product box 
+function delProduct(d) {
+
+  console.log(d);
+  var delButtonId = d.getAttribute("id");
+  var idOFProdForDel = delButtonId.slice(8);
+  console.log(idOFProdForDel);
+
+  OnlineStore.products.splice(idOFProdForDel,1);
+  window.localStorage.setItem('PRODUCTS',JSON.stringify(OnlineStore.products));
+  location.reload();
+
+
+}
 
 
 
