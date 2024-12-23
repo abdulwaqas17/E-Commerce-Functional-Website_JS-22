@@ -547,6 +547,8 @@ if (document.querySelector(".shoppingCartBoxes")) {
         // for total number of carts items
         totalItems += addToCartArray[i].cartsQuantity; // 0 + 1 = 1, 1 += 3 = 4, 4 + 5 = 9
 
+        window.localStorage.setItem('totalItems',totalItems)
+
         // get shoppingCartBoxes for showing carts in it
         var shoppingCartBoxes = document.querySelector(".shoppingCartBoxes");
         shoppingCartBoxes.innerHTML += `
@@ -663,6 +665,8 @@ if (document.querySelector(".shoppingCartBoxes")) {
 }
 
 
+console.log(totalItems);
+
 
 
 // ----------  function for addToCart the products ------------
@@ -670,7 +674,65 @@ function addCart(e) {
   if (currUser) {
     console.log(e);
     var cartID = e.getAttribute("id");
-    alert(`Product ID ${cartID} has added in your cart.`);
+    // alert(`Product ID ${cartID} has added in your cart.`);
+    var addToCartPage = document.querySelector('.modal-content');
+
+    var numOfCart = window.localStorage.getItem('addToCartArray');
+
+    for (var k = 0; k < OnlineStore.products.length; k++) {
+      if (cartID == OnlineStore.products[k].pID) {
+        var desireAddToCartObj = OnlineStore.products[k];
+        console.log(desireAddToCartObj);
+      }
+    }
+
+    console.log(desireAddToCartObj);
+
+  
+    addToCartPage.innerHTML = `
+    <div class="modal-header">
+        
+        <h4 class="modal-title h6 text-xs-center" id="myModalLabel"><i class="material-icons"></i>Product successfully added to your shopping cart</h4>
+
+        <div class="cross" onclick='cancelAddToCartBox()'>x</div>
+
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-md-6 divide-right">
+            <div class="row">
+              <div class="col-md-6">
+									<img class="product-image" src="${desireAddToCartObj.pImage}" alt="" title="" itemprop="image">
+				              </div>
+              <div class="col-md-6">
+                <h6 class="h6 product-name">${desireAddToCartObj.pName}</h6>
+                <p>${desireAddToCartObj.pPrice}</p>
+                
+                                  <p><strong>Color</strong>: Grey </p>
+                                  <p><strong>Size</strong>: S</p>
+                                <p><strong>Quantity:</strong>&nbsp;1</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="cart-content">
+                              <p class="cart-products-count">Your carts are available on carts page</p>
+                            <p><strong>Total products:</strong>&nbsp;$1,788.00</p>
+              <p><strong>Total shipping:</strong>&nbsp;$7.00 </p>
+                            	<p><strong>Taxes</strong>&nbsp;$0.00</p>
+                            <p><strong>Total:</strong>&nbsp;$1,795.00 (tax excl.)</p>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick='cancelAddToCartBox()'>Continue shopping</button>
+              <a class="btn btn-primary" onclick='proceedToCheckOut()'><i class="material-icons"></i>proceed to checkout</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+
+    var shadow = document.querySelector('.shadow');
+
+    addToCartPage.classList.add('show');
+    shadow.classList.add('show');
     console.log(cartID);
     console.log(users);
     console.log(currUser);
@@ -963,6 +1025,24 @@ function addCart(e) {
   }
 }
 
+
+
+// --------- for hide to cart box 
+// for cancel the product box 
+function cancelAddToCartBox() {
+
+  var shadow = document.querySelector('.shadow');
+  var addToCartPage = document.querySelector('.modal-content');
+  addToCartPage.classList.remove('show');
+  shadow.classList.remove('show');
+
+}
+
+
+// ---------- for move to carts page 
+function proceedToCheckOut() {
+  window.location.href = './carts.html'
+}
 
 
 
@@ -1278,7 +1358,7 @@ function showProducts() {
 
 
 
-// for edit product box 
+// for del product box 
 function delProduct(d) {
 
   console.log(d);
@@ -1288,7 +1368,15 @@ function delProduct(d) {
 
   OnlineStore.products.splice(idOFProdForDel,1);
   window.localStorage.setItem('PRODUCTS',JSON.stringify(OnlineStore.products));
-  location.reload();
+  Swal.fire({
+    title: "Product Delete Successfully",
+    icon: "success",
+    draggable: true
+  }).then( () => {   
+    location.reload();
+    // then ka keyword ais liye use kiya ky condition true hoa he ya alert se phla he redirect kr rha tha dosre page pa               
+  
+}) ;
 
 
 }
