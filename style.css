@@ -184,7 +184,7 @@ p {
 .Nav {
 
     padding-inline: var(--sides-margin);
-    padding-block:22px 12px;
+    padding-block:22px 0px;
     width: 100%;
     background-color: var(--color1);
     position: relative;
@@ -285,6 +285,45 @@ select {
     color: white;
 }
 
+
+
+
+/* for dropdown  */
+#navDropdown {
+    width: 244px;
+    /* padding-left: 10px; */
+    display: none;
+    z-index: 4;
+    border: 1px solid #ccc;
+    border-top: 0;
+    position: absolute;
+    background: #fff;
+
+    color: #1a1a1a;
+    top: 38px;
+    left: -1px;
+
+}
+
+#navDropdown li {
+  padding:7px 10px;
+  list-style: none;
+  font-size: 0.9rem;
+  transition: .2s;
+}
+
+#navDropdown li:hover {
+    color: var(--color2);
+
+}
+#MoreCategories {
+  margin-top: 10px;
+  border: 1px solid #ccc;
+}
+
+
+
+
 .categoryBar {
 
     background-color: var(--color2);
@@ -297,7 +336,13 @@ select {
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
     font-size: 0.9rem;
+    cursor: pointer;
 
+}
+
+.Nav .categoryBar:hover #navDropdown{
+    display: block !important;
+    /* color: ; */
 }
 
 .bottomNav ul {
@@ -314,6 +359,7 @@ select {
     list-style: none;
     font-weight: bold;
     transition: 0.2s ease;
+    padding-bottom: 10px;
 }
 
 .bottomNav ul li:hover {
@@ -327,6 +373,17 @@ select {
     cursor: pointer;
     color: rgba(0, 0, 0, 0.76);
 }
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -458,6 +515,77 @@ input[name='r'] {
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+/* for shopDropdown  */
+.shopDropdown {
+    width: 80%;
+    margin: auto;
+    border: 1px solid #ccc;
+    display: none;
+    position: absolute;
+    z-index: 100;
+    left: 135px;
+    top: 127px;
+    background-color: white;
+    color: black !important;
+}
+
+.shopDropdownBoxes{
+
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 40px;
+}
+
+.shopDropdownBox img {
+    width: 220px;
+}
+
+.shopDropdownBox ul{
+
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    list-style: none;
+    padding-left: 0px;
+   
+}
+
+.shopDropdownBox ul li {
+    color: #272727;
+}
+
+.shopDropdownBox ul li:hover {
+
+    color: var(--color2);
+
+}
+
+#SHOP:hover .shopDropdown{
+    display: block;
+}
+
+
+
+
+
+
+
+
+
 /* styling for iconsBar section  */
 .iconsBar {
 
@@ -486,6 +614,22 @@ input[name='r'] {
     color: grey;
     padding-top: 4px;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 /* styling for adsBarTop is here  */
