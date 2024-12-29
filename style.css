@@ -43,126 +43,230 @@ p {
 
 
 /* -------------- STYLE FOR SIGNUP PAGE ---------------------- */
-.signUp,.login {
-
-    background-color: var(--color3);
-    height: 100vh;
-    padding-top: 60px;
-
+.SignupContainer input{
+    width: 100%;
+    border: none;
+    border-bottom: 0.9px solid rgb(239, 122, 5);
+    padding-left: 5px;
+    padding-bottom: 5px;
+    outline: none;
+    font-family: 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    &::placeholder{
+        color: rgb(100, 99, 99);
+    }
 }
-
-/* Styling of Inner-box */
-.inner-box{
-
-    width: 600px;
-    margin: auto;
-    position: relative;
-    padding: 20px 50px;
-
+.SignupContainer button{
+    width: 100%;
+    height: 45px;
+    border: none;
     border-radius: 5px;
-
-    box-shadow: 0px 0px 3px 0px  #8b8b8b;
-
-    background-color: white;
-
-
-    backdrop-filter: blur(10px);
-
-    z-index: 2;
-
+    font-weight: 500;
+}
+.SignupContainer input::placeholder{
+    color: rgb(37, 37, 37);
+}
+.SignupContainer{
+    width: 470px;
+    margin: 50px  auto;
+    background-color: #fff;
+    box-shadow: 0px 0px 3px grey;
+    border-radius: 8px;
+   padding-block: 30px;
+   padding-inline: 20px;
 }
 
+.SignupContainer .first-heading h1{
+    font-weight: 700;
+    font-size: 26px;
+    margin-left: 10px;
+    color: rgb(254, 104, 50);
+}
+.SignupContainer .first-heading p {
+    margin-top: 5px;
+    color: rgb(49, 49, 49);
+    line-height: 17px;
+    font-size: 12px;
+    margin-left: 12px;
+}
+.SignupContainer .second-inputs{
+    width: 90%;
+    margin: auto;
+    padding-top: 30px;
+    display: flex;
+    flex-direction: column;
+   row-gap: 20px;
+}
+.SignupContainer .third-butons{
+    padding-top: 30px;
+    width: 85%;
+    margin: auto;
+}
+.SignupContainer .third-butons button{
+    background-color: rgb(251, 109, 57);
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+    &:hover{
+        background-color: transparent;
+        border: 2px solid coral;
+        color: black;
+        transition: 0.35s ease-in;
+    }
+}
 
-.signup-header h1{
-    font-size: 1.5rem;
-    word-spacing: 5px;
-    padding-bottom: 15px;
-    color: #131010;
+.SignupContainer .last-but{
+    width: 85%;
+    margin: auto;
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 15px;
+}
+.SignupContainer .f{
+    border: 1px solid blue;
+    color: blue;
+    background-color: transparent;
+    &:hover{
+        background-color: blue;
+        color: white;
+        transition: 0.35s ease-in;
+    }
+}
+.SignupContainer .g{
+   border: 1px solid crimson;
+   color: crimson;
+   background-color: transparent;
+   &:hover{
+    background-color: rgb(240, 63, 98);
+    color: white;
+    transition: 0.35s ease-in;
+}
+}
+.SignupContainer .last-but p {
+    font-size: 14px;
     text-align: center;
 }
-
-/* Stylin of signup-body */
-
-.signup-body{
-
-    margin: 20px 0;
-
-}
-
-.signup-body .input{
-
-    margin: 25px 0;
-
-}
-
-.signup-body .input label{
-
-    display: block;
-
-    font-size: 1rem;
-
-    font-weight: 600;
-
-}
-
-.signup-body>form>.input>input ,.signup-body select{
-
-    width: 100%;
-
-    padding: 10px;
-
-    border: 1px solid gray;
-
-    border-radius: 5px;
-
-    font-size: 1rem;
-
-    margin-top: 5px;
-
-}
-
-.button{
-
-    border: none;
-
-    background-color: #3498db;
-
-    color: white;
-
-    cursor: pointer;
-
-    width: 100%;
-
-    padding: 10px;
-
-    border-radius: 5px;
-
-    font-size: 1rem;
-
-    margin-top: 5px;
-
-}
-
-.input p {
-
-    /* text-align: center; */
-    color: rgb(82, 82, 82);
-
-}
-
-.input p a {
-
+.SignupContainer .last-but p a{
+    color: rgb(254, 104, 50);
     text-decoration: none;
-    color: rgb(0, 116, 248);
-    
+    font-weight: 500;
 }
-/* Hover State of Submit */
-
-.button:hover{
-
-    background-color: #206796;
-    
+@media(max-width:500px){
+    .SignupContainer {
+        width: 350px;
+        padding-inline: 10px;
+    }
+    .SignupContainer .second-inputs{
+        width: 90%;
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ----------- LOGIN --------------  */
+.loginContainer input{
+    width: 100%;
+    border: none;
+    outline: none;
+    border-bottom: 0.9px solid rgb(239, 122, 5);
+    padding-left: 5px;
+    padding-bottom: 5px;
+    font-family: 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    &::placeholder{
+        color: rgb(100, 99, 99);
+    }
+}
+.loginContainer button{
+    width: 100%;
+    height: 45px;
+    border: none;
+    border-radius: 5px;
+    font-weight: 500;
+}
+.loginContainer input::placeholder{
+    color: rgb(37, 37, 37);
+}
+.loginContainer{
+    width: 430px;
+    margin: 90px  auto;
+    background-color: #fff;
+    box-shadow: 0px 0px 3px grey;
+    border-radius: 9px;
+   padding-block: 30px;
+   padding-inline: 20px;
+}
+
+.first-heading h1{
+    font-size: 26px;
+    font-weight: 700;
+    margin-left: 10px;
+    color: rgb(254, 104, 50);
+}
+.first-heading p {
+    margin-top: 2px;
+    color: rgb(77, 76, 76);
+    line-height: 17px;
+    font-size: 13px;
+    margin-left: 15px;
+}
+.second-inputs{
+    width: 90%;
+    margin: auto;
+    padding-top: 40px;
+    display: flex;
+    flex-direction: column;
+   row-gap: 20px;
+}
+.third-butons{
+    padding-top: 40px;
+    width: 85%;
+    margin: auto;
+}
+.third-butons button{
+    background-color: rgb(251, 109, 57);
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+    &:hover{
+        background-color: transparent;
+        border: 2px solid coral;
+        color: black;
+    }
+}
+.third-butons p {
+    margin-top: 15px;
+    font-size: 14px;
+    text-align: center;
+}
+.third-butons p a{
+    color: rgb(254, 104, 50);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+@media(max-width:500px){
+    .container{
+        width: 350px;
+        padding-inline: 10px;
+    }
+}
+
+
 
 
 
@@ -374,13 +478,51 @@ select {
     color: rgba(0, 0, 0, 0.76);
 }
 
+.dashboardRightHeaderInOf {
+    cursor: pointer;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    border: 1px solid black;
+    font-weight: bold;
+    color: black;
+    font-size: 0.9rem;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
 
+.s-l {
+    position: absolute;
+    background-color: white;
+    width: 85px;
+    border: 1px solid gainsboro;
+    color: var(--color1);
+    border-radius: 3px;
+    bottom: -61px;
+    z-index: 10;
+    right: -3px;
+    display: none;
 
+}
 
+.s-l a {
+    text-decoration: none;
+    color: var(--color1);
+}
 
+.s-l p{
+    text-align: left;
+    padding: 5px 10px;
+    transition: .2s ease;
+}
 
-
-
+.s-l p:hover a{
+    color: var(--color2);
+}
+.dashboardRightHeaderInOf:hover .s-l{
+    display: block;
+}
 
 
 
@@ -829,6 +971,7 @@ input[name='r'] {
     border: 1px solid gray;
     padding: 2px;
     transition: 0.2s ease;
+    cursor: pointer;
 
 }
 
@@ -919,6 +1062,12 @@ footer {
     align-items: center;
     color: white;
     border-radius: 50%;
+    transition: .2s ease-in-out;
+    cursor: pointer;
+
+    &:hover{
+        font-size: 1.2rem;
+    }
 
 }
 
@@ -1028,7 +1177,9 @@ footer {
 .shoppingCarts {
 
     width: 66%;
-    border: 1px solid black;
+    /* border: 1px solid rgba(109, 109, 109, 0.247); */
+    /* box-shadow: 0px 0px 2px 1px gainsboro; */
+    box-shadow: 0px 0px 3px 0px rgba(92, 92, 92, 0.548);
     
 }
 
@@ -1044,13 +1195,17 @@ footer {
 
     padding-block: 10px;
     padding-left: 10px;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid rgba(124, 124, 124, 0.349);
+    /* box-shadow: 0px 0px 2px 1px gainsboro; */
 
 }
 .checkOutBoxes {
 
     width: 29%;
-    border: 1px solid black;
+    /* border: 1px solid rgba(126, 126, 126, 0.24); */
+    box-shadow: 0px 0px 3px 0px rgba(92, 92, 92, 0.548);
+    /* box-shadow: 0px 0px 2px 1px gainsboro; */
+    
 
 }
 
@@ -1092,7 +1247,9 @@ footer {
 
 .shoppingCartBoxQunatity {
 
-    border: 1px solid black;
+    /* border: 1px solid black; */
+    box-shadow: 0px 0px 3px 0px rgba(92, 92, 92, 0.548);
+    /* border: 1px solid rgba(126, 126, 126, 0.24); */
     width: 70px;
     height: 40px;
     justify-content: space-between;
@@ -1114,19 +1271,36 @@ footer {
 
 .shoppingCartBoxQunatity .Increase {
 
-    width: 17px;
+    width: 19px;
     height: 50%;
-    border: 1px solid black;
+    /* border: 1px solid black; */
+    border: 1px solid rgba(126, 126, 126, 0.24);
     cursor: pointer;
+    font-size: 0.7rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* padding: 2px; */
+    &:active{
+        color: var(--color2);
+    }
 }
 
 .shoppingCartBoxQunatity .Decrease {
 
-    width: 17px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* padding: 5px; */
+    font-size: 0.7rem;
+    width: 19px;
     height: 50%;
-    border: 1px solid black;
+    /* border: 1px solid black; */
+    border: 1px solid rgba(126, 126, 126, 0.24);
     cursor: pointer;
-    
+    &:active{
+        color: var(--color2);
+    }
 }
 
 
@@ -1158,9 +1332,16 @@ footer {
 
 }
 
+.totalAmount{
+
+    border-top: 1px solid rgba(126, 126, 126, 0.24);
+    border-bottom: 1px solid rgba(126, 126, 126, 0.24);
+}
+
 .itemPrices,.totalAmount {
 
-    border-bottom: 1px solid black;
+    /* border-bottom: 1px solid black; */
+    /* border: 1px solid rgba(126, 126, 126, 0.24); */
     padding-block: 15px;
     padding-inline: 20px;
 }
@@ -1190,6 +1371,11 @@ footer {
     color: white;
     font-weight: bold;
     cursor: pointer;
+    /* transition: .2s ease-in-out; */
+
+    &:hover{
+        background-color: var(--color2);
+    }
 
 }
 

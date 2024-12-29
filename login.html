@@ -8,65 +8,22 @@
 </head>
 <body>
 
-    <div class="login">
-
-        
-          <!-- inner-box is here -->
-          <div class="inner-box">
-
-            <!-- header -->
-            <header>
-                <div class="signup-header">
-                    <h1>LOG  INTO  ACCOUNT</h1>
-                </div>
-            </header>
-            
-            <!-- Sign body -->
-            <main class="signup-body">
-
-                <!-- form -->
-                <form>
-
-                    <div class="input">
+    <div class="loginContainer">
+        <div class="first-heading">
+            <h1>Welcome Back!</h1>
+            <p>Sign in to your account</p>
+        </div>
+        <div class="second-inputs">
+            <input type="email" placeholder="Email" id="userLoginEmail">
+            <input type="password" placeholder="Password" id="userLoginPassword">
+        </div>
+        <div class="third-butons">
+            <button onclick="loginMatchData()">Login</button>
+            <p>Dont Have an acoount? <a href="./signUp.html">Sign Up</a></p>
+        </div>
+</div>
 
 
-                        <label for="userLoginEmail">Email</label>
-                        <input type="email" name="YourEmail"  id="userLoginEmail" >
-
-                    </div>
-
-                    <div class="input">
-
-                        <label for="userLoginPassword">Password</label>
-                        <input type="password" name="YourPassword" id="userLoginPassword" >
-
-                        <p>Forgot your password?</p>
-
-                    </div>
-
-
-                    <!-- input button is here -->
-                    <div class="input">
-
-                        <button type="button" class="button" onclick="loginMatchData()">Login</button>
-
-                    </div>
-
-                    <div class="input">
-
-                        <p>Don't have an account ? <a href="./signUp.html"> Sign up</a></p>
-
-                    </div>
-                    
-                </form>
-
-            </main>
-
-
-          </div>
-
-
-    </div>
     
     <script src="./app.js"></script>
 </body>

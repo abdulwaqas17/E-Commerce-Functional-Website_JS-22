@@ -17,6 +17,12 @@ var addToCartArray =
   JSON.parse(window.localStorage.getItem("addToCartArray")) || [];
 console.log(addToCartArray);
 
+
+
+
+
+
+// ------------- signupDataStore
 function signupDataStore() {
   // obj for users data
   let usersData = {
@@ -79,6 +85,9 @@ function signupDataStore() {
         console.log(usersStr);
         // store user array (string form) in local storage
         window.localStorage.setItem("USERS", usersStr);
+        
+        alert("Sign Up Successfully");
+
         // to render login page
         window.location.href = "./login.html";
       }
@@ -105,6 +114,12 @@ function signupDataStore() {
 
   console.log("meloo");
 }
+
+
+
+
+
+
 
 // match the data to local storage and go to homepage
 function loginMatchData() {
@@ -173,6 +188,14 @@ function loginMatchData() {
     }
   }
 }
+
+
+
+
+
+
+
+
 
 // onlneStore for all company data
 var OnlineStore = {
@@ -466,6 +489,11 @@ window.localStorage.setItem('PRODUCTS',JSON.stringify(OnlineStore.products));
 
 
 
+
+
+
+
+
 // ---------  FOR SHOWING PRODUCTS IN HOME PAGE  -----------
 if (document.querySelector(".productsBoxes")) {
   // console.log("ye home pr hi chaly gi bs,");
@@ -499,6 +527,11 @@ if (document.querySelector(".productsBoxes")) {
 } else {
   console.log("home page not found");
 }
+
+
+
+
+
 
 
 
@@ -587,8 +620,8 @@ if (document.querySelector(".shoppingCartBoxes")) {
                                     </div>
         
                                     <div class="shoppingCartBoxQunatityArrow">
-                                        <div class="Increase" id="Inc-${i}" onclick="IncThis(this)">+1</div>
-                                        <div class="Decrease" id="Dec-${i}" onclick="DecThis(this)">-1</div>
+                                        <div class="Increase" id="Inc-${i}" onclick="IncThis(this)"><i class="fa-solid fa-angle-up"></i></div>
+                                        <div class="Decrease" id="Dec-${i}" onclick="DecThis(this)"><i class="fa-solid fa-angle-down"></i></div>
                                     </div>
         
                                 </div>
@@ -664,8 +697,13 @@ if (document.querySelector(".shoppingCartBoxes")) {
   console.log("not found page");
 }
 
+// console.log(totalItems);
 
-console.log(totalItems);
+
+
+
+
+
 
 
 
@@ -1027,6 +1065,12 @@ function addCart(e) {
 
 
 
+
+
+
+
+
+
 // --------- for hide to cart box 
 // for cancel the product box 
 function cancelAddToCartBox() {
@@ -1039,10 +1083,21 @@ function cancelAddToCartBox() {
 }
 
 
+
+
+
+
+
+
 // ---------- for move to carts page 
 function proceedToCheckOut() {
   window.location.href = './carts.html'
 }
+
+
+
+
+
 
 
 
@@ -1066,6 +1121,13 @@ function delThis(del) {
   location.reload(); // page refresh
 }
 
+
+
+
+
+
+
+
 // ------ FUNCTION FOR (++) IN THE CART QUANTITY -------
 function IncThis(Inc) {
   console.log(Inc);
@@ -1086,6 +1148,12 @@ function IncThis(Inc) {
 
   location.reload(); // page refresh
 }
+
+
+
+
+
+
 
 // ------ FUNCTION FOR (--) IN THE CART QUANTITY -------
 function DecThis(Dec) {
@@ -1114,6 +1182,12 @@ function DecThis(Dec) {
     alert("if you don't need this cart, You Can Remove It!");
   }
 }
+
+
+
+
+
+
 
 // ------ FUNCTION FOR CHECK OUT / BUY THE CARTS (ORDER DONE) -------
 function checkOut() {
@@ -1150,6 +1224,12 @@ function checkOut() {
 
 // phelay products is lien show nhe ho rhi thin, Q K hum ne Ye kam upper kia tha aur phie erroe A rha tha aur us se nichay ka code chal nhe rha tha
 // Jab bhi globlay koi kam kisi aik specific page k lien kro wao to End m krwao Ta k code m Ager error aye to last m aye, Aur upper ka sara code chal gye
+
+
+
+
+
+
 if (document.getElementById("currUserName")) {
   var currUser = JSON.parse(window.localStorage.getItem("currUserData"));
   console.log(currUser);
@@ -1167,12 +1247,15 @@ if (document.getElementById("currUserName")) {
 // console.log(OnlineStore.ordersDetail);
 
 // console.log("product show krwany ka kam hogia");
-console.log(addToCartArray);
+// console.log(addToCartArray);
+
+
+
+
+
+
 
 // ----------------- FOR DASHBOARD -----------------------
-
-
-
 // for showDashboard()
 function showDashboard() {
   var showDashboard = document.querySelector(".content-area");
@@ -1219,6 +1302,10 @@ function showDashboard() {
 
 
 
+
+
+
+
 // for showUsers()
 function showUsers() {
   var showUsers = document.querySelector(".content-area");
@@ -1256,6 +1343,10 @@ function showUsers() {
   </tr>`;
   }
 }
+
+
+
+
 
 
 
@@ -1304,6 +1395,11 @@ function showOrders() {
   </tr>`;
   }
 }
+
+
+
+
+
 
 
 
@@ -1358,6 +1454,11 @@ function showProducts() {
 
 
 
+
+
+
+
+
 // for del product box 
 function delProduct(d) {
 
@@ -1380,6 +1481,12 @@ function delProduct(d) {
 
 
 }
+
+
+
+
+
+
 
 
 
@@ -1425,6 +1532,12 @@ function editProduct(edit) {
 
 
 
+
+
+
+
+
+
 // for save changes 
 function saveChanges(save) {
 
@@ -1452,6 +1565,14 @@ function saveChanges(save) {
 
 
 
+
+
+
+
+
+
+
+
 // for cancel the product box 
 function cancel() {
 
@@ -1461,13 +1582,6 @@ function cancel() {
   shadow.classList.remove('show');
 
 }
-
-
-
-
-
-
-
 
 
 
@@ -1534,21 +1648,3 @@ ANS : MY TEMPORARY SOLUTION IS, AGER HER FILE K LIEN KAM KRWANA H TO UPPER LIKHO
 
 */
 
-/*Work Todo 
-
-
-1) Todo            
-2) Calculator
-3) 14 % OFF Task
-4) OPPS
-5) Objects
-6) Array Methods
-7) E Commerce
-
-
-
-
-
-
-
-*/
