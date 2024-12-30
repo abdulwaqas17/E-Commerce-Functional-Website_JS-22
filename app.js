@@ -730,7 +730,7 @@ function addCart(e) {
     addToCartPage.innerHTML = `
     <div class="modal-header">
         
-        <h4 class="modal-title h6 text-xs-center" id="myModalLabel"><i class="material-icons"></i>Product successfully added to your shopping cart</h4>
+        <h4 class="modal-title h6 text-xs-center" id="myModalLabel"><i class="fa-solid fa-check"></i>Product successfully added to your shopping cart</h4>
 
         <div class="cross" onclick='cancelAddToCartBox()'>x</div>
 
@@ -755,12 +755,12 @@ function addCart(e) {
           <div class="col-md-6">
             <div class="cart-content">
                               <p class="cart-products-count">Your carts are available on carts page</p>
-                            <p><strong>Total products:</strong>&nbsp;$1,788.00</p>
+                            <p><strong>Total products:</strong>&nbsp;1</p>
               <p><strong>Total shipping:</strong>&nbsp;$7.00 </p>
-                            	<p><strong>Taxes</strong>&nbsp;$0.00</p>
-                            <p><strong>Total:</strong>&nbsp;$1,795.00 (tax excl.)</p>
-              <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick='cancelAddToCartBox()'>Continue shopping</button>
-              <a class="btn btn-primary" onclick='proceedToCheckOut()'><i class="material-icons"></i>proceed to checkout</a>
+                            	<p><strong>Taxes</strong>&nbsp;$4.80</p>
+                            <p><strong>Total:</strong>&nbsp;Check Out for view</p>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick='cancelAddToCartBox()'>Continue Shopping</button>
+              <a class="btn btn-primary" onclick='proceedToCheckOut()'><i class="fa-solid fa-check"></i>Proceed to Checkout</a>
             </div>
           </div>
         </div>
@@ -1403,7 +1403,7 @@ function showOrders() {
 
 
 
-// for showOrders()
+// for showProducts()
 function showProducts() {
   var showUsers = document.querySelector(".content-area");
 
@@ -1441,7 +1441,7 @@ function showProducts() {
       <td><img src="${OnlineStore.products[i].pImage}" alt="product img"><span>${OnlineStore.products[i].pName}</span></td>
       <td>${OnlineStore.products[i].pCategory}</td>
       <td>${OnlineStore.products[i].pStock}</td>
-      <td>${OnlineStore.products[i].pPrice} <span onclick="editProduct(this)" id = "edit-${i}" >edit</span></td>
+      <td>${OnlineStore.products[i].pPrice} </td>
       <td>
       <span onclick="editProduct(this)" class='editCard' id = "edit-${i}" >edit</span> 
       <span onclick="delProduct(this)" class='delCard'  id = "delCard-${i}" >Del</span>
@@ -1586,6 +1586,19 @@ function cancel() {
 
 
 
+
+
+// for show s-l box 
+if(document.querySelector('.dashboardRightHeaderInOf')){
+
+  var dashboardRightHeaderInOf = document.querySelector('.dashboardRightHeaderInOf');
+
+  dashboardRightHeaderInOf.addEventListener('click',()=>{
+
+    document.querySelector('.s-l').classList.toggle('show');
+
+  })
+}
 
 
 

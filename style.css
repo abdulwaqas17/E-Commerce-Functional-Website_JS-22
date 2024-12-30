@@ -444,6 +444,9 @@ select {
 
 }
 
+.categoryBar .fa-list-ul{
+    padding-right: 5px;
+}
 .Nav .categoryBar:hover #navDropdown{
     display: block !important;
     /* color: ; */
@@ -483,14 +486,26 @@ select {
     border-radius: 50%;
     width: 35px;
     height: 35px;
-    border: 1px solid black;
+    border: none;
+    /* border: 1px solid black; */
     font-weight: bold;
-    color: black;
-    font-size: 0.9rem;
+    color: rgb(37, 37, 37);
+    background-color: rgba(224, 221, 221, 0.801);
+    font-size: 0.85rem;
     justify-content: center;
     align-items: center;
     position: relative;
+    transition: .2s ease-in-out;
 }
+
+.dashboardRightHeaderInOf:hover{
+
+
+    background-color: rgba(224, 221, 221); ;
+
+}
+
+
 
 .s-l {
     position: absolute;
@@ -519,9 +534,6 @@ select {
 
 .s-l p:hover a{
     color: var(--color2);
-}
-.dashboardRightHeaderInOf:hover .s-l{
-    display: block;
 }
 
 
@@ -681,6 +693,7 @@ input[name='r'] {
     top: 127px;
     background-color: white;
     color: black !important;
+    transition: 0.5s ease-in-out;
 }
 
 .shopDropdownBoxes{
@@ -718,6 +731,7 @@ input[name='r'] {
 
 #SHOP:hover .shopDropdown{
     display: block;
+    transition: .5;
 }
 
 
@@ -1394,7 +1408,7 @@ footer {
     /* padding: 20px; */
     width: 75%;
     margin: 40px auto;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 5px 3px rgba(66, 66, 66, 0.548);
     position: fixed;
     top: 50px;
     left: 12%;
@@ -1404,7 +1418,7 @@ footer {
   .modal-header {
     border-bottom: 1px solid #ddd;
     padding: 10px;
-    background-color: rgb(255, 136, 0);
+    background-color: var(--color2);
     text-align: center;
     position: relative;
   
@@ -1413,10 +1427,11 @@ footer {
   .cross {
     position: absolute;
     bottom: 10px;
-    right: 15px;
+    right: 17px;
     color: white;
     font-weight: bolder;
     cursor: pointer;
+    font-size: 1.3rem;
   }
   
   .modal-header .modal-title {
@@ -1426,6 +1441,12 @@ footer {
     
   }
   
+  .modal-content .fa-check{
+
+    padding-right: 10px;
+
+  }
+
   .product-image {
     width: 150px;
     height: 150px;
@@ -1434,9 +1455,9 @@ footer {
     margin-right: 20px;
   }
   
-  .product-details {
+  /* .product-details {
     padding-left: 20px;
-  }
+  } */
   
   .product-name {
     font-size: 1rem;
@@ -1460,11 +1481,12 @@ footer {
   }
   
   .btn-secondary {
-    background-color: #ff640a;
+    background-color: var(--color2);
     color: #fff;
     padding: 12px 20px;
     border: none;
     font-size: 1rem;
+    font-weight: bold;
     /* border-radius: 5px; */
     cursor: pointer;
     margin-top: 10px;
@@ -1476,11 +1498,12 @@ footer {
   }
   
   .btn-primary {
-    background-color: #ff5e00;
+    background-color:var(--color2);
     color: #fff;
     padding: 12px 20px;
     border: none;
     font-size: 1rem;
+    font-weight: bold;
     /* border-radius: 5px; */
     cursor: pointer;
     text-decoration: none;
@@ -1694,26 +1717,31 @@ th {
     width: 100%;
     /* margin: 100px auto; */
     position: fixed;
-    top: 50px;
+    top: 30px;
     left: 30%;
     z-index: 100;
     /* justify-content: center;
     align-items: center; */
   }
   
+  .editProductBox .product-image{
+      margin-bottom: 20px;
+
+  }
 
   .product-image img {
-    width: 150px;
+    width: 160px;
     height: 150px;
     border-radius: 8px;
     object-fit: cover;
-    border: 1px solid rgb(114, 114, 114);
+    /* border: 1px solid rgb(114, 114, 114); */
+    box-shadow: 0px 0px 7px 1px gainsboro;
    
   }
   
   .product-details {
     flex-grow: 1;
-    margin-left: 16px;
+    /* margin-left: 16px; */
   }
   
   .product-details form {
@@ -1737,16 +1765,19 @@ th {
   }
   
   .product-details button {
-    background-color: #007BFF;
+    background-color: var(--color1);
     color: #fff;
     padding: 10px 15px;
+    font-weight: bold;
+    font-size: 1rem;
     border: none;
     border-radius: 4px;
     cursor: pointer;
+    transition: .2s ease-in-out;
   }
   
   .product-details button:hover {
-    background-color: #0056b3;
+    background-color: var(--color2);
   }
 
   .cancle {
@@ -1754,6 +1785,16 @@ th {
     top: 30px;
     right: 30px;
     cursor: pointer;
+    background-color: var(--color2);
+    color: white;
+    width: 33px;
+    height: 33px;
+    font-size: 0.85rem;
+    font-weight: bold;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   
