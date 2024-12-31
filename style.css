@@ -1600,9 +1600,10 @@ footer {
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
-    gap: 570px;
+    /* gap: 570px; */
+    justify-content: space-between;
     align-items: center;
-    padding: 10px;
+    padding: 10px 30px;
     background-color: rgb(234, 115, 39);
     color: #fff;
     /* border-radius: 10px; */
@@ -1610,15 +1611,16 @@ footer {
     position: fixed;
     top: 0px;
     /* margin-left: 240px; */
-    width: 100%;
+    width: 82%;
     z-index: 5;
+    /* padding: ; */
 }
 
 .search-bar input {
     padding: 10px;
     border: none;
     border-radius: 5px;
-    width: 200px;
+    width: 500px;
 }
 
 .search-bar button {
@@ -1652,7 +1654,46 @@ footer {
     padding-bottom: 20px;
     font-size: 2.3rem;
     color: rgb(34, 34, 34);
+    /* text-align: center; */
+    text-align: center;
+    position: relative;
 }
+
+.content-area h2::before {
+    content: '';
+    width: 70px;
+    background-color: var(--color2);
+    height: 3px;
+    position: absolute;
+    top: 38%;
+    left: 30%;
+}
+
+.content-area h2::after{
+    content: '';
+    width: 70px;
+    background-color: var(--color2);
+    height: 3px;
+    position: absolute;
+    top: 38%;
+    right: 30%;
+
+}
+
+.items_L-R {
+    justify-content: space-between;
+    align-items: center;
+    margin-block: 30px;
+}
+
+.items_R select {
+    border: 1px solid rgba(11, 73, 167, 0.158);
+    padding: 10px 15px;
+    font-weight: bold;
+    font-size: 1rem;
+    border-radius: 5px;
+}
+
 table {
     border-collapse: collapse;
     width: 100%;
@@ -1697,13 +1738,110 @@ th {
   
 }
 
-/* .productsTr tr td:last-child {
-   
+.addAProduct{
+    margin-left: 20px;
+    display: inline-block;
+    cursor: pointer;
+    font-size: 1.3rem;
+}
 
-} */
 
 
 
+
+
+
+
+
+
+
+/* for add product box --------------  */
+.product-box {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    z-index: 100;
+    position: fixed;
+    top: 15px;
+    left: 35%;
+}
+
+.product-box h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #333;
+    text-align: center;
+}
+
+.product-box label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #555;
+}
+
+.product-box input,
+.product-box textarea,
+.product-box select,
+.product-box button {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.product-box textarea {
+    resize: none;
+}
+
+.product-box button {
+    background-color: #28a745;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+}
+
+.product-box button:hover {
+    background-color: #218838;
+}
+
+.product-box .image-upload {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border: 2px dashed #ddd;
+    padding: 20px;
+    cursor: pointer;
+}
+
+.product-box .image-upload input[type="file"] {
+    display: none;
+}
+
+.product-box .image-upload p {
+    color: #999;
+    margin-top: 10px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* for edit product box --------------  */
 .editProductBox {
     position: relative;
     display: flex;

@@ -3,918 +3,121 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Add New Product</title>
     <style>
-
         body {
-            font-family: Arial, Helvetica, sans-serif;
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
             align-items: center;
+            height: 100vh;
         }
 
         .product-box {
-  display: flex;
-  flex-direction: row;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  background-color: #fff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  padding: 16px;
-  max-width: 600px;
-  width: 100%;
-}
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+        }
 
-.product-image img {
-  width: 150px;
-  height: 150px;
-  border-radius: 8px;
-  object-fit: cover;
-}
+        .product-box h2 {
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: #333;
+            text-align: center;
+        }
 
-.product-details {
-  flex-grow: 1;
-  margin-left: 16px;
-}
+        .product-box label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #555;
+        }
 
-.product-details form {
-  display: flex;
-  flex-direction: column;
-}
+        .product-box input,
+        .product-box textarea,
+        .product-box select,
+        .product-box button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+        }
 
-.product-details label {
-  margin: 8px 0 4px;
-  font-weight: bold;
-}
+        .product-box textarea {
+            resize: none;
+        }
 
-.product-details input,
-.product-details textarea {
-  padding: 8px;
-  margin-bottom: 12px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  width: 100%;
-  box-sizing: border-box;
-}
+        .product-box button {
+            background-color: #28a745;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            border: none;
+        }
 
-.product-details button {
-  background-color: #007BFF;
-  color: #fff;
-  padding: 10px 15px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
+        .product-box button:hover {
+            background-color: #218838;
+        }
 
-.product-details button:hover {
-  background-color: #0056b3;
-}
+        .product-box .image-upload {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            border: 2px dashed #ddd;
+            padding: 20px;
+            cursor: pointer;
+        }
 
+        .product-box .image-upload input[type="file"] {
+            display: none;
+        }
 
+        .product-box .image-upload p {
+            color: #999;
+            margin-top: 10px;
+        }
     </style>
 </head>
 <body>
-
-
-    <div class="signUp">
-
-
-        <!-- inner-box is here -->
-        <div class="inner-box">
-
-         <!-- header -->
-         <header>
-             <div class="signup-header">
-                 <h1>Sign Up</h1>
-             </div>
-         </header>
-         
-         <!-- Sign body -->
-         <main class="signup-body">
-
-             <!-- form -->
-             <form>
-
-                 <div class="input">
-                     <input type="text" name="fullName" placeholder="Full Name" id="userName" >
-
-                 </div>
-
-                 <div class="input">
-
-
-                     <input type="email" name="YourEmail" placeholder="Email" id="userEmail" >
-
-                 </div>
-<!-- 
-                 <div class="input">
-
-
-                     <select name="roles" id="userRole">
-                         <option value="Employee">Employee</option>
-                         <option value="Manager">Manager</option>
-                         <option value="Admin">Admin</option>
-                     </select>
-
-                 </div> -->
-
-                 <div class="input">
-
-             
-                     <input type="text" name="cityName" placeholder="City" id="userCity" >
-
-                 </div>
-
-                 <div class="input">
-             
-                     <input type="number" name="PhoneNumber" placeholder="Phone Number" id="userPhone" >
-
-                 </div>
-
-                 <div class="input">
-
-                     
-                     <input type="password" name="YourPassword" id="userPassword" placeholder="Password" >
-
-                 </div>
-
-
-                 <!-- input button is here -->
-                 <div class="input">
-
-                     <button type="button" class="button" onclick="signupDataStore()">Sign Up</button>
-
-                 </div>
-
-                 <div class="input">
-
-                     <p>Already have an account ? <a href="./login.html" > Log in</a></p>
-
-                 </div>
-                 
-             </form>
-
-         </main>
-
-
-     </div>
-
- </div>
-
-    
-    <div class="login">
-
-        
-        <!-- inner-box is here -->
-        <div class="inner-box">
-
-          <!-- header -->
-          <header>
-              <div class="signup-header">
-                  <h1>LOG  INTO  ACCOUNT</h1>
-              </div>
-          </header>
-          
-          <!-- Sign body -->
-          <main class="signup-body">
-
-              <!-- form -->
-              <form>
-
-                  <div class="input">
-
-
-                      <label for="userLoginEmail">Email</label>
-                      <input type="email" name="YourEmail"  id="userLoginEmail" >
-
-                  </div>
-
-                  <div class="input">
-
-                      <label for="userLoginPassword">Password</label>
-                      <input type="password" name="YourPassword" id="userLoginPassword" >
-
-                      <p>Forgot your password?</p>
-
-                  </div>
-
-
-                  <!-- input button is here -->
-                  <div class="input">
-
-                      <button type="button" class="button" onclick="loginMatchData()">Login</button>
-
-                  </div>
-
-                  <div class="input">
-
-                      <p>Don't have an account ? <a href="./signUp.html"> Sign up</a></p>
-
-                  </div>
-                  
-              </form>
-
-          </main>
-
-
-        </div>
-
-
-  </div>
-
     <div class="product-box">
-        <div class="product-image">
-          <img src="https://via.placeholder.com/150" alt="Product Image">
-        </div>
-        <div class="product-details">
-          <form>
-            <label for="product-name">Product Name:</label>
-            <input type="text" id="product-name" name="product-name" value="Sample Product">
-    
-            <label for="description">Description:</label>
-            <textarea id="description" name="description" rows="3">This is a sample product description.</textarea>
-    
-            <label for="price">Price:</label>
-            <input type="number" id="price" name="price" value="50.00" step="0.01">
-    
-            <label for="stock">Stock:</label>
-            <input type="number" id="stock" name="stock" value="100">
-    
-            <button type="submit">Save</button>
-          </form>
-        </div>
-    </div>
-
-    
-    <!-- <div class="editProductBox none">
-
-        <div class="editProductBoxImg">
-            <h2>Product Picture</h2>
-            <img src="./assets/asset 21.jpeg" alt="">
-        </div>
-        <div class="editProductBoxContent">
-            <h2>Product Details</h2>
-           
-            <input type="text" value="Swine voluptate reiciendis votibus">
-            
-            <label>Category :
-            <input type="text" value="Laptop">
-            </label>
-            <label>Price :
-            <input type="text" value="34999">
-            </label>
-            <label>Stock :
-            <input type="text" value="780">
-            </label>
-       
-        </div> -->
-        
-    </div>
-
-
-    <h1>Demo for Enhance Concept!</h1>
-    
-    <div class="productss">
-
-        
-                <!-- productBox is here  -->
-                <div class="productBox">
-
-                    <div class="productBoxTop">
-
-                        <img src="./assets/asset 9.jpeg" alt="product">
-
-                    </div>
-
-                    <div class="productBoxBottom">
-
-                        <p>Swine voluptate reiciendis votibus</p>
-                        <p class="productBoxPrice">$111.51</p>
-                        <p>a a a a a</p>
-
-                    </div>
-
-                </div>
-
-                <!-- productBox is here  -->
-                <div class="productBox">
-
-                    <div class="productBoxTop">
-
-                        <img src="./assets/asset 9.jpeg" alt="product">
-
-                    </div>
-
-                    <div class="productBoxBottom">
-
-                        <p>Swine voluptate reiciendis votibus</p>
-                        <p class="productBoxPrice">$111.51</p>
-                        <p>a a a a a</p>
-
-                    </div>
-
-                </div>
-
-                <!-- productBox is here  -->
-                <div class="productBox">
-
-                    <div class="productBoxTop">
-
-                        <img src="./assets/asset 9.jpeg" alt="product">
-
-                    </div>
-
-                    <div class="productBoxBottom">
-
-                        <p>Swine voluptate reiciendis votibus</p>
-                        <p class="productBoxPrice">$111.51</p>
-                        <p>a a a a a</p>
-
-                    </div>
-
-                </div>
-
-                <!-- productBox is here  -->
-                <div class="productBox">
-
-                    <div class="productBoxTop">
-
-                        <img src="./assets/asset 9.jpeg" alt="product">
-
-                    </div>
-
-                    <div class="productBoxBottom">
-
-                        <p>Swine voluptate reiciendis votibus</p>
-                        <p class="productBoxPrice">$111.51</p>
-                        <p>a a a a a</p>
-
-                    </div>
-
-                </div>
-
-                <!-- productBox is here  -->
-                <div class="productBox">
-
-                    <div class="productBoxTop">
-
-                        <img src="./assets/asset 9.jpeg" alt="product">
-
-                    </div>
-
-                    <div class="productBoxBottom">
-
-                        <p>Swine voluptate reiciendis votibus</p>
-                        <p class="productBoxPrice">$111.51</p>
-                        <p>a a a a a</p>
-
-                    </div>
-
-                </div>
-
-                <!-- productBox is here  -->
-                <div class="productBox">
-
-                    <div class="productBoxTop">
-
-                        <img src="./assets/asset 9.jpeg" alt="product">
-
-                    </div>
-
-                    <div class="productBoxBottom">
-
-                        <p>Swine voluptate reiciendis votibus</p>
-                        <p class="productBoxPrice">$111.51</p>
-                        <p>a a a a a</p>
-
-                    </div>
-
-                </div>
-
-                <!-- productBox is here  -->
-                <div class="productBox">
-
-                    <div class="productBoxTop">
-
-                        <img src="./assets/asset 9.jpeg" alt="product">
-
-                    </div>
-
-                    <div class="productBoxBottom">
-
-                        <p>Swine voluptate reiciendis votibus</p>
-                        <p class="productBoxPrice">$111.51</p>
-                        <p>a a a a a</p>
-
-                    </div>
-
-                </div>
-
-                <!-- productBox is here  -->
-                <div class="productBox">
-
-                    <div class="productBoxTop">
-
-                        <img src="./assets/asset 9.jpeg" alt="product">
-
-                    </div>
-
-                    <div class="productBoxBottom">
-
-                        <p>Swine voluptate reiciendis votibus</p>
-                        <p class="productBoxPrice">$111.51</p>
-                        <p>a a a a a</p>
-
-                    </div>
-
-                </div>
-
-                <!-- productBox is here  -->
-                <div class="productBox">
-
-                    <div class="productBoxTop">
-
-                        <img src="./assets/asset 9.jpeg" alt="product">
-
-                    </div>
-
-                    <div class="productBoxBottom">
-
-                        <p>Swine voluptate reiciendis votibus</p>
-                        <p class="productBoxPrice">$111.51</p>
-                        <p>a a a a a</p>
-
-                    </div>
-
-                </div>
-
-                <!-- productBox is here  -->
-                <div class="productBox">
-
-                    <div class="productBoxTop">
-
-                        <img src="./assets/asset 9.jpeg" alt="product">
-
-                    </div>
-
-                    <div class="productBoxBottom">
-
-                        <p>Swine voluptate reiciendis votibus</p>
-                        <p class="productBoxPrice">$111.51</p>
-                        <p>a a a a a</p>
-
-                    </div>
-
-                </div>
-
-                <!-- productBox is here  -->
-                <div class="productBox">
-
-                    <div class="productBoxTop">
-
-                        <img src="./assets/asset 9.jpeg" alt="product">
-
-                    </div>
-
-                    <div class="productBoxBottom">
-
-                        <p>Swine voluptate reiciendis votibus</p>
-                        <p class="productBoxPrice">$111.51</p>
-                        <p>a a a a a</p>
-
-                    </div>
-
-                </div>
-
-                <!-- productBox is here  -->
-                <div class="productBox">
-
-                    <div class="productBoxTop">
-
-                        <img src="./assets/asset 9.jpeg" alt="product">
-
-                    </div>
-
-                    <div class="productBoxBottom">
-
-                        <p>Swine voluptate reiciendis votibus</p>
-                        <p class="productBoxPrice">$111.51</p>
-                        <p>a a a a a</p>
-
-                    </div>
-
-                </div>
-
-                <!-- productBox is here  -->
-                <div class="productBox">
-
-                    <div class="productBoxTop">
-
-                        <img src="./assets/asset 9.jpeg" alt="product">
-
-                    </div>
-
-                    <div class="productBoxBottom">
-
-                        <p>Swine voluptate reiciendis votibus</p>
-                        <p class="productBoxPrice">$111.51</p>
-                        <p>a a a a a</p>
-
-                    </div>
-
-                </div>
-
-                <!-- productBox is here  -->
-                <div class="productBox">
-
-                    <div class="productBoxTop">
-
-                        <img src="./assets/asset 9.jpeg" alt="product">
-
-                    </div>
-
-                    <div class="productBoxBottom">
-
-                        <p>Swine voluptate reiciendis votibus</p>
-                        <p class="productBoxPrice">$111.51</p>
-                        <p>a a a a a</p>
-
-                    </div>
-
-                </div>
-
-                <!-- productBox is here  -->
-                <div class="productBox">
-
-                    <div class="productBoxTop">
-
-                        <img src="./assets/asset 9.jpeg" alt="product">
-
-                    </div>
-
-                    <div class="productBoxBottom">
-
-                        <p>Swine voluptate reiciendis votibus</p>
-                        <p class="productBoxPrice">$111.51</p>
-                        <p>a a a a a</p>
-
-                    </div>
-
-                </div>
-
-                <!-- productBox is here  -->
-                <div class="productBox">
-
-                    <div class="productBoxTop">
-
-                        <img src="./assets/asset 9.jpeg" alt="product">
-
-                    </div>
-
-                    <div class="productBoxBottom">
-
-                        <p>Swine voluptate reiciendis votibus</p>
-                        <p class="productBoxPrice">$111.51</p>
-                        <p>a a a a a</p>
-
-                    </div>
-
-                </div>
-
-                <!-- productBox is here  -->
-                <div class="productBox">
-
-                    <div class="productBoxTop">
-
-                        <img src="./assets/asset 9.jpeg" alt="product">
-
-                    </div>
-
-                    <div class="productBoxBottom">
-
-                        <p>Swine voluptate reiciendis votibus</p>
-                        <p class="productBoxPrice">$111.51</p>
-                        <p>a a a a a</p>
-
-                    </div>
-
-                </div>
-
-                <!-- productBox is here  -->
-                <div class="productBox">
-
-                    <div class="productBoxTop">
-
-                        <img src="./assets/asset 9.jpeg" alt="product">
-
-                    </div>
-
-                    <div class="productBoxBottom">
-
-                        <p>Swine voluptate reiciendis votibus</p>
-                        <p class="productBoxPrice">$111.51</p>
-                        <p>a a a a a</p>
-
-                    </div>
-
-                </div>
-
-                <!-- productBox is here  -->
-                <div class="productBox">
-
-                    <div class="productBoxTop">
-
-                        <img src="./assets/asset 9.jpeg" alt="product">
-
-                    </div>
-
-                    <div class="productBoxBottom">
-
-                        <p>Swine voluptate reiciendis votibus</p>
-                        <p class="productBoxPrice">$111.51</p>
-                        <p>a a a a a</p>
-
-                    </div>
-
-                </div>
-
-                <!-- productBox is here  -->
-                <div class="productBox">
-
-                    <div class="productBoxTop">
-
-                        <img src="./assets/asset 9.jpeg" alt="product">
-
-                    </div>
-
-                    <div class="productBoxBottom">
-
-                        <p>Swine voluptate reiciendis votibus</p>
-                        <p class="productBoxPrice">$111.51</p>
-                        <p>a a a a a</p>
-
-                    </div>
-
-                </div>
-                
-    </div>
-
-    <div class="carts">
-
-                            <!-- shoppingCartBox is here  -->
-                            <div class="shoppingCartBox flex">
-
-                                <!-- shoppingCartBoxImg is here  -->
-                                <div class="shoppingCartBoxImg">
-        
-                                    <img src="./assets/asset 9.jpeg" alt="product">
-        
-                                </div>
-        
-                                <!-- shoppingCartBoxText is here  -->
-                                <div class="shoppingCartBoxText">
-        
-                                    <p>Pariatur desktop publish package</p>
-                                    <p>$62.38</p>
-        
-                                    <div class="shoppingCartBoxExtra">
-        
-                                        <p>Color : green</p>
-                                        <p>Size : S</p>
-        
-                                    </div>
-        
-                                    
-        
-                                </div>
-        
-                                <!-- shoppingCartBoxQunatity is here  -->
-                                <div class="shoppingCartBoxQunatity flex">
-        
-                                    <div class="shoppingCartBoxQunatityNum">
-                                        1
-                                    </div>
-        
-                                    <div class="shoppingCartBoxQunatityArrow">
-                                        <div class="Increase">+1</div>
-                                        <div class="Decrease">-1</div>
-                                    </div>
-        
-                                </div>
-        
-                                <!-- shoppingCartBoxPrice is here  -->
-                                <p class="shoppingCartBoxPrice">
-                                    $62.38
-                                </p>
-        
-                                <!-- shoppingCartBoxDelete is here  -->
-                                <div class="shoppingCartBoxDelete">
-                                    D
-                                </div>
-        
-        
-                            </div>
-        
-                            <!-- shoppingCartBox is here  -->
-                            <div class="shoppingCartBox flex">
-        
-                                <!-- shoppingCartBoxImg is here  -->
-                                <div class="shoppingCartBoxImg">
-        
-                                    <img src="./assets/asset 9.jpeg" alt="product">
-        
-                                </div>
-        
-                                <!-- shoppingCartBoxText is here  -->
-                                <div class="shoppingCartBoxText">
-        
-                                    <p>Pariatur desktop publish package</p>
-                                    <p>$62.38</p>
-        
-                                    <div class="shoppingCartBoxExtra">
-        
-                                        <p>Color : green</p>
-                                        <p>Size : S</p>
-        
-                                    </div>
-        
-                                    
-        
-                                </div>
-        
-                                <!-- shoppingCartBoxQunatity is here  -->
-                                <div class="shoppingCartBoxQunatity flex">
-        
-                                    <div class="shoppingCartBoxQunatityNum">
-                                        1
-                                    </div>
-        
-                                    <div class="shoppingCartBoxQunatityArrow">
-                                        <div class="Increase">+1</div>
-                                        <div class="Decrease">-1</div>
-                                    </div>
-        
-                                </div>
-        
-                                <!-- shoppingCartBoxPrice is here  -->
-                                <p class="shoppingCartBoxPrice">
-                                    $62.38
-                                </p>
-        
-                                <!-- shoppingCartBoxDelete is here  -->
-                                <div class="shoppingCartBoxDelete">
-                                    D
-                                </div>
-        
-        
-                            </div>
-        
-                            <!-- shoppingCartBox is here  -->
-                            <div class="shoppingCartBox flex">
-        
-                                <!-- shoppingCartBoxImg is here  -->
-                                <div class="shoppingCartBoxImg">
-        
-                                    <img src="./assets/asset 9.jpeg" alt="product">
-        
-                                </div>
-        
-                                <!-- shoppingCartBoxText is here  -->
-                                <div class="shoppingCartBoxText">
-        
-                                    <p>Pariatur desktop publish package</p>
-                                    <p>$62.38</p>
-        
-                                    <div class="shoppingCartBoxExtra">
-        
-                                        <p>Color : green</p>
-                                        <p>Size : S</p>
-        
-                                    </div>
-        
-                                    
-        
-                                </div>
-        
-                                <!-- shoppingCartBoxQunatity is here  -->
-                                <div class="shoppingCartBoxQunatity flex">
-        
-                                    <div class="shoppingCartBoxQunatityNum">
-                                        1
-                                    </div>
-        
-                                    <div class="shoppingCartBoxQunatityArrow">
-                                        <div class="Increase">+1</div>
-                                        <div class="Decrease">-1</div>
-                                    </div>
-        
-                                </div>
-        
-                                <!-- shoppingCartBoxPrice is here  -->
-                                <p class="shoppingCartBoxPrice">
-                                    $62.38
-                                </p>
-        
-                                <!-- shoppingCartBoxDelete is here  -->
-                                <div class="shoppingCartBoxDelete">
-                                    D
-                                </div>
-        
-        
-                            </div>
-                            
-    </div>
-
-
-    <!-- category  -->
-    <section class="categoryBoxesBar">
-        <div class="categoryBoxesBarHeader">
-          <h1>Shop By Categories</h1>
-        </div>
-
-        <!-- categoryBoxes is here  -->
-        <div class="categoryBoxes flex">
-          <!-- categoryBox is here  -->
-          <div class="categoryBox">
-            <div class="categoryBoxImg">
-              <img src="./assets/cate-4.jpg" alt="icon" />
+        <h2>Add New Product</h2>
+        <form action="#" method="post">
+            <label for="product-name">Product Name</label>
+            <input type="text" id="product-name" name="product-name" placeholder="Enter product name" required>
+
+            <label for="product-description">Description</label>
+            <textarea id="product-description" name="product-description" placeholder="Enter product description" rows="4" required></textarea>
+
+            <label for="product-price">Price</label>
+            <input type="number" id="product-price" name="product-price" placeholder="Enter product price" required>
+
+            <label for="product-category">Category</label>
+            <select id="product-category" name="product-category" required>
+                <option value="">Select Category</option>
+                <option value="electronics">Electronics</option>
+                <option value="fashion">Fashion</option>
+                <option value="home">Home & Living</option>
+                <option value="beauty">Beauty</option>
+                <option value="sports">Sports</option>
+            </select>
+
+            <label for="product-image">Product Image</label>
+            <div class="image-upload">
+                <input type="file" id="product-image" name="product-image" accept="image/*" required>
+                <p>Click to upload an image</p>
             </div>
 
-            <h3>Home, Garden & Tools</h3>
-          </div>
-
-          <!-- categoryBox is here  -->
-          <div class="categoryBox">
-            <div class="categoryBoxImg">
-              <img src="./assets/cate-1.jpg" alt="icon" />
-            </div>
-
-            <h3>Automotive & Industrial</h3>
-          </div>
-
-          <!-- categoryBox is here  -->
-          <div class="categoryBox">
-            <div class="categoryBoxImg">
-              <img src="./assets/cate-2.jpg" alt="icon" />
-            </div>
-
-            <h3>Beauty & Health</h3>
-          </div>
-
-          <!-- categoryBox is here  -->
-          <div class="categoryBox">
-            <div class="categoryBoxImg">
-              <img src="./assets/cate-3.jpg" alt="icon" />
-            </div>
-
-            <h3>Clothing, Shoes & Jewelry</h3>
-          </div>
-        </div>
-      </section>
-
-    <!-- <script>
-
-       var x = [];
-
-       var abc =  1;
-       if (x[0]){
-
-        console.log(abc);
-
-       }
-       
-
-
-        // var a = 'a';
-        // var b = 'b';
-        // // var b;
-        // // console.log(b); // ager var bad m define kro lekin call phelay kro to, undefined ka error aye ga, means kam nhe hoga 
-
-
-        // var c = 'c';
-        // var b = 'b';
-
-        // function abc() {
-            
-        //     var z = 'z';
-        //     return z; // function k ander k variable ko bahir access nhe kr sakty, INCASE srif ( z = 'z') na hoto. aur wo bhi return krwanay k bad 
-
-        // }
-
-        // abc();
-
-        // {
-        //     var y = 'y'; // var block k bahir bhi access ho jata h
-        // }
-
-        // console.log(y);
-        // console.log(z);
-
-
-        // ager function ko call krtay hn / chalty hn, to srif us k ander ka hi code chalta h, function k bad ka code run nhe hoga 
-
-        // thora concept clear hwa K code k se run hota h, aur doud bhi clear hwa h
-
-    </script> -->
-
-
+            <button type="submit">Add Product</button>
+        </form>
+    </div>
 </body>
 </html>

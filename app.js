@@ -1263,7 +1263,7 @@ function showDashboard() {
   showDashboard.innerHTML = `
   
   <div class="dashboard-activities">
-  <h2>Dashboard Activities</h2>
+  <h1>Dashboard Activities</h1>
   <div class="activity-cards">
       <div class="activity-card">
           <i class="fa fa-shopping-cart"></i>
@@ -1313,7 +1313,7 @@ function showUsers() {
   showUsers.innerHTML = `
   
   
-    <h2>Selected Link Heading</h2>
+    <h2>Users Details</h2>
     <table>
         <thead>
             <tr>
@@ -1356,7 +1356,7 @@ function showOrders() {
 
   showUsers.innerHTML = `
 
-              <h2>Orders</h2>
+              <h2>Orders Details</h2>
                 <table>
                     <thead>
                         <tr>
@@ -1409,7 +1409,23 @@ function showProducts() {
 
   showUsers.innerHTML = `
 
-              <h2>Products</h2>
+              <h2>Products Details</h2>
+              <div class="items_L-R flex">
+
+                        <p><b>Showing all ${OnlineStore.products.length} Results</b></p>
+
+                        <div class="items_R flex">
+                            <select name="" id="">
+                                <option value="Sorting Options">Dafault Sorting</option>
+                                <option value="Sort by Newest">Sort by Popularity</option>
+                                <option value="Sort by Oldest">Sort by average rating</option>
+                                <option value="Price (high to low)">Price (high to low)</option>
+                                <option value="Price (low to high)">Price (low to high)</option>
+                            </select>
+
+                        </div>
+
+                    </div>
                 <table>
                     <thead>
                         <tr>
@@ -1418,7 +1434,7 @@ function showProducts() {
                             <th>Category</th>
                             <th>Stock</th>
                             <th>Price</th>
-                            <th>Actions</th>
+                            <th>Actions  <span onclick="addProductBox()" class='addAProduct'>+</span>  </th>
                             
                         </tr>
                     </thead>
@@ -1454,6 +1470,57 @@ function showProducts() {
 
 
 
+
+
+// for add product box 
+function addProductBox(){
+  var shadow = document.querySelector('.shadow');
+  var productBox = document.querySelector('.product-box');
+  shadow.classList.add('show');
+  productBox.classList.add('show');
+
+}
+
+
+function addProduct() {
+  var addProductImage = document.getElementById('product-image');
+  
+  addProductImage.onchange = function(){
+    
+    var newImg = URL.createObjectURL(addProductImage.files[0]);
+    console.log(newImg);
+  }
+
+
+  OnlineStore.products.push(
+    {
+      pID: 99999,
+      pImage: URL.createObjectURL(addProductImage.files[0]),
+      pName: document.getElementById('product-name').value,
+      // pCategory: document.getElementById('product-category').value,
+      pCategory: 'abc',
+      pPrice: document.getElementById('product-price').value,
+      // pStock: document.getElementById('product-stock').value,
+      pStock: 10,
+
+      // product additional details
+      pDetails: {
+        pBrand: "apple",
+        pModel: "2020",
+        pColor: "white",
+        pSize: "Medium",
+      },
+    },
+  )
+
+  window.localStorage.setItem("PRODUCTS",JSON.stringify(OnlineStore.products));
+  
+  var shadow = document.querySelector('.shadow');
+  var productBox = document.querySelector('.product-box');
+  shadow.classList.remove('show');
+  productBox.classList.remove('show');
+
+}
 
 
 
