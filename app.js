@@ -1472,7 +1472,7 @@ function showProducts() {
 
 
 
-// for add product box 
+// for add product box show
 function addProductBox(){
   var shadow = document.querySelector('.shadow');
   var productBox = document.querySelector('.product-box');
@@ -1482,20 +1482,34 @@ function addProductBox(){
 }
 
 
+
+
+
+
+
+
+
+
+
+// for add product functionality
 function addProduct() {
   var addProductImage = document.getElementById('product-image');
+
   
-  addProductImage.onchange = function(){
+  
+  addProductImage.onchange = ()=>{
     
     var newImg = URL.createObjectURL(addProductImage.files[0]);
-    console.log(newImg);
+    console.log(newImg,'line 1503');
   }
+
+  console.log(newImg,'line 1506');
 
 
   OnlineStore.products.push(
     {
       pID: 99999,
-      pImage: URL.createObjectURL(addProductImage.files[0]),
+      pImage: newImg,
       pName: document.getElementById('product-name').value,
       // pCategory: document.getElementById('product-category').value,
       pCategory: 'abc',
@@ -1519,6 +1533,23 @@ function addProduct() {
   var productBox = document.querySelector('.product-box');
   shadow.classList.remove('show');
   productBox.classList.remove('show');
+
+  window.location.reload();
+
+}
+
+
+
+
+
+
+// for cancel the product box 
+function addProductcancel() {
+
+  var shadow = document.querySelector('.shadow');
+  var productBox = document.querySelector('.product-box');
+  productBox.classList.remove('show');
+  shadow.classList.remove('show');
 
 }
 
@@ -1548,6 +1579,7 @@ function delProduct(d) {
 
 
 }
+
 
 
 
@@ -1649,6 +1681,9 @@ function cancel() {
   shadow.classList.remove('show');
 
 }
+
+
+
 
 
 

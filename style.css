@@ -433,7 +433,7 @@ select {
     background-color: var(--color2);
     color: white;
     font-weight: bold;
-    padding: 11px 60px 11px 20px;
+    padding: 11px 50px 11px 20px;
     position: absolute;
     bottom: 0px;
     left: var(--sides-margin);
@@ -1726,15 +1726,26 @@ th {
 }
 
 .productsTr tr td:last-child .editCard {
-    color: var(--color1);
+    color: white;
     cursor: pointer;
-    padding-right: 40px;
+    margin-right: 10px;
+    background-color: rgb(78, 196, 0);
+    padding: 3px 10px;
+    border-radius: 5px ;
+    font-size: 0.94rem;
   
 }
 
 .productsTr tr td:last-child .delCard {
-    color: red;
+    
     cursor: pointer;
+    color: white;
+    cursor: pointer;
+    /* margin-right: 40px; */
+    background-color: rgb(224, 45, 0);
+    padding: 3px 10px;
+    border-radius: 5px ;
+    font-size: 0.94rem;
   
 }
 
@@ -1769,11 +1780,32 @@ th {
     left: 35%;
 }
 
+
 .product-box h2 {
     margin-bottom: 20px;
     font-size: 24px;
     color: #333;
     text-align: center;
+    position: relative;
+}
+
+.product-box h2 .cancle{
+
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    cursor: pointer;
+    background-color: var(--color2);
+    color: white;
+    width: 26px;
+    height: 26px;
+    font-size: 0.85rem;
+    font-weight: bold;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
 }
 
 .product-box label {
@@ -1800,15 +1832,16 @@ th {
 }
 
 .product-box button {
-    background-color: #28a745;
+    background-color: var(--color2);
     color: white;
     font-weight: bold;
     cursor: pointer;
     border: none;
+    transition: .3s ease-in-out;
 }
 
 .product-box button:hover {
-    background-color: #218838;
+    background-color: #ff5100;
 }
 
 .product-box .image-upload {
