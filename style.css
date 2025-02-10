@@ -1863,6 +1863,9 @@ th {
     margin-top: 10px;
 }
 
+.image-upload label:hover {
+    cursor: pointer;
+}
 
 
 

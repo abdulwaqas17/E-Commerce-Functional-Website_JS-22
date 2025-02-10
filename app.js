@@ -1451,6 +1451,10 @@ function showProducts() {
   var productsTr = document.querySelector(".productsTr");
 
   for (var i = 0; i < OnlineStore.products.length; i++) {
+
+    console.log(OnlineStore.products.length - 1);
+    console.log(OnlineStore.products[OnlineStore.products.length - 1].pImage);
+
     productsTr.innerHTML += `
       
   <tr>
@@ -1487,29 +1491,65 @@ function addProductBox(){
 
 
 
+if (document.getElementById('product-image')) {
 
+  var addProductImage = document.getElementById('product-image');
+
+  console.log('1554',addProductImage);
+  
+  addProductImage.onchange = function() {
+
+    let file = addProductImage.files[0];
+    let reader = new FileReader();
+
+    reader.onload = function (e) {
+
+      let base64Img = e.target.result;
+      console.log(base64Img);
+      window.localStorage.setItem('base64Img',base64Img);
+      console.log(window.localStorage.getItem('base64Img'));
+      
+    }
+
+    reader.readAsDataURL(file); // file read krnay ka kam start kry ga
+
+  }
+  
+
+}
+
+// console.log(myImg());
 
 
 
 // for add product functionality
 function addProduct() {
-  var addProductImage = document.getElementById('product-image');
 
+  // console.log(myImg());
+  // var addProductImage = document.getElementById('product-image');
+
+  // console.log(addProductImage);
   
   
-  addProductImage.onchange = ()=>{
+  // addProductImage.onchange = function(){
     
-    var newImg = URL.createObjectURL(addProductImage.files[0]);
-    console.log(newImg,'line 1503');
-  }
+  //   console.log('in the onchange');
+  //   var newImg = URL.createObjectURL(addProductImage.files[0]);
+  //   console.log(newImg,'line 1503');
 
-  console.log(newImg,'line 1506');
+  // }
+
+  // console.log(newImg,'line 1506');
+
+  
+
+  console.log(window.localStorage.getItem('base64Img'), 'base64Img added');
 
 
   OnlineStore.products.push(
     {
       pID: 99999,
-      pImage: newImg,
+      pImage: window.localStorage.getItem('base64Img'),
       pName: document.getElementById('product-name').value,
       // pCategory: document.getElementById('product-category').value,
       pCategory: 'abc',
@@ -1527,6 +1567,7 @@ function addProduct() {
     },
   )
 
+  // console.log(myImg(),'1553');
   window.localStorage.setItem("PRODUCTS",JSON.stringify(OnlineStore.products));
   
   var shadow = document.querySelector('.shadow');
@@ -1567,15 +1608,28 @@ function delProduct(d) {
 
   OnlineStore.products.splice(idOFProdForDel,1);
   window.localStorage.setItem('PRODUCTS',JSON.stringify(OnlineStore.products));
-  Swal.fire({
-    title: "Product Delete Successfully",
-    icon: "success",
-    draggable: true
-  }).then( () => {   
-    location.reload();
-    // then ka keyword ais liye use kiya ky condition true hoa he ya alert se phla he redirect kr rha tha dosre page pa               
+
+  alert('product deleted successfully');
+  location.reload();
+
+// if (Swal) {
+//   console.log(Swal);
+//   console.log('Swal');
+//   Swal.fire({
+//     title: "Product Delete Successfully",
+//     icon: "success",
+//     draggable: true
+//   }).then( () => {   
+//     location.reload();
+//     // then ka keyword ais liye use kiya ky condition true hoa he ya alert se phla he redirect kr rha tha dosre page pa               
   
-}) ;
+// }) ;
+// } else {
+
+//   alert('product deleted successfully');
+//   location.reload();
+
+// }
 
 
 }
