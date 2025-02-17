@@ -5,14 +5,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="./style.css">
+    <script src="https://kit.fontawesome.com/7e4bb5f098.js" crossorigin="anonymous"></script>
 </head>
 <body>
+    <div class="header" id="dash_header">
+        <img src="./assets/asset 0.png" alt="">
     
+          <div class="searchbar">
+             <input type="text" onkeyup="(filterUserOrders())" id="Serching" placeholder="Serch..">
+             <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+          </div>
+          <div class="settings">
+            <i class="fa-solid fa-sun" id="theme_icon" onclick="themeChanged()" aria-hidden="true"></i>
+            <i id="main" class="fa-solid fa-grip" aria-hidden="true"></i>
+            <!-- <i id="down" class="fa-solid fa-grip" aria-hidden="true"></i> -->
+            <i class="fa-solid fa-ellipsis-vertical" aria-hidden="true"></i>
+            <i class="fa-solid fa-bell" aria-hidden="true"></i>
+            <div class="admin">
+              <img src="./assets/asset 0.png" alt="">
+            </div>
+          </div>
+
+          <div class="mobileNav">
+
+            <i  class="fa-solid fa-bars" ></i>
+       
+          </div>
+          
+       </div>
+
+       
+
     <div class="dashboard-container">
         <div class="left-sidebar">
-            <div class="company-name">
-                <img src="./assets/asset 0.png" alt="">
-            </div>
+           
             <div class="sidebar-links">
                 <ul>
                     <li><a href="javascript:void(0)" onclick="showDashboard()" id="dashboard">Dashboard</a></li>
@@ -27,7 +53,8 @@
         </div>
         <div class="right-content">
             
-            <div class="top-bar">
+            <!-- <div class="top-bar">
+
                 <div class="user-profile flex">
                     <div class="user-profile-img">
                         <img src="./assets/asset 53.png" alt="User Profile">
@@ -35,12 +62,16 @@
                     <span>admin@gmail.com</span>
                 </div>
                 <div class="search-bar">
-                    <!-- <button>&#9776;</button> -->
+        
                     <input type="search" placeholder="Search...">
 
                 </div>
 
-            </div>
+            </div> -->
+
+           
+
+            
 
             <div class="content-area">
 
