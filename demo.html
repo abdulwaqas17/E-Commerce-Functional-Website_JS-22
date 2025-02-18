@@ -3,121 +3,138 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add New Product</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f9f9f9;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
+    <title>Document</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+   <!-- 618651  -->
+   <style>
+    /* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-        .product-box {
-            background: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            width: 100%;
-            max-width: 400px;
-        }
+/* Navbar Styles */
+.navbar {
+    background-color: #333;
+    color: white;
+    padding: 10px 20px;
+}
 
-        .product-box h2 {
-            margin-bottom: 20px;
-            font-size: 24px;
-            color: #333;
-            text-align: center;
-        }
+.navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 
-        .product-box label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
-            color: #555;
-        }
+.navbar-logo {
+    font-size: 24px;
+    font-weight: bold;
+    text-decoration: none;
+    color: white;
+}
 
-        .product-box input,
-        .product-box textarea,
-        .product-box select,
-        .product-box button {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 15px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            font-size: 14px;
-        }
+.navbar-menu {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
 
-        .product-box textarea {
-            resize: none;
-        }
+.hide {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
 
-        .product-box button {
-            background-color: #28a745;
-            color: white;
-            font-weight: bold;
-            cursor: pointer;
-            border: none;
-        }
+.navbar-item {
+    margin-left: 20px;
+}
 
-        .product-box button:hover {
-            background-color: #218838;
-        }
+.navbar-links {
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+}
 
-        .product-box .image-upload {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-            border: 2px dashed #ddd;
-            padding: 20px;
-            cursor: pointer;
-        }
+/* Mobile Menu Icon */
+.navbar-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
 
-        .product-box .image-upload input[type="file"] {
-            display: none;
-        }
+.bar {
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    margin: 4px 0;
+}
 
-        .product-box .image-upload p {
-            color: #999;
-            margin-top: 10px;
-        }
-    </style>
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .navbar-menu {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        height: 100vh;
+        width: 70%;
+        background-color: #333;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        transition: right 0.3s ease-in-out;
+    }
+
+    .navbar-menu.active {
+        right: 0;
+    }
+
+    .navbar-toggle {
+        display: flex;
+    }
+
+    .navbar-item {
+        margin: 20px 0;
+    }
+}
+   </style>
 </head>
 <body>
-    <div class="product-box">
-        <h2>Add New Product</h2>
-        <form action="#" method="post">
-            <label for="product-name">Product Name</label>
-            <input type="text" id="product-name" name="product-name" placeholder="Enter product name" required>
-
-            <label for="product-description">Description</label>
-            <textarea id="product-description" name="product-description" placeholder="Enter product description" rows="4" required></textarea>
-
-            <label for="product-price">Price</label>
-            <input type="number" id="product-price" name="product-price" placeholder="Enter product price" required>
-
-            <label for="product-category">Category</label>
-            <select id="product-category" name="product-category" required>
-                <option value="">Select Category</option>
-                <option value="electronics">Electronics</option>
-                <option value="fashion">Fashion</option>
-                <option value="home">Home & Living</option>
-                <option value="beauty">Beauty</option>
-                <option value="sports">Sports</option>
-            </select>
-
-            <label for="product-image">Product Image</label>
-            <div class="image-upload">
-                <input type="file" id="product-image" name="product-image" accept="image/*" required>
-                <p>Click to upload an image</p>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="#" class="navbar-logo">Logo</a>
+            <div class="navbar-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
             </div>
+            <ul class="navbar-menu">
+                <span onclick="hide()" class="hide">X</span>
+                <li class="navbar-item"><a href="#" class="navbar-links">Home</a></li>
+                <li class="navbar-item"><a href="#" class="navbar-links">About</a></li>
+                <li class="navbar-item"><a href="#" class="navbar-links">Services</a></li>
+                <li class="navbar-item"><a href="#" class="navbar-links">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
 
-            <button type="submit">Add Product</button>
-        </form>
-    </div>
+  
+
+      <script>
+       const mobileMenu = document.getElementById('mobile-menu');
+const navbarMenu = document.querySelector('.navbar-menu');
+
+mobileMenu.addEventListener('click', () => {
+    navbarMenu.classList.toggle('active');
+});
+
+function hide(){
+    navbarMenu.classList.remove('active');
+};
+
+
+      </script>
+      
 </body>
 </html>

@@ -1756,6 +1756,23 @@ if(document.querySelector('.dashboardRightHeaderInOf')){
   })
 }
 
+if (document.querySelector('.mobileNav')) {
+
+  console.log('helloo');
+
+  const mobileMenu = document.querySelector('.mobileNav');
+const navbarMenu = document.querySelector('.navbar-menu');
+
+mobileMenu.addEventListener('click', () => {
+    navbarMenu.classList.toggle('active');
+});
+
+function hide(){
+    navbarMenu.classList.remove('active');
+};
+
+}
+
 
 
 
