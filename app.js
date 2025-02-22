@@ -760,7 +760,7 @@ function addCart(e) {
                             	<p><strong>Taxes</strong>&nbsp;$4.80</p>
                             <p><strong>Total:</strong>&nbsp;Check Out for view</p>
               <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick='cancelAddToCartBox()'>Continue Shopping</button>
-              <a class="btn btn-primary" onclick='proceedToCheckOut()'><i class="fa-solid fa-check"></i>Proceed to Checkout</a>
+              <button class="btn btn-primary" onclick='proceedToCheckOut()'><i class="fa-solid fa-check"></i>Proceed to Checkout</button>
             </div>
           </div>
         </div>
