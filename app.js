@@ -1262,38 +1262,64 @@ function showDashboard() {
 
   showDashboard.innerHTML = `
   
-  <div class="dashboard-activities">
-  <h1>Dashboard Activities</h1>
-  <div class="activity-cards">
-      <div class="activity-card">
-          <i class="fa fa-shopping-cart"></i>
-          <h3>New Orders</h3>
-          <p>10 new orders received today</p>
+  
+  <h1>Dashboard</h1>
+
+  <div class="charts">
+
+    <!-- //1 -->
+    <div class="chart">
+      <h3>Line Chart</h3>
+      <p>
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+        
+      </p>
+      <!-- Chart Container -->
+      <div class="chart-container">
+        <canvas id="myLineChart"></canvas>
       </div>
-      <div class="activity-card">
-          <i class="fa fa-user-plus"></i>
-          <h3>New Users</h3>
-          <p>5 new users registered today</p>
+    </div>
+
+    <!-- //2 -->
+    <div class="chart">
+      <h3>Bar Chart</h3>
+      <p>
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+        
+      </p>
+      <!-- Chart Container -->
+      <div class="chart-container">
+        <canvas id="myBarChart"></canvas>
       </div>
-      <div class="activity-card">
-          <i class="fa fa-dollar-sign"></i>
-          <h3>Total Sales</h3>
-          <p>$1000 sales generated today</p>
+    </div>
+
+    <!-- //3 -->
+    <div class="chart">
+      <h3>Doughnut Chart</h3>
+      <p>
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+        
+      </p>
+      <!-- Chart Container -->
+      <div class="chart-container">
+        <canvas id="myDoughnutChart"></canvas>
       </div>
-      <div class="activity-card">
-          <i class="fa fa-product-hunt"></i>
-          <h3>New Products</h3>
-          <p>10 new products added today</p>
+    </div>
+
+    <!-- //4 -->
+    <div class="chart">
+      <h3>Pie Chart</h3>
+      <p>
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+        
+      </p>
+      <!-- Chart Container -->
+      <div class="chart-container">
+        <canvas id="myPieChart"></canvas>
       </div>
+    </div>
   </div>
-  <div class="activity-graph">
-      <h3>Sales Graph</h3>
-      <!-- <img src="./assets/graph.png" alt=""> -->
-      <div id="sales-graph">
-          <img src="./assets/graph.png" alt="">
-      </div>
-  </div>
-</div>
+
 
   `;
 }
@@ -1773,7 +1799,160 @@ function hide(){
 
 }
 
+if(document.querySelector('.dashboard-container')){
+  var line = document.getElementById("myLineChart").getContext("2d");
 
+  var myLineChart = new Chart(line, {
+    type: "line", // Line Chart Type
+    data: {
+      labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
+      datasets: [
+        {
+          label: "Monthly Sales",
+          data: [10, 25, 15, 30, 20, 35], // Y-axis values
+          borderColor: "rgba(54, 162, 235, 1)", // Line color
+          backgroundColor: "rgba(54, 162, 235, 0.2)", // Area fill color
+          borderWidth: 2,
+          pointBackgroundColor: "red", // Data points color
+          pointRadius: 5, // Size of data points
+          fill: true, // Fill the area under line
+          tension: 0.3, // Line smoothness
+        },
+      ],
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: {
+          position: "top",
+        },
+      },
+      scales: {
+        y: {
+          beginAtZero: true,
+        },
+      },
+    },
+  });
+
+  var bar = document.getElementById('myBarChart');
+
+var myBarChart = new Chart(bar, {
+type: 'bar',  // Bar Chart Type
+data: {
+    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+    datasets: [{
+        label: 'Monthly Sales',
+        data: [10, 25, 15, 30, 20, 35], // Y-axis values
+        backgroundColor: [
+            'rgba(255, 99, 132, 0.7)',
+            'rgba(54, 162, 235, 0.7)',
+            'rgba(255, 206, 86, 0.7)',
+            'rgba(75, 192, 192, 0.7)',
+            'rgba(153, 102, 255, 0.7)',
+            'rgba(255, 159, 64, 0.7)'
+        ],
+        borderColor: [
+            'rgba(255, 99, 132, 1)',
+            'rgba(54, 162, 235, 1)',
+            'rgba(255, 206, 86, 1)',
+            'rgba(75, 192, 192, 1)',
+            'rgba(153, 102, 255, 1)',
+            'rgba(255, 159, 64, 1)'
+        ],
+        borderWidth: 2
+    }]
+},
+options: {
+    responsive: true,
+    plugins: {
+        legend: {
+            position: 'top',
+        }
+    },
+    scales: {
+        y: {
+            beginAtZero: true
+        }
+    }
+}
+});
+
+var doughnut = document.getElementById("myDoughnutChart").getContext("2d");
+
+var myDoughnutChart = new Chart(doughnut, {
+type: "doughnut", // Doughnut Chart Type
+data: {
+labels: ["Red", "Blue", "Yellow"],
+datasets: [
+  {
+    label: "Votes",
+    data: [12, 19, 3], // Values
+    backgroundColor: [
+      "rgba(255, 99, 132, 1)",
+      "rgba(54, 162, 235, 1)",
+      "rgba(255, 206, 86, 1)",
+      
+    ],
+    borderColor: [
+      "rgba(255, 99, 132, 1)",
+      "rgba(54, 162, 235, 1)",
+      "rgba(255, 206, 86, 1)",
+      
+    ],
+    borderWidth: 2,
+  },
+],
+},
+options: {
+responsive: true,
+plugins: {
+  legend: {
+    position: "bottom", // Legend position
+  },
+},
+},
+});
+
+
+var pie = document.getElementById('myPieChart').getContext('2d');
+
+var myPieChart = new Chart(pie, {
+type: 'pie',  // Pie Chart Type
+data: {
+    labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+    datasets: [{
+        label: 'Color Distribution',
+        data: [12, 19, 3, 5, 2, 8], // Pie chart values
+        backgroundColor: [
+            'rgba(255, 99, 132, 0.7)',
+            'rgba(54, 162, 235, 0.7)',
+            'rgba(255, 206, 86, 0.7)',
+            'rgba(75, 192, 192, 0.7)',
+            'rgba(153, 102, 255, 0.7)',
+            'rgba(255, 159, 64, 0.7)'
+        ],
+        borderColor: [
+            'rgba(255, 99, 132, 1)',
+            'rgba(54, 162, 235, 1)',
+            'rgba(255, 206, 86, 1)',
+            'rgba(75, 192, 192, 1)',
+            'rgba(153, 102, 255, 1)',
+            'rgba(255, 159, 64, 1)'
+        ],
+        borderWidth: 2
+    }]
+},
+options: {
+    responsive: true,
+    plugins: {
+        legend: {
+            position: 'top',
+        }
+    }
+}
+});
+}
 
 
 
