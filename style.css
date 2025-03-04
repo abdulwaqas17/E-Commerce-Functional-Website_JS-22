@@ -657,7 +657,7 @@ input[name="r"] {
   position: relative;
 }
 
-.productsSectionHeading h2::before {
+/* .orangeLine h2::before {
   content: "";
   width: 60px;
   background-color: var(--color2);
@@ -667,7 +667,7 @@ input[name="r"] {
   left: 31%;
 }
 
-.productsSectionHeading h2::after {
+.orangeLine h2::after {
   content: "";
   width: 60px;
   background-color: var(--color2);
@@ -675,7 +675,7 @@ input[name="r"] {
   position: absolute;
   top: 45%;
   right: 31%;
-}
+} */
 
 .productsBoxes {
   justify-content: space-between;
@@ -759,7 +759,7 @@ input[name="r"] {
   position: relative;
 }
 
-.categoryBoxesBarHeader h1::before {
+/* .orangeLine h1::before {
   content: "";
   width: 60px;
   background-color: var(--color2);
@@ -769,7 +769,7 @@ input[name="r"] {
   left: 29%;
 }
 
-.categoryBoxesBarHeader h1::after {
+.orangeLine h1::after {
   content: "";
   width: 60px;
   background-color: var(--color2);
@@ -777,7 +777,7 @@ input[name="r"] {
   position: absolute;
   top: 45%;
   right: 29%;
-}
+} */
 
 .categoryBoxes {
   width: 100%;
@@ -1104,6 +1104,8 @@ footer {
   }
 }
 
+
+
 /* ------------ STYLING FOR ADD TO CART ---------------- */
 .modal-content {
   background-color: #fff;
@@ -1350,7 +1352,7 @@ hr {
   position: relative;
 }
 
-.content-area h2::before {
+/* .orangeLine h2::before {
   content: "";
   width: 70px;
   background-color: var(--color2);
@@ -1360,7 +1362,7 @@ hr {
   left: 30%;
 }
 
-.content-area h2::after {
+.orangeLine h2::after {
   content: "";
   width: 70px;
   background-color: var(--color2);
@@ -1368,7 +1370,7 @@ hr {
   position: absolute;
   top: 38%;
   right: 30%;
-}
+} */
 
 .items_L-R {
   justify-content: space-between;
@@ -1412,29 +1414,36 @@ th {
 }
 
 .productsTr tr td:last-child {
-  position: relative;
-  width: 135px;
+  /* position: relative; */
+  width: 125px;
+  
+}
+
+.myButtonsED{
+  display: flex;
+  justify-content: space-between;
+  padding-inline: 10px;
 }
 
 .productsTr tr td:last-child .editCard {
-  color: white;
+  color:  rgb(78, 196, 0);
   cursor: pointer;
-  margin-right: 10px;
-  background-color: rgb(78, 196, 0);
-  padding: 3px 10px;
-  border-radius: 5px;
-  font-size: 0.94rem;
+  /* margin-right: 10px; */
+  /* background-color:; */
+  /* padding: 3px 10px; */
+  /* border-radius: 5px; */
+  font-size: 1.4rem;
 }
 
 .productsTr tr td:last-child .delCard {
   cursor: pointer;
-  color: white;
+  color: red;
   cursor: pointer;
   /* margin-right: 40px; */
-  background-color: rgb(224, 45, 0);
-  padding: 3px 10px;
-  border-radius: 5px;
-  font-size: 0.94rem;
+  /* background-color: rgb(224, 45, 0); */
+  /* padding: 3px 10px; */
+  /* border-radius: 5px; */
+  font-size: 1.4rem;
 }
 
 .addAProduct {
@@ -1780,7 +1789,6 @@ th {
     text-align: center;
   }
 }
-
 
 
 
@@ -2246,26 +2254,26 @@ th {
     display: none;
 }
 
-  .productsSectionHeading h2::before {
+  /* .orangeLine h2::before {
     content: "";
     width: 0px;
     height: 0px;
     display: none;
-}
+} */
 
-  .categoryBoxesBarHeader h1::after {
+  /* .orangeLine h1::after {
     content: "";
     width: 0px;
     height: 0px;
     display: none;
-}
+} */
 
-  .categoryBoxesBarHeader h1::before {
+  /* .orangeLine h1::before {
     content: "";
     width: 0px;
     height: 0px;
     display: none;
-}
+} */
 
 }
 
@@ -2442,9 +2450,17 @@ th {
   gap: 20px;
 }
 
-.admin img {
+.admin{
+  background: white;
   width: 50px;
   height: 50px;
+  border-radius: 50%;
+
+}
+.admin img {
+  width: 100%;
+  height: 100%;
+  object-fit:cover;
   border-radius: 50%;
   /* mix-blend-mode: multiply; */
 }
@@ -2613,12 +2629,12 @@ th {
   display: none;
 }
 
-.productsSectionHeading h2::before , .content-area h2::before,.categoryBoxesBarHeader h2::before{
+/* .orangeLine h2::before{
   content: "";
   width: 0px;
   height: 0px;
   display: none;
-}
+} */
 
 }
 
@@ -2774,8 +2790,9 @@ th {
       /* padding-left: 60px; */
       font-weight: bold;
       text-align: center;
-      border-top: 1px solid rgba(235, 128, 57, 0.377);
-      border-bottom: 1px solid rgba(235, 128, 57, 0.377);
+      box-shadow: 2px 0px 2px 0px rgba(2, 46, 139, 0.31);
+      /* border-top: 1px solid rgba(14, 116, 199, 0.295);
+      border-bottom: 1px solid rgba(14, 116, 199, 0.295); */
   }
 
   .navbar-menu li:hover {
@@ -2784,3 +2801,5 @@ th {
 
 
 }
+
+

@@ -1260,68 +1260,70 @@ if (document.getElementById("currUserName")) {
 function showDashboard() {
   var showDashboard = document.querySelector(".content-area");
 
-  showDashboard.innerHTML = `
+  window.location.reload();
+
+  // showDashboard.innerHTML = `
   
   
-  <h1>Dashboard</h1>
+  // <h1>Dashboard</h1>
 
-  <div class="charts">
+  // <div class="charts">
 
-    <!-- //1 -->
-    <div class="chart">
-      <h3>Line Chart</h3>
-      <p>
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+  //   <!-- //1 -->
+  //   <div class="chart">
+  //     <h3>Line Chart</h3>
+  //     <p>
+  //       Lorem ipsum dolor sit, amet consectetur adipisicing elit.
         
-      </p>
-      <!-- Chart Container -->
-      <div class="chart-container">
-        <canvas id="myLineChart"></canvas>
-      </div>
-    </div>
+  //     </p>
+  //     <!-- Chart Container -->
+  //     <div class="chart-container">
+  //       <canvas id="myLineChart"></canvas>
+  //     </div>
+  //   </div>
 
-    <!-- //2 -->
-    <div class="chart">
-      <h3>Bar Chart</h3>
-      <p>
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+  //   <!-- //2 -->
+  //   <div class="chart">
+  //     <h3>Bar Chart</h3>
+  //     <p>
+  //       Lorem ipsum dolor sit, amet consectetur adipisicing elit.
         
-      </p>
-      <!-- Chart Container -->
-      <div class="chart-container">
-        <canvas id="myBarChart"></canvas>
-      </div>
-    </div>
+  //     </p>
+  //     <!-- Chart Container -->
+  //     <div class="chart-container">
+  //       <canvas id="myBarChart"></canvas>
+  //     </div>
+  //   </div>
 
-    <!-- //3 -->
-    <div class="chart">
-      <h3>Doughnut Chart</h3>
-      <p>
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+  //   <!-- //3 -->
+  //   <div class="chart">
+  //     <h3>Doughnut Chart</h3>
+  //     <p>
+  //       Lorem ipsum dolor sit, amet consectetur adipisicing elit.
         
-      </p>
-      <!-- Chart Container -->
-      <div class="chart-container">
-        <canvas id="myDoughnutChart"></canvas>
-      </div>
-    </div>
+  //     </p>
+  //     <!-- Chart Container -->
+  //     <div class="chart-container">
+  //       <canvas id="myDoughnutChart"></canvas>
+  //     </div>
+  //   </div>
 
-    <!-- //4 -->
-    <div class="chart">
-      <h3>Pie Chart</h3>
-      <p>
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+  //   <!-- //4 -->
+  //   <div class="chart">
+  //     <h3>Pie Chart</h3>
+  //     <p>
+  //       Lorem ipsum dolor sit, amet consectetur adipisicing elit.
         
-      </p>
-      <!-- Chart Container -->
-      <div class="chart-container">
-        <canvas id="myPieChart"></canvas>
-      </div>
-    </div>
-  </div>
+  //     </p>
+  //     <!-- Chart Container -->
+  //     <div class="chart-container">
+  //       <canvas id="myPieChart"></canvas>
+  //     </div>
+  //   </div>
+  // </div>
 
 
-  `;
+  // `;
 }
 
 
@@ -1460,7 +1462,7 @@ function showProducts() {
                             <th>Category</th>
                             <th>Stock</th>
                             <th>Price</th>
-                            <th>Actions  <span onclick="addProductBox()" class='addAProduct'>+</span>  </th>
+                            <th>Actions  <span onclick="addProductBox()" class='addAProduct'><i class="fa-solid fa-folder-plus"></i></span>  </th>
                             
                         </tr>
                     </thead>
@@ -1489,8 +1491,12 @@ function showProducts() {
       <td>${OnlineStore.products[i].pStock}</td>
       <td>${OnlineStore.products[i].pPrice} </td>
       <td>
-      <span onclick="editProduct(this)" class='editCard' id = "edit-${i}" >edit</span> 
-      <span onclick="delProduct(this)" class='delCard'  id = "delCard-${i}" >Del</span>
+    <div class="myButtonsED">
+
+    <span onclick="editProduct(this)" class='editCard' id = "edit-${i}" ><i class="fa-solid fa-pen-to-square"></i></span> 
+    <span onclick="delProduct(this)" class='delCard'  id = "delCard-${i}" ><i class="fa-solid fa-trash-can"></i></span>
+    
+    </div>
       </td>
       
   </tr>`;
